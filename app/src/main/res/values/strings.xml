@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Dealapp</string>
+    <string name="app_name2">Prive</string>
+
+    <string name="welcome">Welcome to</string>
+    <string name="continu">Continue </string>
+    <string name="email">Enter  Mobile Number/Email </string>
+    <string name="term_condition"><font color='#C0C0C0'>By Signing in,I agree to</font><font color='#99A1E4'>
+Terms and Conditions</font></string>
+    <string name="share_on_google">Continue with Google</string>
+    <string name="noconnection">Kindly connect to a WIFI network or enable Mobile Data</string>
+
+
+    <string name="nav_home" translatable="false">Shop Now</string>
+    <string name="nav_chat" translatable="false">Chat With Us</string>
+    <string name="nav_user" translatable="false">User</string>
+    <string name="nav_order" translatable="false">My Orders</string>
+    <string name="nav_profile" translatable="false">My Profile</string>
+    <string name="nav_support" translatable="false">Support</string>
+    <string name="nav_about" translatable="false">About Us</string>
+    <string name="failed" translatable="false">Sorry,Your Payment Has Failed</string>
+    <string name="again" translatable="false">Please Try Again</string>
+    <string name="retry" translatable="false">Retry Order</string>
+    <string name="nav_review" translatable="false">Review Us</string>
+    <string name="nav_contact" translatable="false">Contact Us</string>
+    <string name="nav_share" translatable="false">Share with Friends</string>
+    <string name="nav_logout" translatable="false">Logout</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_terms" translatable="false">Terms &amp; Privacy</string>
+    <string name="status_stop">Powered By <font color="#f7941e">GoGrocer</font></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

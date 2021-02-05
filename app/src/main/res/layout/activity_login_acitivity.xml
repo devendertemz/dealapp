@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="3"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Activity.LoginAcitivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:padding="@dimen/dimen20sp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/logo2">
+
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/welcome"
+                android:textColor="@color/black"
+                android:textSize="25sp"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/blacklist"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:text="prive"
+                android:textColor="@color/black"
+                android:textSize="35sp"></TextView>
+        </LinearLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:hintEnabled="false"
+
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/inputEmail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:background="@drawable/custom_border"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="15dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen20sp"
+            android:background="@color/black"
+            android:text="@string/continu"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18dp">
+
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <TextView
+            android:id="@+id/textViewSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen20sp"
+            android:layout_marginBottom="@dimen/dimen10dp"
+            android:gravity="center"
+            android:text="@string/term_condition"
+            android:textSize="@dimen/dimen14sp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+
+            android:layout_height="wrap_content">
+            <View
+                android:id="@+id/view"
+                android:layout_width="@dimen/dimen70dp"
+                android:layout_height="@dimen/dimen1dp"
+                android:layout_marginTop="@dimen/dimen10dp"
+                android:layout_marginBottom="@dimen/dimen10dp"
+                android:background="@color/gray" />
+            <TextView
+                android:layout_marginLeft="@dimen/dimen5dp"
+                android:layout_marginRight="@dimen/dimen5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen10dp"
+                android:gravity="center"
+                android:text="or"
+                android:textSize="@dimen/dimen14sp" />
+            <View
+                android:layout_width="@dimen/dimen70dp"
+                android:layout_height="@dimen/dimen1dp"
+                android:layout_marginTop="@dimen/dimen10dp"
+                android:layout_marginBottom="@dimen/dimen10dp"
+                android:background="@color/gray" />
+        </LinearLayout>
+
+
+        <com.shobhitpuri.custombuttons.GoogleSignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_marginTop="@dimen/dimen20sp"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:textSize="28sp"
+            app:isDarkTheme="false"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/share_on_google" />
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>
