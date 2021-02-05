@@ -39,11 +39,11 @@
         android:layout_width="295dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/orange"
+        android:background="@color/bottomnavigation"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
-        app:itemIconTint="#999999"
-        app:itemTextColor="#fff"
+        app:itemIconTint="@color/nav"
+        app:itemTextColor="@color/black"
         app:menu="@menu/activity_main_drawer">
 
 

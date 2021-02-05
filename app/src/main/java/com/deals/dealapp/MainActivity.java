@@ -37,7 +37,11 @@ import android.widget.Toast;
 
 
 import com.deals.dealapp.Activity.LoginAcitivity;
+import com.deals.dealapp.Fragments.AccountFragment;
+import com.deals.dealapp.Fragments.BagFragment;
 import com.deals.dealapp.Fragments.HomeFragment;
+import com.deals.dealapp.Fragments.StoreFragment;
+import com.deals.dealapp.Fragments.WishlistFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -71,7 +75,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
      getSupportActionBar().setTitle(" ");
-        getSupportActionBar().setIcon(R.drawable.ic_cart);
+       // getSupportActionBar().setIcon(R.drawable.ic_cart);
 
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -102,31 +106,31 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         navigationView.setNavigationItemSelectedListener(this);
         nav_menu = navigationView.getMenu();
         View header = ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0);
-        viewpa = (LinearLayout) header.findViewById(R.id.viewpa);
+        //viewpa = (LinearLayout) header.findViewById(R.id.viewpa);
         /*if (sessionManagement.isLoggedIn()) {
             viewpa.setVisibility(View.VISIBLE);
         }*/
 
-
+/*
         My_Order = (LinearLayout) header.findViewById(R.id.my_orders);
         My_Reward = (LinearLayout) header.findViewById(R.id.my_reward);
         My_Walllet = (LinearLayout) header.findViewById(R.id.my_wallet);
-        My_Cart = (LinearLayout) header.findViewById(R.id.my_cart);
+        My_Cart = (LinearLayout) header.findViewById(R.id.my_cart);*/
         username = (TextView) header.findViewById(R.id.tv_header_name);
 
-        My_Order.setOnClickListener(new View.OnClickListener() {
+       /* My_Order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "My_Order", Toast.LENGTH_SHORT).show();
 
-               /* if (sessionManagement.isLoggedIn()) {
+               *//* if (sessionManagement.isLoggedIn()) {
                     Intent intent=new Intent(MainActivity.this,My_Order_activity.class);
                     startActivity(intent);
                 }
                 else {
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
-                }*/
+                }*//*
             }
         });
         My_Reward.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +139,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 Toast.makeText(MainActivity.this, "My_Reward", Toast.LENGTH_SHORT).show();
 
 
-               /* if (sessionManagement.isLoggedIn()) {
+               *//* if (sessionManagement.isLoggedIn()) {
 
                     drawer.closeDrawer(GravityCompat.START);
 
@@ -152,13 +156,13 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
-*/
+*//*
             }
         });
         My_Walllet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              /*  if (sessionManagement.isLoggedIn()) {
+              *//*  if (sessionManagement.isLoggedIn()) {
 
                     drawer.closeDrawer(GravityCompat.START);
 
@@ -176,7 +180,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 } else {
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
-                }*/
+                }*//*
                 Toast.makeText(MainActivity.this, "My_Walllet", Toast.LENGTH_SHORT).show();
 
             }
@@ -185,7 +189,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         My_Cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/*
+*//*
                 if (dbcart.getCartCount() > 0) {
                     CartFragment favourite_fragment = new CartFragment();
                     FragmentManager manager1 = getSupportFragmentManager();
@@ -195,11 +199,11 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                     transaction1.commit();
                 } else {
                     Toast.makeText(MainActivity.this, "No Item in Cart", Toast.LENGTH_SHORT).show();
-                }*/
+                }*//*
                 Toast.makeText(MainActivity.this, "My_Cart", Toast.LENGTH_SHORT).show();
 
             }
-        });
+        });*/
        /* iv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -325,7 +329,15 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                         transaction.replace(R.id.contentPanel, appNewsHome1Fragment);
                         transaction.commit();
                         return true;
-                    case R.id.navigation_dashboard:
+                    case R.id.navigation_store:
+                        Toast.makeText(MainActivity.this, "navigation_store", Toast.LENGTH_SHORT).show();
+                        StoreFragment storeFragment = new StoreFragment();
+                        FragmentManager manager2 = getSupportFragmentManager();
+                        FragmentTransaction transaction2 = manager2.beginTransaction();
+                        transaction2.replace(R.id.contentPanel, storeFragment);
+                        transaction2.commit();
+
+
 /*
                         CategoryFragment category_fragment = new CategoryFragment();
                         FragmentManager manager2 = getSupportFragmentManager();
@@ -334,17 +346,25 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                         transaction2.commit();*/
                         return true;
 
-                    case R.id.navigation_notifications1:
+                    case R.id.navigation_account:
+                        Toast.makeText(MainActivity.this, "navigation_account", Toast.LENGTH_SHORT).show();
 
-                        /*SearchFragment trending_fragment = new SearchFragment();
+                        AccountFragment accountFragment = new AccountFragment();
                         FragmentManager m = getSupportFragmentManager();
                         FragmentTransaction fragmentTransaction = m.beginTransaction();
-                        fragmentTransaction.replace(R.id.contentPanel, trending_fragment);
-                        fragmentTransaction.commit();*/
+                        fragmentTransaction.replace(R.id.contentPanel, accountFragment);
+                        fragmentTransaction.commit();
                         return true;
 
 
-                    case R.id.navigation_notifications12:
+                    case R.id.navigation_wishlist:
+                        Toast.makeText(MainActivity.this, "navigation_wishlist", Toast.LENGTH_SHORT).show();
+
+                        WishlistFragment wishlistFragment = new WishlistFragment();
+                        FragmentManager m4 = getSupportFragmentManager();
+                        FragmentTransaction fragmentTransactionnn = m4.beginTransaction();
+                        fragmentTransactionnn.replace(R.id.contentPanel, wishlistFragment);
+                        fragmentTransactionnn.commit();
 /*
                         NotificationFragment nf = new NotificationFragment();
                         FragmentManager m4 = getSupportFragmentManager();
@@ -364,8 +384,14 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 //                        transaction3.replace(R.id.contentPanel, editorPicked_fragment);
 //                        transaction3.commit();
 //                        return true;
-                    case R.id.navigation_notifications123:
+                    case R.id.navigation_bag:
 
+                        Toast.makeText(MainActivity.this, "navigation_bag", Toast.LENGTH_SHORT).show();
+                        BagFragment bagFragment = new BagFragment();
+                        FragmentManager manager1 = getSupportFragmentManager();
+                        FragmentTransaction transaction1 = manager1.beginTransaction();
+                        transaction1.replace(R.id.contentPanel, bagFragment);
+                        transaction1.commit();
                      /*   CartFragment favourite_fragment = new CartFragment();
                         FragmentManager manager1 = getSupportFragmentManager();
                         FragmentTransaction transaction1 = manager1.beginTransaction();

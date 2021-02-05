@@ -58,10 +58,10 @@
                     android:layout_marginLeft="8dp"
                     android:gravity="center|left"
                     android:text="Hey User"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="#fff"
+                    app:itemTextColor="@color/black"
                     android:textSize="17sp"
-                    android:drawableTint="@color/white"
+                    android:textColor="@color/black"
+                    android:drawableTint="@color/black"
                     android:drawableRight="@drawable/ic_right_arrow"
                     android:fontFamily="@font/opensans_semibold"/>
             </LinearLayout>
@@ -156,7 +156,7 @@
 -->
 
 
-        <LinearLayout
+      <!--  <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:id="@+id/viewpa"
@@ -167,7 +167,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:background="@color/orange"
+                android:background="@color/white"
                 android:orientation="horizontal"
                 tools:ignore="InefficientWeight">
 
@@ -178,7 +178,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight=".4"
-                    android:background="@color/orange"
+                    android:background="@color/bottomnavigation"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="8dp">
@@ -197,7 +197,7 @@
                         android:gravity="center"
                         android:text="@string/nav_order"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="#eae3e3"
+                        android:textColor="@color/black"
                         android:textSize="12sp" />
 
 
@@ -209,14 +209,15 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight=".4"
-                    android:background="@color/orange"
+                    android:background="@color/bottomnavigation"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="8dp">
 
-                    <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
+                    <ImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
                         android:src="@drawable/ic_cart" />
 
 
@@ -228,7 +229,7 @@
                         android:gravity="center"
                         android:text="Rewards"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="#eae3e3"
+                        android:textColor="@color/black"
                         android:textSize="12sp" />
 
 
@@ -241,7 +242,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="4dp"
                     android:layout_weight=".4"
-                    android:background="@color/orange"
+                    android:background="@color/bottomnavigation"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="8dp">
@@ -260,7 +261,7 @@
                         android:gravity="center"
                         android:text="Wallet"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="#eae3e3"
+                        android:textColor="@color/black"
                         android:textSize="12sp" />
 
 
@@ -273,15 +274,15 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight=".4"
-                    android:background="@color/orange"
+                    android:background="@color/bottomnavigation"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="8dp">
 
-                    <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    <ImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:backgroundTint="@color/white"
                         android:background="@drawable/ic_cart" />
 
 
@@ -293,7 +294,7 @@
                         android:gravity="center"
                         android:text="Cart"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="#eae3e3"
+                        android:textColor="@color/black"
                         android:textSize="12sp" />
 
 
@@ -301,7 +302,7 @@
 
 
             </LinearLayout>
-        </LinearLayout>
+        </LinearLayout>-->
 
         <ScrollView
             android:visibility="gone"
@@ -377,7 +378,7 @@
 
                     <ImageView
                         android:layout_centerVertical="true"
-                        android:background="@drawable/ic_nav_about"
+                        android:background="@drawable/account"
                         android:id="@+id/image3"
                         android:layout_width="22dp"
                         android:layout_height="22dp" />
