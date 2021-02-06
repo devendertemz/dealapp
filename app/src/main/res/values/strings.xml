@@ -34,4 +34,57 @@ Terms and Conditions</font></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <style name="NestedScrollBarStyle">
+        <item name="android:scrollbarFadeDuration">2</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fillViewport">true</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="MenuItemParent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">70dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
+
+    <style name="MenuItemImage">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:background">@drawable/circle_gray_dark</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:tint">@color/white</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="MenuItemLabel">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:minHeight">35dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="MenuItemArrow">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+
+        <item name="android:padding">3dp</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:tint">@color/text_hint</item>
+    </style>
+    <style name="MenuItemUnderline">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:background">@color/text_hint</item>
+    </style>
 </resources>
