@@ -32,7 +32,7 @@ public class LoginAcitivity extends AppCompatActivity {
 
     GoogleSignInClient mGoogleSignInClient;
     private static int RC_SIGN_IN = 100;
-    EditText inputEmail_et;
+    EditText inputEmail_et,password_Et;
     AppCompatButton buttonLogin;
 
     @Override
@@ -69,16 +69,15 @@ public class LoginAcitivity extends AppCompatActivity {
         GoogleSignInButton signInButton = findViewById(R.id.sign_in_button);
         buttonLogin=findViewById(R.id.buttonLogin);
         inputEmail_et=findViewById(R.id.inputEmail);
-
+        password_Et=findViewById(R.id.password);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
              //   progressDialog.show();
              //   progressDialog.hide();
-                Intent in = new Intent(LoginAcitivity.this, MainActivity.class);
 
-                startActivity(in);
                 String email=inputEmail_et.getText().toString().trim();
+                String password=password_Et.getText().toString().trim();
                 if (email.isEmpty())
                 {
                     Sneaker.with(LoginAcitivity.this)
@@ -86,6 +85,17 @@ public class LoginAcitivity extends AppCompatActivity {
                             .setMessage("")
                             .sneakError();
 
+                }else if(password.isEmpty())
+                {
+                    Sneaker.with(LoginAcitivity.this)
+                            .setTitle("Enter Password")
+                            .setMessage("")
+                            .sneakError();
+                }
+                else {
+                    Intent in = new Intent(LoginAcitivity.this, MainActivity.class);
+
+                    startActivity(in);
                 }
             }
         });
@@ -135,7 +145,7 @@ public class LoginAcitivity extends AppCompatActivity {
 
                 Toast.makeText(this, personPhoto + "", Toast.LENGTH_SHORT).show();
             }
-            Intent in = new Intent(LoginAcitivity.this, MainActivity.class);
+            Intent in = new Intent(LoginAcitivity.this, Edit_profile.class);
             in.putExtra("personName", personName);
             in.putExtra("personGivenName", personGivenName);
             in.putExtra("personFamilyName", personFamilyName);

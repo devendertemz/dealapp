@@ -28,6 +28,7 @@ public class HomeFragment extends Fragment  implements HomeAdapter.ItemListener{
     private ArrayList<Item> arrayList;
 
     public HomeFragment() {
+
     }
 
 

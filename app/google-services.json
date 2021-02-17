@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "803643345894",
-    "project_id": "dealapp-a60b6",
-    "storage_bucket": "dealapp-a60b6.appspot.com"
+    "project_number": "896893975035",
+    "project_id": "dealapp-9ff0e",
+    "storage_bucket": "dealapp-9ff0e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:803643345894:android:767f894a3074366df66427",
+        "mobilesdk_app_id": "1:896893975035:android:2754b1d162fd32602d735e",
         "android_client_info": {
           "package_name": "com.deals.dealapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "803643345894-2iod5os5qi25hrl8buheufovoj8ue8gb.apps.googleusercontent.com",
+          "client_id": "896893975035-78dd328ggsspkcm0ktd012ectltvh06m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deals.dealapp",
+            "certificate_hash": "db0b3c8ba5ea9585420b40dda0f3d36bd672337c"
+          }
+        },
+        {
+          "client_id": "896893975035-qfu42rdna3cqkqmafcli6hpd4beqftb6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBTuOBLb7ArudAV3AjmGXY6j0JZPS_ZfGw"
+          "current_key": "AIzaSyCxCP6Pv-acko1lBW8J3hay5GeG7TD7HZU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "803643345894-2iod5os5qi25hrl8buheufovoj8ue8gb.apps.googleusercontent.com",
+              "client_id": "896893975035-qfu42rdna3cqkqmafcli6hpd4beqftb6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.Edit_profile">
+
+
+    <!--Top Header Layout-->
+    <LinearLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/bottomnavigation"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+
+            android:src="@drawable/ic_arrow_back_24dp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_below="@+id/topbar">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:gravity="center"
+
+            android:paddingRight="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:minHeight="180dp"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/dotted">
+
+                    <ImageView
+                        android:id="@+id/iv_profile_background"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="2dp"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_prfofile_photo_nav_drawer"
+                        android:visibility="visible"/>
+
+                    <!--<ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:padding="15dp"
+                        android:src="@drawable/ic_camera_small"
+                        android:visibility="visible"/>-->
+
+                    <ImageView
+                        android:id="@+id/iv_profile_photo"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_gravity="center"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_prfofile_photo_nav_drawer"
+                        android:visibility="visible" />
+
+                    <ImageView
+                        android:id="@+id/changeImage"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="right"
+                        android:onClick="onPhotoEditClick"
+                        android:src="@drawable/ic_edit_button"/>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginBottom="@dimen/dimen70dp"
+                    android:paddingTop="10dp">
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text=" Full Name" />
+
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/round_grey_corners"
+                        android:hint="Enter Full Name "
+                        android:padding="10dp" />
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text=" Email ID" />
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/round_grey_corners"
+                        android:hint="Enter Email ID"
+                        android:padding="10dp" />
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text=" Mobile Number" />
+
+                    <EditText
+                        android:id="@+id/mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/round_grey_corners"
+                        android:hint=" Enter  Mobile Number "
+                        android:padding="10dp" />
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text=" Password" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/round_grey_corners"
+                        android:hint=" Enter Password"
+
+                        android:padding="10dp" />
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text=" Confirm Password" />
+
+                    <EditText
+                        android:id="@+id/confirm_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/round_grey_corners"
+                        android:hint="Enter Confirm Password"
+                        android:padding="10dp" />
+
+
+
+
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+
+                        android:id="@+id/save"
+                        android:layout_width="300dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/nav_logout"
+                        android:layout_gravity="center"
+                        android:textAllCaps="false"
+                        android:background="@drawable/btn_click_black_rectangle_with_semicircle_edge"
+
+                        android:textColor="@color/black"
+                        android:textSize="18dp">
+
+
+                    </androidx.appcompat.widget.AppCompatButton>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--Top Profile Section -->
+
+
+            <!--Option Bar-->
+
+
+
+            <!--Bootom Cards with sections-->
+
+
+
+
+
+    </ScrollView>
+
+
+</RelativeLayout>
+
+
+
+<!--
+<androidx.core.widget.NestedScrollView
+
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+style="@style/NestedScrollBarStyle"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:background="@color/white"
+tools:context=".Activity.Edit_profile">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+
+    android:paddingTop="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo2"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FF000000"/>
+
+        </LinearLayout>
+
+        &lt;!&ndash;  <LinearLayout
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:layout_gravity="center"
+              android:layout_marginRight="8dp"
+              android:layout_weight="1"
+              android:gravity="center">
+
+              <ImageView
+                  android:id="@+id/Save"
+                  android:layout_width="35dp"
+                  android:layout_height="35dp"
+                  android:layout_marginBottom="@dimen/space_2"
+                  android:background="@drawable/ic_navigate_next_white_24dp" />
+
+          </LinearLayout>
+&ndash;&gt;
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/dimen70dp"
+        android:paddingTop="10dp">
+
+
+
+
+
+
+
+        <View
+            style="@style/MenuItemUnderline"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+
+            android:id="@+id/buttonLogin"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen20sp"
+            android:background="@color/bottomnavigation"
+            android:text="@string/nav_logout"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+
+            android:textColor="@color/black"
+            android:textSize="18dp">
+
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+</LinearLayout>
+
+</androidx.core.widget.NestedScrollView>-->
+
+

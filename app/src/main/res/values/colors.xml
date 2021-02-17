@@ -39,5 +39,7 @@
     <color name="purple">#ed0bc0</color>
     <color name="grey">#C0C0C0</color>
     <color name="gray">#A7A7A7</color>
+    <color name="colorGrey">#20000000</color>
+    <color name="carbon_transparent_70">#70292a2e</color>
 
 </resources>

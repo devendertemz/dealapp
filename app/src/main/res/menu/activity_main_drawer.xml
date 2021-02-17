@@ -53,10 +53,10 @@
         <!--            android:icon="@drawable/copy"-->
         <!--            android:title="@string/status_stop" />-->
 
-        <item
+       <!-- <item
             android:id="@+id/nav_powerd"
             android:icon="@drawable/copy"
             android:title="@string/status_stop" />
-
+-->
     </group>
 </menu>

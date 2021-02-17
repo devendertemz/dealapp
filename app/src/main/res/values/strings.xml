@@ -5,11 +5,13 @@
     <string name="welcome">Welcome to</string>
     <string name="continu">Continue </string>
     <string name="email">Enter  Mobile Number/Email </string>
+    <string name="password">Enter  Password </string>
     <string name="term_condition"><font color='#C0C0C0'>By Signing in,I agree to</font><font color='#99A1E4'>
 Terms and Conditions</font></string>
     <string name="share_on_google">Continue with Google</string>
     <string name="noconnection">Kindly connect to a WIFI network or enable Mobile Data</string>
 
+    <string name="title_select_photo_from">Select Photo From :</string>
 
     <string name="nav_home" translatable="false">Shop Now</string>
     <string name="nav_chat" translatable="false">Chat With Us</string>
@@ -24,7 +26,7 @@ Terms and Conditions</font></string>
     <string name="nav_review" translatable="false">Review Us</string>
     <string name="nav_contact" translatable="false">Contact Us</string>
     <string name="nav_share" translatable="false">Share with Friends</string>
-    <string name="nav_logout" translatable="false">Logout</string>
+    <string name="nav_logout" translatable="false">Save</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -72,6 +74,7 @@ Terms and Conditions</font></string>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="MenuItemArrow">
         <item name="android:layout_width">30dp</item>
         <item name="android:layout_height">30dp</item>
@@ -80,6 +83,7 @@ Terms and Conditions</font></string>
         <item name="android:scaleType">centerInside</item>
         <item name="android:tint">@color/text_hint</item>
     </style>
+
     <style name="MenuItemUnderline">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1px</item>
