@@ -55,7 +55,7 @@ public class Edit_profile extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAMERA = 1;
     private String imagePath = "";
     private String displayPicImage = "";
-    private ImageView ivProfilePhoto;
+    private ImageView ivProfilePhoto,backpress;
 
     protected boolean hasReadContactsPermissions;
     @Override
@@ -68,8 +68,9 @@ public class Edit_profile extends AppCompatActivity {
     }
 
     private void initview() {
-        ivProfilePhoto = (ImageView) findViewById(R.id.iv_profile_photo);
 
+        ivProfilePhoto = (ImageView) findViewById(R.id.iv_profile_photo);
+        backpress = (ImageView) findViewById(R.id.backpress);
         ed_name=findViewById(R.id.name);
         ed_email=findViewById(R.id.email);
         ed_mobile=findViewById(R.id.mobile);
@@ -78,6 +79,13 @@ public class Edit_profile extends AppCompatActivity {
         btn_save=findViewById(R.id.save);
         iv_profile=findViewById(R.id.iv_profile_photo);
         changeImage=findViewById(R.id.changeImage);
+        backpress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+
+            }
+        });
 
         try {
 

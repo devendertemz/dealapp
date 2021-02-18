@@ -3,11 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group>
-        <item
-            android:visible="false"
-            android:id="@+id/login"
-            android:icon="@drawable/ic_home"
-            android:title="Login/SignUp" />
+
         <item
             android:id="@+id/sign"
             android:icon="@drawable/ic_home"

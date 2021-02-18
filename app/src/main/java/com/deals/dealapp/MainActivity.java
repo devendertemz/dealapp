@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
      getSupportActionBar().setTitle(" ");
-       // getSupportActionBar().setIcon(R.drawable.ic_cart);
 
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -330,7 +329,8 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                         transaction.commit();
                         return true;
                     case R.id.navigation_store:
-                        Toast.makeText(MainActivity.this, "navigation_store", Toast.LENGTH_SHORT).show();
+
+                         //   Toast.makeText(MainActivity.this, "navigation_store", Toast.LENGTH_SHORT).show();
                         StoreFragment storeFragment = new StoreFragment();
                         FragmentManager manager2 = getSupportFragmentManager();
                         FragmentTransaction transaction2 = manager2.beginTransaction();
@@ -411,19 +411,20 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         Fragment fm = null;
         Bundle args = new Bundle();
         if (id == R.id.sign) {
+
+            Toast.makeText(this, item.getTitle() + "", Toast.LENGTH_SHORT).show();
+
             /*
             Intent i = new Intent(getApplicationContext(),LoginActivity.class);
             startActivity(i);
         */
-        } else if (id == R.id.sign) {
-            /*Intent i = new Intent(getApplicationContext(),LoginActivity.class);
-            startActivity(i);*/
         }
-
        /* else if (id == R.id.nav_shop_now) {
             fm = new Shop_Now_fragment();
         } */
         else if (id == R.id.nav_my_profile) {
+            Toast.makeText(this, item.getTitle()+"", Toast.LENGTH_SHORT).show();
+
             // fm = new Edit_profile_fragment();
 //        } else if (id == R.id.nav_support) {
 //            String smsNumber = "9889887711";
@@ -433,9 +434,16 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 //            startActivity(sendIntent);
 
         } else if (id == R.id.nav_aboutus) {
+
+            Toast.makeText(this, item.getTitle()+"", Toast.LENGTH_SHORT).show();
+
+
+
 //            toolbar.setTitle("About");
             //startActivity(new Intent(getApplicationContext(),About_us.class));
         } else if (id == R.id.nav_policy) {
+            Toast.makeText(this, item.getTitle()+"", Toast.LENGTH_SHORT).show();
+
             /*fm = new Terms_and_Condition_fragment();
             args.putString("url", TermsUrl);
             args.putString("title", getResources().getString(R.string.nav_terms));
@@ -444,19 +452,16 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 //        else if (id == R.id.nav_review) {
 //            //reviewOnApp();
 //        }
-        else if (id == R.id.nav_contact) {
-            /*fm = new Contact_Us_fragment();
-            args.putString("url", SupportUrl);
-            args.putString("title", getResources().getString(R.string.nav_terms));
-            fm.setArguments(args);
-*/
-        }
+
 //        else if (id == R.id.nav_review) {
 //            reviewOnApp();
 //        }
         else if (id == R.id.nav_share) {
             shareApp();
         } else if (id == R.id.nav_logout) {
+
+            Toast.makeText(this, item.getTitle()+"", Toast.LENGTH_SHORT).show();
+
            /* sessionManagement.logoutSession();
 //            login.setVisibility(View.VISIBLE);
             finish();
@@ -588,4 +593,17 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         return true;
     }*/
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
+
+
+    }
+
 }

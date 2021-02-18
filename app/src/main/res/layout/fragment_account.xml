@@ -91,6 +91,7 @@
                 android:gravity="center">
 
                 <TextView
+                    android:id="@+id/Edit_profile"
                     android:layout_marginTop="@dimen/dimen10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -142,7 +143,7 @@
 
 
             <LinearLayout
-                android:id="@+id/ll_accounts_way_bill"
+                android:id="@+id/ll_Orders"
                 style="@style/MenuItemParent"
                 android:background="?selectableItemBackground">
 
@@ -164,6 +165,9 @@
                 style="@style/MenuItemUnderline"/>
 
             <LinearLayout
+
+                android:id="@+id/ll_Notifications"
+
                 style="@style/MenuItemParent"
                 android:background="?selectableItemBackground">
 
@@ -185,6 +189,7 @@
                 style="@style/MenuItemUnderline"/>
 
             <LinearLayout
+                android:id="@+id/ll_Refer_a_friend"
                 style="@style/MenuItemParent"
                 android:background="?selectableItemBackground">
 
@@ -206,6 +211,8 @@
                 style="@style/MenuItemUnderline"/>
 
             <LinearLayout
+                android:id="@+id/ll_Contact_Us"
+
                 style="@style/MenuItemParent"
                 android:background="?selectableItemBackground">
 
@@ -227,6 +234,7 @@
                 style="@style/MenuItemUnderline"/>
 
             <LinearLayout
+                android:id="@+id/ll_Support"
                 style="@style/MenuItemParent"
                 android:background="?selectableItemBackground">
 

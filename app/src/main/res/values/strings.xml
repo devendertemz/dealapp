@@ -26,8 +26,11 @@ Terms and Conditions</font></string>
     <string name="nav_review" translatable="false">Review Us</string>
     <string name="nav_contact" translatable="false">Contact Us</string>
     <string name="nav_share" translatable="false">Share with Friends</string>
-    <string name="nav_logout" translatable="false">Save</string>
+    <string name="nav_logout" translatable="false">Logout</string>
+    <string name="save" translatable="false">    Save</string>
+    <string name="emptyCartInfo">Please add some of the items in Bag that will appear here</string>
 
+    <string name="emptyCart">NO items in the Bag</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
