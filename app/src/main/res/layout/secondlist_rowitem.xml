@@ -27,24 +27,24 @@
 
 
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@color/white"
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@color/white"
 
-            android:layout_centerInParent="true"
-            android:contentDescription="@null"
-            card_view:tint="@android:color/black" />
+                android:layout_centerInParent="true"
+                android:contentDescription="@null"
+                card_view:tint="@android:color/black" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_marginTop="@dimen/dimen5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:textColor="@android:color/black"
-            android:layout_below="@+id/imageView" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_marginTop="@dimen/dimen5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/imageView" />
         </LinearLayout>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

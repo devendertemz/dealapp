@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="3"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".Activity.ThirdListStage">
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_marginLeft="@dimen/dimen5dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_left_arrow"
+                android:backgroundTint="@color/black" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dimen150dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:foregroundGravity="right"
+            android:gravity="right">
+
+
+            <ImageView
+                android:layout_marginLeft="@dimen/dimen5dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_loupe"
+
+                android:backgroundTint="@color/black" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_marginLeft="@dimen/dimen5dp"
+                android:layout_width="@dimen/dimen30dp"
+                android:layout_height="@dimen/dimen30dp"
+                android:background="@drawable/wishlist"
+                android:backgroundTint="@color/black" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_marginLeft="@dimen/dimen5dp"
+                android:layout_width="@dimen/dimen30dp"
+                android:layout_height="@dimen/dimen30dp"
+                android:background="@drawable/bag"
+                android:backgroundTint="@color/black" />
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+    <View
+        android:id="@+id/v1"
+        android:layout_below="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:background="@color/lightGrey"></View>
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_below="@+id/v1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/dimen8dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical"
+        android:gravity="center|left">
+
+        <TextView
+
+            android:id="@+id/categorgyname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="left"
+            android:text="MAX FASHION"
+            android:textSize="22sp"
+            android:layout_margin="2dp"
+            android:textColor="@color/darkGrey"
+            android:fontFamily="@font/opensans_bold"></TextView>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/RecyclerViewlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen10dp"
+        android:layout_margin="15dp"
+        android:layout_below="@id/ll2">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:id="@+id/recycler_product">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/filterlayout"
+        android:layout_below="@+id/RecyclerViewlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/round_grey_corners"
+        android:layout_marginTop="@dimen/dimen8dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/dimen5dp"
+        android:layout_marginRight="@dimen/dimen5dp"
+        android:weightSum="2"
+       >
+
+        <TextView
+            android:background="@color/bottomnavigation"
+            android:layout_marginLeft="@dimen/dimen10dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:text="Relevance"
+            android:textSize="22sp"
+
+            android:layout_margin="2dp"
+            android:textColor="@color/darkGrey"
+            android:layout_marginStart="@dimen/dimen10dp" />
+
+        <View
+            android:layout_below="@+id/ll1"
+            android:layout_width="5dp"
+            android:gravity="center"
+            android:layout_margin="@dimen/dimen5dp"
+            android:layout_height="match_parent"
+            android:background="@color/lightGrey">
+
+        </View>
+
+        <TextView
+            android:background="@color/bottomnavigation"
+            android:layout_marginLeft="@dimen/dimen10dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:text="Filter"
+            android:textSize="22sp"
+
+            android:layout_margin="2dp"
+            android:textColor="@color/darkGrey"
+            android:layout_marginStart="@dimen/dimen10dp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen10dp"
+        android:layout_margin="15dp"
+        android:layout_below="@id/filterlayout">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+           >
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </RelativeLayout>
+</RelativeLayout>

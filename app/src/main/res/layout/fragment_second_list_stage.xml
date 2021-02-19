@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:orientation="vertical"
+android:background="@color/white"
+android:layout_weight="3">
+
+
+<RelativeLayout
+    android:id="@+id/viewCartItems"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_below="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="55dp"
+        tools:ignore="NotSibling">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                                    <LinearLayout
+                                        android:id="@+id/ll2"
+                                        android:layout_below="@+id/ll1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:background="@drawable/round_grey_corners"
+
+                                        android:layout_marginLeft="59dp"
+                                        android:layout_marginRight="59dp"
+                                        android:layout_marginTop="10dp"
+                                        android:orientation="vertical"
+                                        android:gravity="center|left">
+
+                                        <TextView
+
+                                            android:id="@+id/categorgyname"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center"
+                                            android:gravity="center"
+                                            android:text="Cart"
+                                            android:textSize="22sp"
+                                            android:background="@color/bottomnavigation"
+                                            android:layout_margin="2dp"
+                                            android:shadowColor="@color/bottomnavigation"
+                                            android:textColor="@color/darkGrey"
+                                            android:fontFamily="@font/opensans_bold"></TextView>
+                                    </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/ll2"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_secondcategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+</RelativeLayout>
