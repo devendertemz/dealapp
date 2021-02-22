@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_grey_corners"
+
+    android:layout_margin="@dimen/dimen5dp"
+    card_view:cardCornerRadius="@dimen/dimen5dp">
+    <RelativeLayout
+        android:id="@+id/productrelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <LinearLayout
+            android:id="@+id/llimage"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/productbg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <ImageView
+
+                android:layout_margin="5dp"
+
+                android:id="@+id/productimage"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:src="@drawable/p1"
+                android:scaleType="centerInside"
+                android:contentDescription="@null"
+               />
+
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:padding="@dimen/dimen5dp"
+            android:layout_below="@+id/llimage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <TextView
+                android:id="@+id/p_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:textColor="@color/darkGrey"
+                android:text="Ombre-Dyed Top with Typography "
+                android:textSize="17dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/p_price"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:textColor="@color/black"
+                android:text="Rs. 96 "
+                android:textSize="15dp"
+                android:textStyle="normal"/>
+            <TextView
+                android:id="@+id/p_Offer"
+
+                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/offertext"
+            android:text="Rs. 299 (68% off) "
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+
+            <TextView
+
+            android:id="@+id/tax_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/darkGrey"
+            android:text="Price inclusive of all taxes"
+            android:textSize="@dimen/dimen12dp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

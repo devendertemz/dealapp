@@ -42,4 +42,9 @@
     <color name="colorGrey">#20000000</color>
     <color name="carbon_transparent_70">#70292a2e</color>
 
+    <color name="offertext">#938245</color>
+    <color name="productbg">#F6F3F7</color>
+    <color name="addTocard">#C4C4C4</color>
+
+
 </resources>
