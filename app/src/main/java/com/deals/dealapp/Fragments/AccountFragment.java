@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,9 +30,8 @@ import com.google.android.gms.tasks.Task;
 import java.util.concurrent.Executor;
 
 public class AccountFragment extends Fragment {
-    TextView Edit_profile_tv;
-    LinearLayout ll_Orders, ll_Notifications, ll_Refer_a_friend, ll_Contact_Us, ll_Support;
-    AppCompatButton buttonLogin;
+
+    LinearLayout ll_Orders, ll_Notifications, ll_profile, ll_Contact_Us, ll_Support,buttonLogin;
     GoogleSignInClient mGoogleSignInClient;
 
     public AccountFragment() {
@@ -70,10 +70,9 @@ public class AccountFragment extends Fragment {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
 
-        Edit_profile_tv = view.findViewById(R.id.Edit_profile);
         ll_Orders = view.findViewById(R.id.ll_Orders);
         ll_Notifications = view.findViewById(R.id.ll_Notifications);
-        ll_Refer_a_friend = view.findViewById(R.id.ll_Refer_a_friend);
+        ll_profile = view.findViewById(R.id.ll_profile);
         ll_Contact_Us = view.findViewById(R.id.ll_Contact_Us);
         ll_Support = view.findViewById(R.id.ll_Support);
         buttonLogin = view.findViewById(R.id.buttonLogin);
@@ -85,13 +84,6 @@ public class AccountFragment extends Fragment {
             }
         });
 
-        Edit_profile_tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent editprofile = new Intent(getContext(), Edit_profile.class);
-                startActivity(editprofile);
-            }
-        });
 
 
         ll_Orders.setOnClickListener(new View.OnClickListener() {
@@ -106,10 +98,12 @@ public class AccountFragment extends Fragment {
                 Toast.makeText(getContext(), "ll_Notifications", Toast.LENGTH_SHORT).show();
             }
         });
-        ll_Refer_a_friend.setOnClickListener(new View.OnClickListener() {
+        ll_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "ll_Refer_a_friend", Toast.LENGTH_SHORT).show();
+
+                Intent in =new Intent(getContext(), Edit_profile.class);
+                startActivity(in);
             }
         });
         ll_Contact_Us.setOnClickListener(new View.OnClickListener() {

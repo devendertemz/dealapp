@@ -596,13 +596,29 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
 
-        Intent a = new Intent(Intent.ACTION_MAIN);
-        a.addCategory(Intent.CATEGORY_HOME);
-        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(a);
+      /*
+*/
 
+
+        Fragment fr=getSupportFragmentManager().findFragmentById(R.id.contentPanel);
+        String fragmentName = fr.getClass().getSimpleName();
+        //Log.d("fragment name", "aa"+fragmentName);
+       if (fragmentName.equals("HomeFragment")){
+
+           Intent a = new Intent(Intent.ACTION_MAIN);
+           a.addCategory(Intent.CATEGORY_HOME);
+           a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+           startActivity(a);
+       }
+       else {
+           HomeFragment appNewsHome1Fragment = new HomeFragment();
+           FragmentManager manager = getSupportFragmentManager();
+           FragmentTransaction transaction = manager.beginTransaction();
+           transaction.replace(R.id.contentPanel, appNewsHome1Fragment);
+           transaction.commit();
+       }
+        //super.onBackPressed();
 
     }
 

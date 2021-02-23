@@ -24,89 +24,60 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <LinearLayout
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:gravity="center">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/logo2"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#FF000000"/>
-
-            </LinearLayout>
+            android:orientation="vertical"
+            >
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
+            <TextView
+                android:layout_marginTop="@dimen/dimen10dp"
+                android:id="@+id/tv_header_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="8dp"
-                android:orientation="vertical"
-                android:layout_marginRight="8dp"
-                android:gravity="center">
+                android:text="Test"
+                android:textStyle="bold"
+                app:itemTextColor="@color/black"
+                android:textSize="@dimen/dimen20sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/opensans_semibold"/>
 
-                <TextView
-                    android:layout_marginTop="@dimen/dimen10dp"
-                    android:id="@+id/tv_header_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginLeft="8dp"
-                    android:gravity="center|left"
-                    android:text="Hey User"
-                    app:itemTextColor="@color/black"
-                    android:textSize="@dimen/dimen20sp"
-                    android:textColor="@color/black"
-                    android:drawableTint="@color/black"
-                    android:fontFamily="@font/opensans_semibold"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginLeft="8dp"
-                    android:gravity="center|left"
-                    android:text="Hey User"
-                    app:itemTextColor="@color/black"
-                    android:textSize="@dimen/dimen15dp"
-                    android:textColor="@color/black"
-                    android:drawableTint="@color/black"
-/>
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginLeft="8dp"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_marginRight="8dp"
                 android:gravity="center">
 
+
                 <TextView
-                    android:id="@+id/Edit_profile"
-                    android:layout_marginTop="@dimen/dimen10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="8dp"
+                    android:gravity="center|left"
+                    android:text="9895989695 "
+                    android:textStyle="normal"
+                    app:itemTextColor="@color/black"
+                    android:textSize="@dimen/dimen15dp"
+                    android:textColor="@color/black"
+                    android:drawableTint="@color/black" />
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:layout_marginRight="@dimen/dimen5dp"
-                    android:layout_marginLeft="8dp"
-                    android:gravity="center|right"
-                    android:text="Edit"
-                    app:itemTextColor="@color/dark_blue"
-                    android:textSize="@dimen/dimen20sp"
-                    android:textColor="@color/dark_blue"
-                    android:drawableTint="@color/black"/>
-
-
+                    android:layout_marginLeft="18dp"
+                    android:gravity="center|left"
+                    android:text="Test@gmail.com"
+                    app:itemTextColor="@color/black"
+                    android:textSize="@dimen/dimen15dp"
+                    android:textColor="@color/black"
+                    android:drawableTint="@color/black"
+                    />
             </LinearLayout>
+
 
             <!--  <LinearLayout
                   android:layout_width="0dp"
@@ -131,7 +102,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:background="@color/white"
             android:orientation="vertical"
             android:layout_marginBottom="@dimen/dimen70dp"
@@ -140,6 +111,8 @@
 
 
 
+            <View
+                style="@style/MenuItemUnderline"/>
 
 
             <LinearLayout
@@ -147,18 +120,39 @@
                 style="@style/MenuItemParent"
                 android:background="?selectableItemBackground">
 
+
                 <ImageView
                     style="@style/MenuItemImage"
                     app:srcCompat="@drawable/ic_order"
                     tools:ignore="VectorDrawableCompat" />
+                <LinearLayout
+                    android:layout_marginRight="@dimen/dimen10dp"
 
-                <TextView
-                    style="@style/MenuItemLabel"
-                    android:text="Orders"/>
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/black"                        android:layout_width="match_parent"
+                        android:text="My Orders"
+                        android:minHeight="@dimen/dimen10dp"
+                        android:textSize="@dimen/dimen18sp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textColor="@color/black"                        android:layout_width="match_parent"
+                        android:text="Check your order status"
+                        android:textSize="@dimen/dimen10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
 
                 <ImageView
                     style="@style/MenuItemArrow"
                     app:srcCompat="@drawable/ic_right_arrow"
+                    android:layout_marginLeft="115dp"
                     tools:ignore="VectorDrawableCompat" />
             </LinearLayout>
             <View
@@ -176,12 +170,33 @@
                     app:srcCompat="@drawable/ic_notifications_black_24dp"
                     tools:ignore="VectorDrawableCompat" />
 
-                <TextView
-                    style="@style/MenuItemLabel"
-                    android:text="Notifications"/>
+                <LinearLayout
+                    android:layout_marginRight="@dimen/dimen10dp"
+
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/black"                        android:layout_width="match_parent"
+                        android:text="Notifications"
+                        android:minHeight="@dimen/dimen10dp"
+                        android:textSize="@dimen/dimen18sp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textColor="@color/black"                        android:layout_width="match_parent"
+                        android:text="Check your new notifications"
+                        android:textSize="@dimen/dimen10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
 
                 <ImageView
                     style="@style/MenuItemArrow"
+                    android:layout_marginLeft="95dp"
                     app:srcCompat="@drawable/ic_right_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </LinearLayout>
@@ -189,21 +204,42 @@
                 style="@style/MenuItemUnderline"/>
 
             <LinearLayout
-                android:id="@+id/ll_Refer_a_friend"
+                android:id="@+id/ll_profile"
                 style="@style/MenuItemParent"
                 android:background="?selectableItemBackground">
 
                 <ImageView
                     style="@style/MenuItemImage"
-                    app:srcCompat="@drawable/ic_order"
+                    app:srcCompat="@drawable/ic_nav_profile"
                     tools:ignore="VectorDrawableCompat" />
 
-                <TextView
-                    style="@style/MenuItemLabel"
-                    android:text="Refer a friend"/>
+                <LinearLayout
+                    android:layout_marginRight="@dimen/dimen10dp"
+
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/black"                        android:layout_width="match_parent"
+                        android:text="Profile Settings"
+                        android:minHeight="@dimen/dimen10dp"
+                        android:textSize="@dimen/dimen18sp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textColor="@color/black"                        android:layout_width="match_parent"
+                        android:text="Edit your profile"
+                        android:textSize="@dimen/dimen10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
 
                 <ImageView
                     style="@style/MenuItemArrow"
+                    android:layout_marginLeft="105dp"
                     app:srcCompat="@drawable/ic_right_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </LinearLayout>
@@ -220,13 +256,33 @@
                     style="@style/MenuItemImage"
                     app:srcCompat="@drawable/ic_order"
                     tools:ignore="VectorDrawableCompat" />
+                <LinearLayout
+                    android:layout_marginRight="@dimen/dimen10dp"
 
-                <TextView
-                    style="@style/MenuItemLabel"
-                    android:text="Contact Us"/>
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/black"                        android:layout_width="match_parent"
+                        android:text="Help Center"
+                        android:minHeight="@dimen/dimen10dp"
+                        android:textSize="@dimen/dimen18sp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textColor="@color/black"                        android:layout_width="match_parent"
+                        android:text="Help Center"
+                        android:textSize="@dimen/dimen10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
 
                 <ImageView
                     style="@style/MenuItemArrow"
+                    android:layout_marginLeft="135dp"
                     app:srcCompat="@drawable/ic_right_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </LinearLayout>
@@ -243,33 +299,85 @@
                     app:srcCompat="@drawable/ic_order"
                     tools:ignore="VectorDrawableCompat" />
 
-                <TextView
-                    style="@style/MenuItemLabel"
-                    android:text="Support"/>
+                <LinearLayout
+                    android:layout_marginRight="@dimen/dimen10dp"
+
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/black"                        android:layout_width="match_parent"
+                        android:text="Share Feedback"
+                        android:minHeight="@dimen/dimen10dp"
+                        android:textSize="@dimen/dimen18sp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textColor="@color/black"                        android:layout_width="match_parent"
+                        android:text="Share Feedback"
+                        android:textSize="@dimen/dimen10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
 
                 <ImageView
                     style="@style/MenuItemArrow"
+                    android:layout_marginLeft="100dp"
                     app:srcCompat="@drawable/ic_right_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </LinearLayout>
             <View
                 style="@style/MenuItemUnderline"/>
-            <androidx.appcompat.widget.AppCompatButton
-
+            <LinearLayout
                 android:id="@+id/buttonLogin"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen20sp"
-                android:background="@color/bottomnavigation"
-                android:text="@string/nav_logout"
-                android:layout_gravity="center"
-                android:textAllCaps="false"
 
-                android:textColor="@color/black"
-                android:textSize="18dp">
+                style="@style/MenuItemParent"
+                android:background="?selectableItemBackground">
+
+                <ImageView
+                    style="@style/MenuItemImage"
+                    app:srcCompat="@drawable/ic_exit"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <LinearLayout
+                    android:layout_marginRight="@dimen/dimen10dp"
+
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/black"                        android:layout_width="match_parent"
+                        android:text="Logout"
+                        android:minHeight="@dimen/dimen10dp"
+                        android:textSize="@dimen/dimen18sp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textColor="@color/black"                        android:layout_width="match_parent"
+                        android:text="Logout"
+                        android:textSize="@dimen/dimen10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"/>
 
 
-            </androidx.appcompat.widget.AppCompatButton>
+                </LinearLayout>
+
+
+                <ImageView
+
+                    style="@style/MenuItemArrow"
+                    android:layout_marginLeft="170dp"
+                    app:srcCompat="@drawable/ic_right_arrow"
+                    tools:ignore="VectorDrawableCompat" />
+            </LinearLayout>
+
+
+            <View
+                style="@style/MenuItemUnderline"/>
+
 
 
 
