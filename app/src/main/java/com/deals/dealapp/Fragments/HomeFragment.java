@@ -51,10 +51,10 @@ public class HomeFragment extends Fragment  implements HomeAdapter.ItemListener{
     }
 
     private void initView(View view) {
-        Search_layout = (LinearLayout) view.findViewById(R.id.search_layout);
+       // Search_layout = (LinearLayout) view.findViewById(R.id.search_layout);
         recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
         setRecyclerdata();
-        Search_layout.setOnClickListener(new View.OnClickListener() {
+      /*  Search_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment  implements HomeAdapter.ItemListener{
                 fragmentTransaction.replace(R.id.contentPanel, searchFragment);
                 fragmentTransaction.commit();
             }
-        });
+        });*/
 
 
     }
@@ -74,16 +74,16 @@ public class HomeFragment extends Fragment  implements HomeAdapter.ItemListener{
         arrayList = new ArrayList<>();
 
 
-        arrayList.add(new Item("Apparel", R.drawable.apparel, "#E0E0E0"));
-        arrayList.add(new Item("Car Wash", R.drawable.car_wash, "#E0E0E0"));
-        arrayList.add(new Item("Beauty Parlour", R.drawable.beautyparlour, "#E0E0E0"));
-        arrayList.add(new Item("Groceries", R.drawable.groceries, "#E0E0E0"));
-        arrayList.add(new Item("Hotels", R.drawable.hotels, "#E0E0E0"));
-        arrayList.add(new Item("Restaurants", R.drawable.hotels, "#E0E0E0"));
+        arrayList.add(new Item("Apparel", R.drawable.apparel, "#848484"));
+        arrayList.add(new Item("Car Wash", R.drawable.car_wash, "#848484"));
+        arrayList.add(new Item("Beauty Parlour", R.drawable.beautyparlour, "#848484"));
+        arrayList.add(new Item("Groceries", R.drawable.groceries, "#848484"));
+        arrayList.add(new Item("Hotels", R.drawable.hotels, "#848484"));
+        arrayList.add(new Item("Restaurants", R.drawable.hotels, "#848484"));
 
         HomeAdapter adapter = new HomeAdapter(getContext(), arrayList, this);
         recyclerView.setAdapter(adapter);
-        GridLayoutManager manager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager manager = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(manager);
 
     }

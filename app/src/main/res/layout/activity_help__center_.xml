@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.core.widget.NestedScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/NestedScrollBarStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    tools:context=".Activity.Help_Center_Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/header_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="@dimen/dimen5dp"
+                    android:background="@drawable/ic_left_arrow"
+                    android:backgroundTint="@color/black" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/robotomedium"
+                android:gravity="center"
+                android:text="Help Center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen20dp">
+
+
+            </TextView>
+
+
+        </LinearLayout>
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="@dimen/dimen5dp"
+            android:layout_marginBottom="@dimen/dimen70dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingTop="10dp">
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen5dp"
+                android:id="@+id/ll_Orders"
+                style="@style/MenuItemParent"
+                android:background="@drawable/round_grey2_corners">
+
+
+
+            <ImageView
+                    style="@style/MenuItemImage"
+                    app:srcCompat="@drawable/contact_us"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dimen10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/robotomedium"
+                        android:minHeight="@dimen/dimen10dp"
+                        android:text="Contact Us"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Contact us"
+                        android:fontFamily="@font/robotomedium"
+
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen10dp" />
+
+
+                </LinearLayout>
+
+
+                <ImageView
+                    style="@style/MenuItemArrow"
+                    android:layout_marginLeft="115dp"
+                    app:srcCompat="@drawable/ic_right_arrow"
+                    tools:ignore="VectorDrawableCompat" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen10dp"
+
+                android:id="@+id/ll_Notifications"
+
+                style="@style/MenuItemParent"
+                android:background="@drawable/round_grey2_corners">
+
+                <ImageView
+                    style="@style/MenuItemImage"
+                    app:srcCompat="@drawable/privacy"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dimen10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/robotomedium"
+
+                        android:minHeight="@dimen/dimen10dp"
+                        android:text="Privacy Policy"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen18sp" />
+
+                    <TextView
+                        android:fontFamily="@font/robotomedium"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Privacy Policy"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen10dp" />
+
+
+                </LinearLayout>
+
+
+                <ImageView
+                    style="@style/MenuItemArrow"
+                    android:layout_marginLeft="95dp"
+                    app:srcCompat="@drawable/ic_right_arrow"
+                    tools:ignore="VectorDrawableCompat" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_profile"
+                style="@style/MenuItemParent"
+                android:layout_marginTop="@dimen/dimen10dp"
+
+                android:background="@drawable/round_grey2_corners">
+
+                <ImageView
+                    style="@style/MenuItemImage"
+                    app:srcCompat="@drawable/terms"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dimen10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/robotomedium"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:minHeight="@dimen/dimen10dp"
+                        android:text="Terms and Condition"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen18sp" />
+
+                    <TextView
+                        android:fontFamily="@font/robotomedium"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Terms and Condition"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen10dp" />
+
+
+                </LinearLayout>
+
+
+                <ImageView
+                    style="@style/MenuItemArrow"
+                    android:layout_marginLeft="45dp"
+                    app:srcCompat="@drawable/ic_right_arrow"
+                    tools:ignore="VectorDrawableCompat" />
+            </LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

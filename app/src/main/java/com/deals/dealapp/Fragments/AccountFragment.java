@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.deals.dealapp.Activity.Edit_profile;
+import com.deals.dealapp.Activity.Help_Center_Activity;
 import com.deals.dealapp.Activity.LoginAcitivity;
 import com.deals.dealapp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -31,7 +32,7 @@ import java.util.concurrent.Executor;
 
 public class AccountFragment extends Fragment {
 
-    LinearLayout ll_Orders, ll_Notifications, ll_profile, ll_Contact_Us, ll_Support,buttonLogin;
+    LinearLayout ll_Orders, ll_Notifications, ll_profile, ll_help_center, ll_Support,buttonLogin;
     GoogleSignInClient mGoogleSignInClient;
 
     public AccountFragment() {
@@ -52,7 +53,6 @@ public class AccountFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
         initview(view);
 
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
 
 
         // getActivity().getSupportActionBar().setTitle();
@@ -73,7 +73,7 @@ public class AccountFragment extends Fragment {
         ll_Orders = view.findViewById(R.id.ll_Orders);
         ll_Notifications = view.findViewById(R.id.ll_Notifications);
         ll_profile = view.findViewById(R.id.ll_profile);
-        ll_Contact_Us = view.findViewById(R.id.ll_Contact_Us);
+        ll_help_center = view.findViewById(R.id.ll_help_center);
         ll_Support = view.findViewById(R.id.ll_Support);
         buttonLogin = view.findViewById(R.id.buttonLogin);
 
@@ -106,11 +106,11 @@ public class AccountFragment extends Fragment {
                 startActivity(in);
             }
         });
-        ll_Contact_Us.setOnClickListener(new View.OnClickListener() {
+        ll_help_center.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "ll_Contact_Us", Toast.LENGTH_SHORT).show();
-            }
+                Intent in =new Intent(getContext(), Help_Center_Activity.class);
+                startActivity(in);            }
         });
         ll_Support.setOnClickListener(new View.OnClickListener() {
             @Override

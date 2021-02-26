@@ -26,15 +26,15 @@ import java.util.List;
 
 public class BagFragment extends Fragment {
 
-    Button btn_Shop;
+
     RecyclerView recyclerView;
     LinearLayout ll_Checkout;
  //   CartAdapter cartAdapter;
-    RelativeLayout noData,viewCart;
+    RelativeLayout viewCart;
     TextView totalItems;
     public static   TextView tv_total ;
 
-    ImageView cardimage;
+
     TextView btn_Checkout;
 
     //private List<CartModel> cartList = new ArrayList<>();
@@ -54,7 +54,7 @@ public class BagFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bag, container, false);
-        initview(view);
+        //initview(view);
         return view;
     }
 
@@ -62,16 +62,11 @@ public class BagFragment extends Fragment {
     {
         btn_Checkout=view.findViewById(R.id.btn_Checkout);
         recyclerView=view.findViewById(R.id.recyclerCart);
-        btn_Shop=view.findViewById(R.id.btn_ShopNOw);
         viewCart=view.findViewById(R.id.viewCartItems);
         tv_total=view.findViewById(R.id.txt_totalamount);
         totalItems=view.findViewById(R.id.txt_totalQuan);
-        noData=view.findViewById(R.id.noData);
-        cardimage=view.findViewById(R.id.cardimage);
         ll_Checkout=view.findViewById(R.id.ll_Checkout);
 
-        noData.setVisibility(View.VISIBLE);
-        cardimage.setVisibility(View.VISIBLE);
        // ll_Checkout.setVisibility(View.GONE);
         recyclerView.setVisibility(View.GONE);
         btn_Checkout.setOnClickListener(new View.OnClickListener() {
@@ -83,13 +78,6 @@ public class BagFragment extends Fragment {
             }
         });
 
-        btn_Shop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
 

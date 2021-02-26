@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/gray"
+    android:minHeight="?attr/actionBarSize"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    local:titleTextAppearance="@style/AppTheme.Toolbar.Title"
+    app:ignore="NamespaceTypo">
+
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dimen10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+
+            android:id="@+id/menu_icon"
+            android:layout_width="38dp"
+            android:layout_height="@dimen/dimen35sp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginEnd="289dp"
+            android:layout_marginRight="289dp"
+            android:src="@drawable/account"
+
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+
+
+        <!--<TextView
+
+
+
+
+
+            android:layout_toStartOf="@+id/notification"
+            android:layout_toLeftOf="@+id/notification"
+            android:fontFamily="@font/blacklist"
+            android:gravity="center"
+            android:text="Prive"
+            android:textColor="@color/darkGrey"
+            android:textSize="30sp"
+            android:textStyle="" />-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginEnd="100dp"
+            android:layout_marginRight="100dp"
+            android:layout_toStartOf="@+id/notification"
+            android:layout_toLeftOf="@+id/notification"
+            android:fontFamily="@font/blacklist"
+            android:gravity="center"
+            android:text="Prive"
+            android:textColor="@color/darkGrey"
+            android:textSize="37sp">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/notification"
+            android:layout_width="43dp"
+            android:layout_height="33dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="7dp"
+            android:layout_marginRight="7dp"
+            android:src="@drawable/notification"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+
+        />
+
+
+    </RelativeLayout>
+
+
+</androidx.appcompat.widget.Toolbar>
+
+
+
+

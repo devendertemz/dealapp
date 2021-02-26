@@ -17,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
@@ -30,21 +31,31 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.deals.dealapp.MainActivity;
 import com.deals.dealapp.R;
+import com.deals.dealapp.databasee.RetrofitClient;
 import com.deals.dealapp.dialogs.ImageFilePath;
+import com.deals.dealapp.dialogs.LoadingDialogs;
 import com.deals.dealapp.dialogs.SelectPhotoDialog;
 import com.irozon.sneaker.Sneaker;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Edit_profile extends AppCompatActivity {
 
-    EditText ed_name,ed_email,ed_mobile,ed_password,ed_confirm_password;
+    EditText ed_name, ed_email, ed_mobile, ed_password, ed_confirm_password;
     Button btn_save;
-    String personNamee = "",personEmaill = "",mobile,password,confirm_password;
-        ImageView iv_profile;
+    String personNamee = "", personEmaill = "", mobile, password, confirm_password;
+    ImageView iv_profile;
     ImageView changeImage;
 
     private static final int PICK_IMAGE = 100;
@@ -55,9 +66,11 @@ public class Edit_profile extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAMERA = 1;
     private String imagePath = "";
     private String displayPicImage = "";
-    private ImageView ivProfilePhoto,backpress;
+    private ImageView ivProfilePhoto, backpress;
 
     protected boolean hasReadContactsPermissions;
+    LoadingDialogs loadingDialogs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,17 +81,17 @@ public class Edit_profile extends AppCompatActivity {
     }
 
     private void initview() {
-
+        loadingDialogs = new LoadingDialogs(this);
         ivProfilePhoto = (ImageView) findViewById(R.id.iv_profile_photo);
         backpress = (ImageView) findViewById(R.id.backpress);
-        ed_name=findViewById(R.id.name);
-        ed_email=findViewById(R.id.email);
-        ed_mobile=findViewById(R.id.mobile);
-        ed_password=findViewById(R.id.password);
-        ed_confirm_password=findViewById(R.id.confirm_password);
-        btn_save=findViewById(R.id.save);
-        iv_profile=findViewById(R.id.iv_profile_photo);
-        changeImage=findViewById(R.id.changeImage);
+        ed_name = findViewById(R.id.name);
+        ed_email = findViewById(R.id.email);
+        ed_mobile = findViewById(R.id.mobile);
+        ed_password = findViewById(R.id.password);
+        ed_confirm_password = findViewById(R.id.confirm_password);
+        btn_save = findViewById(R.id.save);
+        iv_profile = findViewById(R.id.iv_profile_photo);
+        changeImage = findViewById(R.id.changeImage);
         backpress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,11 +102,9 @@ public class Edit_profile extends AppCompatActivity {
 
         try {
 
-            if (getIntent()!=null)
-            {
-                personNamee=getIntent().getExtras().getString("personName");
-                personEmaill=getIntent().getExtras().getString("personEmail");
-
+            if (getIntent() != null) {
+                personNamee = getIntent().getExtras().getString("personName");
+                personEmaill = getIntent().getExtras().getString("personEmail");
 
 
                 ed_name.setText(personNamee);
@@ -102,64 +113,14 @@ public class Edit_profile extends AppCompatActivity {
 
             }
 
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                personNamee=ed_name.getText().toString().trim();
-                personEmaill=ed_email.getText().toString().trim();
-                mobile=ed_mobile.getText().toString().trim();
-                password=ed_password.getText().toString().trim();
-                confirm_password=ed_confirm_password.getText().toString().trim();
-                if (personNamee.isEmpty())
-                {
 
-                    Sneaker.with(Edit_profile.this)
-                            .setTitle("Enter Full Name")
-                            .setMessage("")
-                            .sneakError();
-                }
-                else if (personEmaill.isEmpty())
-                {
-
-                    Sneaker.with(Edit_profile.this)
-                            .setTitle("Enter Email")
-                            .setMessage("")
-                            .sneakError();
-                }
-                else if (mobile.isEmpty())
-                {
-
-                    Sneaker.with(Edit_profile.this)
-                            .setTitle("Enter Mobile Number")
-                            .setMessage("")
-                            .sneakError();
-                }
-                else if (password.isEmpty())
-                {
-
-                    Sneaker.with(Edit_profile.this)
-                            .setTitle("Enter Password")
-                            .setMessage("")
-                            .sneakError();
-                }
-                else if (confirm_password.isEmpty())
-                {
-
-                    Sneaker.with(Edit_profile.this)
-                            .setTitle("Enter Confirm Password")
-                            .setMessage("")
-                            .sneakError();
-                }else {
-
-                    Intent in = new Intent(Edit_profile.this, MainActivity.class);
-                    startActivity(in);
-                }
-
-
+                number_validation();
             }
         });
 
@@ -187,10 +148,8 @@ public class Edit_profile extends AppCompatActivity {
         });*/
 
 
-
-
-
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -225,6 +184,7 @@ public class Edit_profile extends AppCompatActivity {
 
 
     }
+
     public void onPhotoEditClick(final View view) {
 
         SelectPhotoDialog selectPhotoDialog = new SelectPhotoDialog(this);
@@ -274,6 +234,7 @@ public class Edit_profile extends AppCompatActivity {
             }
         }
     }
+
     private File createImageFile(int op) throws IOException {
         File image = null;
 
@@ -299,6 +260,7 @@ public class Edit_profile extends AppCompatActivity {
         }
         return image;
     }
+
     public void onAddProfilePhotoFromGallery() {
 
         if (!checkForReadWritePermissions()) {
@@ -311,6 +273,7 @@ public class Edit_profile extends AppCompatActivity {
 
         }
     }
+
     protected boolean checkForReadWritePermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(this,
@@ -328,6 +291,7 @@ public class Edit_profile extends AppCompatActivity {
             return hasReadWritePermissions = true;
         }
     }
+
     protected void getReadWritePermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(this,
@@ -339,5 +303,90 @@ public class Edit_profile extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, permissions, REQUEST_PERMISSIONS_READ_WRITE);
             }
         }
+    }
+
+
+    public void number_validation() {
+
+        loadingDialogs.startLoadingDialogs();
+        personNamee = ed_name.getText().toString().trim();
+        personEmaill = ed_email.getText().toString().trim();
+        mobile = ed_mobile.getText().toString().trim();
+        password = ed_password.getText().toString().trim();
+        confirm_password = ed_confirm_password.getText().toString().trim();
+        if (personNamee.isEmpty()) {
+            loadingDialogs.dismissDialog();
+
+
+            Sneaker.with(Edit_profile.this)
+                    .setTitle("Enter Full Name")
+                    .setMessage("")
+                    .sneakError();
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(personEmaill).matches()) {
+            loadingDialogs.dismissDialog();
+
+
+            Sneaker.with(Edit_profile.this)
+                    .setTitle("Enter Email")
+                    .setMessage("")
+                    .sneakError();
+        } else if (mobile.isEmpty() || mobile.length() <10) {
+            loadingDialogs.dismissDialog();
+
+
+            Sneaker.with(Edit_profile.this)
+                    .setTitle("Enter Mobile Number")
+                    .setMessage("")
+                    .sneakError();
+        } else if (password.isEmpty()) {
+            loadingDialogs.dismissDialog();
+
+
+            Sneaker.with(Edit_profile.this)
+                    .setTitle("Enter Password")
+                    .setMessage("")
+                    .sneakError();
+        } else if (!password.equals(confirm_password)) {
+            loadingDialogs.dismissDialog();
+
+            Sneaker.with(Edit_profile.this)
+                    .setTitle("Enter Confirm Password")
+                    .setMessage("")
+                    .sneakError();
+        } else {
+
+
+            Call<ResponseBody> call = RetrofitClient
+                    .getInstance()
+                    .getApi().register(personNamee, personEmaill, mobile, password, "remember_token");
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    String s = null;
+                    loadingDialogs.dismissDialog();
+                    Toast.makeText(Edit_profile.this, response.code() + "", Toast.LENGTH_SHORT).show();
+
+                    if (response.code() == 200) {
+
+                        Toast.makeText(Edit_profile.this, "Registration Done Successfully", Toast.LENGTH_SHORT).show();
+                        Intent in = new Intent(Edit_profile.this, LoginAcitivity.class);
+                        startActivity(in);
+
+
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    loadingDialogs.dismissDialog();
+
+
+                }
+            });
+
+        }
+
+
     }
 }

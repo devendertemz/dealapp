@@ -55,12 +55,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity  {
     public static BottomNavigationView navigation;
 
     LinearLayout My_Order, My_Reward, My_Walllet, My_Cart;
     private Menu nav_menu;
-    NavigationView navigationView;
+
     LinearLayout viewpa;
     TextView mTitle, username;
 
@@ -70,52 +70,18 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         util.blackiteamstatusbar(this, R.color.light_background);
+        initComponent();
 
+        HomeFragment appNewsHome1Fragment = new HomeFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.contentPanel, appNewsHome1Fragment);
+        transaction.commit();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-     getSupportActionBar().setTitle(" ");
-
-
-        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        Menu m = navigationView.getMenu();
-        for (int i = 0; i < m.size(); i++) {
-            MenuItem mi = m.getItem(i);
-
-            //for aapplying a font to subMenu ...
-            SubMenu subMenu = mi.getSubMenu();
-            if (subMenu != null && subMenu.size() > 0) {
-                for (int j = 0; j < subMenu.size(); j++) {
-                    MenuItem subMenuItem = subMenu.getItem(j);
-//                    applyFontToMenuItem(subMenuItem);
-                }
-            }
 
             //the method we have create in activity
 //            applyFontToMenuItem(mi);
         }
-
-        View headerView = navigationView.getHeaderView(0);
-        navigationView.getBackground().setColorFilter(0x80000000, PorterDuff.Mode.MULTIPLY);
-        navigationView.setNavigationItemSelectedListener(this);
-        nav_menu = navigationView.getMenu();
-        View header = ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0);
-        //viewpa = (LinearLayout) header.findViewById(R.id.viewpa);
-        /*if (sessionManagement.isLoggedIn()) {
-            viewpa.setVisibility(View.VISIBLE);
-        }*/
-
-/*
-        My_Order = (LinearLayout) header.findViewById(R.id.my_orders);
-        My_Reward = (LinearLayout) header.findViewById(R.id.my_reward);
-        My_Walllet = (LinearLayout) header.findViewById(R.id.my_wallet);
-        My_Cart = (LinearLayout) header.findViewById(R.id.my_cart);*/
-        username = (TextView) header.findViewById(R.id.tv_header_name);
 
        /* My_Order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -221,81 +187,12 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             }
         });
 */
-        sideMenu();
+
 
         // checkConnection();
 
-        if (savedInstanceState == null) {
-            HomeFragment fm = new HomeFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.contentPanel, fm, "Home_fragment")
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .commit();
-        }
-        getSupportFragmentManager().
-
-                addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-                    @Override
-                    public void onBackStackChanged() {
-                        try {
-                            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-                            Fragment fr = getSupportFragmentManager().findFragmentById(R.id.contentPanel);
-
-                            final String fm_name = fr.getClass().getSimpleName();
-                            Log.e("backstack: ", ": " + fm_name);
-                            if (fm_name.contentEquals("Home_fragment")) {
-                                drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                                toggle.setDrawerIndicatorEnabled(true);
-                                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                                toggle.syncState();
-
-                            } else if (fm_name.contentEquals("My_order_fragment") ||
-                                    fm_name.contentEquals("Thanks_fragment")) {
-                                drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-
-                                toggle.setDrawerIndicatorEnabled(false);
-                                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                                toggle.syncState();
-
-                                toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        HomeFragment fm = new HomeFragment();
-                                        FragmentManager fragmentManager = getSupportFragmentManager();
-                                        fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)
-                                                .addToBackStack(null).commit();
-                                    }
-                                });
-                            } else {
-
-                                drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-
-                                toggle.setDrawerIndicatorEnabled(false);
-                                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                                toggle.syncState();
-
-                                toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-
-                                        onBackPressed();
-                                    }
-                                });
-                            }
-
-                        } catch (NullPointerException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-
-        initComponent();
-        loadFragment(new HomeFragment());
         // updateHeader();
 //sideMenu();
-    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -404,90 +301,6 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         });
     }
 
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        Fragment fm = null;
-        Bundle args = new Bundle();
-        if (id == R.id.sign) {
-
-            Toast.makeText(this, item.getTitle() + "", Toast.LENGTH_SHORT).show();
-
-            /*
-            Intent i = new Intent(getApplicationContext(),LoginActivity.class);
-            startActivity(i);
-        */
-        }
-       /* else if (id == R.id.nav_shop_now) {
-            fm = new Shop_Now_fragment();
-        } */
-        else if (id == R.id.nav_my_profile) {
-            Toast.makeText(this, item.getTitle()+"", Toast.LENGTH_SHORT).show();
-
-            // fm = new Edit_profile_fragment();
-//        } else if (id == R.id.nav_support) {
-//            String smsNumber = "9889887711";
-//            Intent sendIntent = new Intent("android.intent.action.MAIN");
-//            sendIntent.setComponent(new ComponentName("com.whatsapp", "com.whatsapp.Conversation"));
-//            sendIntent.putExtra("jid", PhoneNumberUtils.stripSeparators(smsNumber) + "@s.whatsapp.net");//phone number without "+" prefix
-//            startActivity(sendIntent);
-
-        } else if (id == R.id.nav_aboutus) {
-
-            Toast.makeText(this, item.getTitle()+"", Toast.LENGTH_SHORT).show();
-
-
-
-//            toolbar.setTitle("About");
-            //startActivity(new Intent(getApplicationContext(),About_us.class));
-        } else if (id == R.id.nav_policy) {
-            Toast.makeText(this, item.getTitle()+"", Toast.LENGTH_SHORT).show();
-
-            /*fm = new Terms_and_Condition_fragment();
-            args.putString("url", TermsUrl);
-            args.putString("title", getResources().getString(R.string.nav_terms));
-            fm.setArguments(args);*/
-        }
-//        else if (id == R.id.nav_review) {
-//            //reviewOnApp();
-//        }
-
-//        else if (id == R.id.nav_review) {
-//            reviewOnApp();
-//        }
-        else if (id == R.id.nav_share) {
-            shareApp();
-        } else if (id == R.id.nav_logout) {
-
-            Toast.makeText(this, item.getTitle()+"", Toast.LENGTH_SHORT).show();
-
-           /* sessionManagement.logoutSession();
-//            login.setVisibility(View.VISIBLE);
-            finish();
-*/
-        }
-//        else if (id == R.id.nav_powerd) {
-//            // stripUnderlines(textView);
-//            String url = "http://sameciti.com";
-//            Intent i = new Intent(Intent.ACTION_VIEW);
-//            i.setData(Uri.parse(url));
-//            startActivity(i);
-//            finish();
-//        }
-
-        if (fm != null) {
-
-
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)
-                    .addToBackStack(null).commit();
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
     public void shareApp() {
         Intent sendIntent = new Intent();
