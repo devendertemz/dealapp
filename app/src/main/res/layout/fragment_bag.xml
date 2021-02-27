@@ -20,13 +20,12 @@
         <include
             android:id="@+id/toolbar"
             layout="@layout/bagtoolbar"></include>
-
         <View
+            android:layout_below="@+id/toolbar"
             android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/toolbar"
-            android:background="@color/gray" />
+            android:layout_height="3dp"
+            android:background="@color/lightGrey" />
 
         <RelativeLayout
             android:visibility="gone"

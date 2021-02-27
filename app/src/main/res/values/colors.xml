@@ -48,4 +48,8 @@
 
     <color name="card_bg_color">#f6f6f6</color>
     <color name="grey_light_tertiary">#eeeeee</color>
+    <color name="greenn">#3FA60E</color>
+    <color name="grayorder">#DDDDDD</color>
+    <color name="textcolor_placeorder">#3B3B3B</color>
+
 </resources>

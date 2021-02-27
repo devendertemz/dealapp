@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="@dimen/dimen5dp"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen5dp"
+        android:background="@drawable/round_grey2_corners"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="#F2F1F1"
+
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="7dp"
+      >
+
+        <LinearLayout
+            android:layout_width="0dp"
+
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="130dp"
+                android:layout_height="112dp"
+                android:padding="@dimen/dimen5dp"
+                android:background="@drawable/round_grey_corners"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/prodImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/p2" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen5dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="8"
+
+                    >
+
+
+                    <TextView
+                        android:id="@+id/d_price"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/robotomedium"
+
+                        android:gravity="right"
+                        android:text="Rs. 96 "
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen12dp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.5"
+                        android:layout_width="0dp"
+
+                        android:background="@drawable/striking_text"
+                        android:foreground="@drawable/striking_text"
+                        android:text="Rs. 96 "
+                        android:fontFamily="@font/robotomedium"
+                        android:textColor="@color/hintColor"
+                        android:textSize="@dimen/dimen12dp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/d_Offer"
+
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/robotomedium"
+                        android:text="68% off"
+                        android:textColor="@color/greenn"
+                        android:textSize="@dimen/dimen12dp"
+                        tools:ignore="HardcodedText" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/d_tax_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotomedium"
+                    android:layout_alignParentTop="true"
+                    android:text="You save Rs.331"
+                    android:textColor="@color/greenn"
+                    android:textSize="@dimen/dimen12dp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+            <View
+                android:layout_marginTop="@dimen/dimen10dp"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#8C8C8C" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotomedium"
+                android:layout_marginBottom="@dimen/dimen5dp"
+                android:gravity="right"
+                android:text="@string/remove"
+                android:layout_marginRight="@dimen/dimen10dp"
+                android:textColor="#40478A"
+                android:textSize="@dimen/dimen12dp"
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    </LinearLayout>
+

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Fragments.WishlistFragment">
+    android:layout_height="match_parent"
+    tools:context=".Activity.OrdersHistoryActivity">
 
     <LinearLayout
-        android:id="@+id/header_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal">
@@ -26,7 +26,6 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_margin="@dimen/dimen5dp"
                 android:layout_marginLeft="@dimen/dimen5dp"
                 android:background="@drawable/ic_left_arrow"
                 android:backgroundTint="@color/black" />
@@ -34,44 +33,51 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="@dimen/dimen25sp"
             android:layout_marginTop="2dp"
             android:layout_marginRight="10dp"
+            android:foregroundGravity="right"
             android:gravity="right">
 
-            <ImageView
-                android:layout_marginRight="@dimen/dimen20dp"
-                android:layout_width="@dimen/dimen30dp"
-                android:layout_height="@dimen/dimen30dp"
-                android:layout_marginLeft="@dimen/dimen5dp"
-                android:background="@drawable/bag"
-                android:backgroundTint="@color/black" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/robotomedium"
+                android:gravity="center"
+                android:text="Orders"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen20dp">
+
+
+            </TextView>
+
 
         </LinearLayout>
 
 
+
+
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="@color/lightGrey" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cartListView"
-        android:layout_height="match_parent"
-
+        android:id="@+id/recyclerTimeSlot"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:padding="@dimen/dimen10dp"
-        tools:listitem="@layout/wishlist_adapter_layout"
+        tools:listitem="@layout/layout_orderhistory_adapter"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:itemCount="2"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:background="@color/white"
-        android:divider="#00000000" />
+        android:divider="#00000000"  />
+
+
 </LinearLayout>
-
-
-

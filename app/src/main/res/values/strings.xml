@@ -97,5 +97,8 @@ Terms and Conditions</font></string>
 
     <string name="Categories">Categories</string>
     <string name="Search">Search by name, Category, Subcategory...</string>
+    <string name="order_details">Order Details</string>
+    <string name="place_order">PLACE ORDER</string>
+    <string name="remove">Remove</string>
 
 </resources>
