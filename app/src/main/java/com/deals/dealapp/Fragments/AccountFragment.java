@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.deals.dealapp.Activity.Edit_profile;
 import com.deals.dealapp.Activity.Help_Center_Activity;
 import com.deals.dealapp.Activity.LoginAcitivity;
+import com.deals.dealapp.Activity.NotificationsActivity;
+import com.deals.dealapp.Activity.subscriptionActivity;
 import com.deals.dealapp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -32,7 +34,7 @@ import java.util.concurrent.Executor;
 
 public class AccountFragment extends Fragment {
 
-    LinearLayout ll_Orders, ll_Notifications, ll_profile, ll_help_center, ll_Support,buttonLogin;
+    LinearLayout ll_Orders, ll_Notifications, ll_profile, ll_help_center, ll_Subscription,buttonLogin;
     GoogleSignInClient mGoogleSignInClient;
 
     public AccountFragment() {
@@ -74,7 +76,7 @@ public class AccountFragment extends Fragment {
         ll_Notifications = view.findViewById(R.id.ll_Notifications);
         ll_profile = view.findViewById(R.id.ll_profile);
         ll_help_center = view.findViewById(R.id.ll_help_center);
-        ll_Support = view.findViewById(R.id.ll_Support);
+        ll_Subscription = view.findViewById(R.id.Subscription);
         buttonLogin = view.findViewById(R.id.buttonLogin);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +97,9 @@ public class AccountFragment extends Fragment {
         ll_Notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "ll_Notifications", Toast.LENGTH_SHORT).show();
+                Intent in=new Intent(getActivity(), NotificationsActivity.class);
+                startActivity(in);
+
             }
         });
         ll_profile.setOnClickListener(new View.OnClickListener() {
@@ -112,11 +116,11 @@ public class AccountFragment extends Fragment {
                 Intent in =new Intent(getContext(), Help_Center_Activity.class);
                 startActivity(in);            }
         });
-        ll_Support.setOnClickListener(new View.OnClickListener() {
+        ll_Subscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "ll_Support", Toast.LENGTH_SHORT).show();
-            }
+                Intent in=new Intent(getActivity(), subscriptionActivity.class);
+                startActivity(in);            }
         });
     }
 

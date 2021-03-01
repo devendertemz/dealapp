@@ -330,7 +330,7 @@
             <View style="@style/MenuItemUnderline" />
 
             <LinearLayout
-                android:id="@+id/ll_Support"
+                android:id="@+id/Subscription"
                 style="@style/MenuItemParent"
                 android:layout_marginTop="@dimen/dimen10dp"
 
@@ -353,7 +353,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:minHeight="@dimen/dimen10dp"
-                        android:text="Share Feedback"
+                        android:text="Subscription"
                         android:textColor="@color/black"
                         android:textSize="@dimen/dimen18sp" />
 
@@ -361,7 +361,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:text="Share Feedback"
+                        android:text="Subscription"
                         android:textColor="@color/black"
                         android:textSize="@dimen/dimen10dp" />
 
@@ -371,7 +371,7 @@
 
                 <ImageView
                     style="@style/MenuItemArrow"
-                    android:layout_marginLeft="100dp"
+                    android:layout_marginLeft="125dp"
                     app:srcCompat="@drawable/ic_right_arrow"
                     tools:ignore="VectorDrawableCompat" />
             </LinearLayout>

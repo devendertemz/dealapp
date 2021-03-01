@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -52,11 +53,13 @@ import retrofit2.Response;
 
 public class Edit_profile extends AppCompatActivity {
 
-    EditText ed_name, ed_email, ed_mobile, ed_password, ed_confirm_password;
-    Button btn_save;
+    EditText ed_name, ed_email, ed_mobile, ed_password;
+    Button update_btn;
     String personNamee = "", personEmaill = "", mobile, password, confirm_password;
     ImageView iv_profile;
     ImageView changeImage;
+    LinearLayout changepassword;
+
 
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
@@ -88,10 +91,18 @@ public class Edit_profile extends AppCompatActivity {
         ed_email = findViewById(R.id.email);
         ed_mobile = findViewById(R.id.mobile);
         ed_password = findViewById(R.id.password);
-        ed_confirm_password = findViewById(R.id.confirm_password);
-        btn_save = findViewById(R.id.save);
+       update_btn = findViewById(R.id.update);
         iv_profile = findViewById(R.id.iv_profile_photo);
         changeImage = findViewById(R.id.changeImage);
+        changepassword=findViewById(R.id.changepassword);
+        changepassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chengepassword=new Intent(Edit_profile.this,ChangePasswordActivity.class);
+                startActivity(chengepassword);
+
+            }
+        });
         backpress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +127,7 @@ public class Edit_profile extends AppCompatActivity {
         } catch (Exception e) {
 
         }
-        btn_save.setOnClickListener(new View.OnClickListener() {
+        update_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -313,7 +324,6 @@ public class Edit_profile extends AppCompatActivity {
         personEmaill = ed_email.getText().toString().trim();
         mobile = ed_mobile.getText().toString().trim();
         password = ed_password.getText().toString().trim();
-        confirm_password = ed_confirm_password.getText().toString().trim();
         if (personNamee.isEmpty()) {
             loadingDialogs.dismissDialog();
 
@@ -355,7 +365,7 @@ public class Edit_profile extends AppCompatActivity {
                     .sneakError();
         } else {
 
-
+/*
             Call<ResponseBody> call = RetrofitClient
                     .getInstance()
                     .getApi().register(personNamee, personEmaill, mobile, password, "remember_token");
@@ -383,7 +393,7 @@ public class Edit_profile extends AppCompatActivity {
 
 
                 }
-            });
+            });*/
 
         }
 

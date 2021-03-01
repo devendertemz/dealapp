@@ -100,5 +100,13 @@ Terms and Conditions</font></string>
     <string name="order_details">Order Details</string>
     <string name="place_order">PLACE ORDER</string>
     <string name="remove">Remove</string>
+    <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
+    <string name="change_password">Change password</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="subscription">Subscription</string>
+    <string name="active_plan">Active plan</string>
 
 </resources>

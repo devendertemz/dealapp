@@ -8,18 +8,21 @@ import android.widget.LinearLayout;
 
 import com.deals.dealapp.R;
 
-public class Help_Center_Activity extends AppCompatActivity {
+public class ChangePasswordActivity extends AppCompatActivity {
 LinearLayout back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help__center_);
+        setContentView(R.layout.activity_change_password);
         back=findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+
             }
         });
+
     }
 }

@@ -25,7 +25,7 @@
             android:layout_height="40dp"
             android:padding="10dp"
 
-            android:src="@drawable/ic_arrow_back_24dp" />
+            android:src="@drawable/ic_left_arrow" />
 
         <Space
             android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profile"
+            android:text="Account Settings"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -50,37 +50,37 @@
             android:layout_height="50dp">
 
 
-
         </RelativeLayout>
 
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:layout_below="@+id/topbar">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topbar"
+        android:scrollbars="none">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
             android:gravity="center"
+            android:orientation="vertical"
 
-          >
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:background="#96A1AB"
+                android:gravity="center"
                 android:minHeight="180dp"
                 android:orientation="horizontal">
 
                 <FrameLayout
                     android:layout_width="140dp"
                     android:layout_height="140dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/dotted">
 
                     <ImageView
@@ -91,7 +91,7 @@
                         android:layout_marginRight="2dp"
                         android:padding="5dp"
                         android:src="@drawable/ic_prfofile_photo_nav_drawer"
-                        android:visibility="visible"/>
+                        android:visibility="visible" />
 
                     <!--<ImageView
                         android:layout_width="100dp"
@@ -116,29 +116,32 @@
                         android:layout_height="35dp"
                         android:layout_gravity="right"
                         android:onClick="onPhotoEditClick"
-                        android:src="@drawable/ic_edit_button"/>
+                        android:src="@drawable/ic_edit_button" />
 
                 </FrameLayout>
 
             </LinearLayout>
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
 
-
-
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
 
 
                 <LinearLayout
-                    android:paddingLeft="20dp"
-
                     android:layout_width="match_parent"
+
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:paddingRight="20dp"
-                    android:layout_marginBottom="@dimen/dimen70dp"
-                    android:paddingTop="10dp">
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="20dp">
 
 
                     <TextView
@@ -184,95 +187,126 @@
                         android:id="@+id/mobile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
                         android:layout_marginVertical="10dp"
                         android:background="@drawable/round_grey_corners"
                         android:hint=" Enter  Mobile Number "
-                        android:padding="10dp" />
-
-                    <TextView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-
-                        android:text=" Password" />
-
-                    <EditText
-                        android:id="@+id/password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="10dp"
-                        android:background="@drawable/round_grey_corners"
-                        android:hint=" Enter Password"
-
-                        android:padding="10dp" />
-
-                    <TextView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-
-                        android:text=" Confirm Password" />
-
-                    <EditText
-                        android:id="@+id/confirm_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="10dp"
-                        android:background="@drawable/round_grey_corners"
-                        android:hint="Enter Confirm Password"
+                        android:inputType="number"
                         android:padding="10dp" />
 
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/changepassword"
+                    android:layout_marginTop="@dimen/dimen15dp"
+                    android:background="@drawable/round_grey2_corners"
+                    android:layout_height="60dp"
+                    android:layout_width="match_parent">
 
 
-
-
-                    <androidx.appcompat.widget.AppCompatButton
-
-                        android:id="@+id/save"
-                        android:layout_width="300dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="30dp"
-                        android:text="@string/save"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_gravity="center"
-                        android:textAllCaps="false"
-                        android:background="@drawable/bg_black_rectangle_with_semicircle_edge"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        android:textColor="@color/black"
-                        android:textSize="18dp">
-
-
-                    </androidx.appcompat.widget.AppCompatButton>
-
-
-
-
-
-
+                        <TextView
+                            android:fontFamily="@font/robotomedium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:minHeight="@dimen/dimen10dp"
+                            android:text="@string/change_password"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/dimen18sp" />
 
 
+                    </LinearLayout>
 
 
+                    <ImageView
+                        android:layout_gravity="center"
+                        style="@style/MenuItemArrow"
+                        android:layout_marginLeft="115dp"
+                        app:srcCompat="@drawable/ic_right_arrow"
+                        tools:ignore="VectorDrawableCompat" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dimen70dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dimen5dp"
+                    android:paddingTop="10dp">
 
 
 
 
 
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@color/lightGrey" />
+
+                <LinearLayout
+                    android:id="@+id/bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/dimen5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/round_grey_corners"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:padding="@dimen/dimen5dp"
+                            android:text="@string/cancel"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/update"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/dimen5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ripple_effect_with_semicircle_edge"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:padding="@dimen/dimen5dp"
+                        android:text="@string/update"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+
+                </LinearLayout>
+
             </LinearLayout>
 
-            <!--Top Profile Section -->
 
-
-            <!--Option Bar-->
-
-
-
-            <!--Bootom Cards with sections-->
-
-
-
+        </LinearLayout>
 
 
     </ScrollView>
@@ -281,128 +315,5 @@
 </RelativeLayout>
 
 
-
-<!--
-<androidx.core.widget.NestedScrollView
-
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-style="@style/NestedScrollBarStyle"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:background="@color/white"
-tools:context=".Activity.Edit_profile">
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center"
-
-    android:paddingTop="20dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-
-        android:layout_marginBottom="16dp"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <LinearLayout
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:gravity="center">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/logo2"
-                app:civ_border_width="2dp"
-                app:civ_border_color="#FF000000"/>
-
-        </LinearLayout>
-
-        &lt;!&ndash;  <LinearLayout
-              android:layout_width="0dp"
-              android:layout_height="match_parent"
-              android:layout_gravity="center"
-              android:layout_marginRight="8dp"
-              android:layout_weight="1"
-              android:gravity="center">
-
-              <ImageView
-                  android:id="@+id/Save"
-                  android:layout_width="35dp"
-                  android:layout_height="35dp"
-                  android:layout_marginBottom="@dimen/space_2"
-                  android:background="@drawable/ic_navigate_next_white_24dp" />
-
-          </LinearLayout>
-&ndash;&gt;
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:layout_marginBottom="@dimen/dimen70dp"
-        android:paddingTop="10dp">
-
-
-
-
-
-
-
-        <View
-            style="@style/MenuItemUnderline"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-
-            android:id="@+id/buttonLogin"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen20sp"
-            android:background="@color/bottomnavigation"
-            android:text="@string/nav_logout"
-            android:layout_gravity="center"
-            android:textAllCaps="false"
-
-            android:textColor="@color/black"
-            android:textSize="18dp">
-
-
-        </androidx.appcompat.widget.AppCompatButton>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </LinearLayout>
-</LinearLayout>
-
-</androidx.core.widget.NestedScrollView>-->
 
 
