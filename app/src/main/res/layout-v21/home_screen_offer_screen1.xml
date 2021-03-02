@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#fff"
     android:orientation="vertical"
     android:paddingBottom="10dp">
@@ -76,6 +77,9 @@
         android:background="#f2f3f4"
         android:horizontalSpacing="2dp"
         android:isScrollContainer="false"
+
+        tools:listitem="@layout/gridview_layout_adapter"
+
         android:numColumns="3"
         android:stretchMode="columnWidth"
         android:verticalSpacing="2dp" />

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.deals.dealapp.R;
 
@@ -15,7 +16,7 @@ public class ProdcutDeatails extends AppCompatActivity {
 
     TextView name,finalPrice,discount,taxdetails;
     ImageView heartblack,withoutblak,d_image;
-    LinearLayout back;
+    LinearLayout back,wishlist_ll;
     Button addtocart_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +37,25 @@ public class ProdcutDeatails extends AppCompatActivity {
         d_image=findViewById(R.id.d_image);
         back=findViewById(R.id.back);
         withoutblak=findViewById(R.id.withoutblak);
-
+        wishlist_ll=findViewById(R.id.wishlist_ll);
         heartblack=findViewById(R.id.heartblack);
         addtocart_btn=findViewById(R.id.addtocart);
+
+        wishlist_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                withoutblak.setVisibility(View.GONE);
+                heartblack.setVisibility(View.VISIBLE);
+
+            }
+        });
         addtocart_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                withoutblak.setVisibility(View.GONE);
-                heartblack.setVisibility(View.VISIBLE);
+
+                Toast.makeText(ProdcutDeatails.this, "Add cart", Toast.LENGTH_SHORT).show();
+
 
 
             }

@@ -90,7 +90,7 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="2dp"
                         android:padding="5dp"
-                        android:src="@drawable/ic_prfofile_photo_nav_drawer"
+                        android:src="@drawable/dotted"
                         android:visibility="visible" />
 
                     <!--<ImageView
@@ -107,7 +107,7 @@
                         android:layout_height="140dp"
                         android:layout_gravity="center"
                         android:padding="8dp"
-                        android:src="@drawable/ic_prfofile_photo_nav_drawer"
+                        android:src="@drawable/manpic"
                         android:visibility="visible" />
 
                     <ImageView

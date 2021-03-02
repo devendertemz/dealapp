@@ -26,6 +26,7 @@ import com.deals.dealapp.Activity.SearchActivity;
 import com.deals.dealapp.R;
 import com.deals.dealapp.adapter.HomeAdapter;
 import com.deals.dealapp.model.Item;
+import com.deals.dealapp.util;
 
 import java.util.ArrayList;
 
@@ -66,6 +67,7 @@ public class HomeFragment extends Fragment  implements HomeAdapter.ItemListener{
 
     private void initView(View view) {
        // Search_layout = (LinearLayout) view.findViewById(R.id.search_layout);
+        util.blackiteamstatusbar(getActivity(), R.color.gray);
         recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
         profile_image= view.findViewById(R.id.profile_image);
         notification=view.findViewById(R.id.notification);

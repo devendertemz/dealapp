@@ -119,7 +119,9 @@
                 style="@style/AlertDialog.AppCompat.Light"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
-                android:layout_below="@+id/search"
+                tools:listitem="@layout/slider_layout"
+
+                tools:itemCount="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="6dp"
@@ -130,6 +132,7 @@
 
             <com.daimajia.slider.library.Indicators.PagerIndicator
                 android:id="@+id/custom_indicator"
+
                 style="@style/AndroidImageSlider_Corner_Pink2"
                 android:layout_below="@+id/slider"
                 android:layout_centerHorizontal="true"

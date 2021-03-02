@@ -13,11 +13,15 @@ import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.deals.dealapp.MainActivity;
 import com.deals.dealapp.R;
 import com.deals.dealapp.Service.CheckInternetConnection;
 import com.deals.dealapp.util;
 
 public class SplashActivity extends AppCompatActivity {
+
+
+
     private static int SPLASH_TIME_OUT = 3000;
 
   //  private UserSession session;
@@ -60,7 +64,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                startActivity(new Intent(SplashActivity.this, LoginAcitivity.class));
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
                 finish();
             }
         }, SPLASH_TIME_OUT);

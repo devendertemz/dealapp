@@ -20,10 +20,9 @@
             android:id="@+id/menu_icon"
             android:layout_width="38dp"
             android:layout_height="@dimen/dimen35sp"
-            android:layout_alignParentLeft="true"
             android:layout_marginEnd="289dp"
             android:layout_marginRight="289dp"
-            android:src="@drawable/account"
+            android:src="@drawable/manpic"
 
            />
 
@@ -131,7 +130,7 @@
                             android:padding="10dp"
                             android:textColor="@color/black"
                             android:textColorHint="@color/gray"
-                            android:textSize="15dp" />
+                            android:textSize="13dp" />
 
 
                     </androidx.cardview.widget.CardView>
@@ -158,6 +157,8 @@
 -->
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:padding="@dimen/dimen5dp"
+                        android:layout_margin="@dimen/dimen10dp"
                         android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
                         tools:listitem="@layout/store_adapter_layout"

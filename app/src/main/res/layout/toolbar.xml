@@ -23,10 +23,9 @@
             android:id="@+id/profile_image"
             android:layout_width="38dp"
             android:layout_height="@dimen/dimen35sp"
-            android:layout_alignParentLeft="true"
             android:layout_marginEnd="289dp"
             android:layout_marginRight="289dp"
-            android:src="@drawable/account"
+            android:src="@drawable/manpic"
 
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp" />

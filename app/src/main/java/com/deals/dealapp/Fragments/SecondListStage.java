@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.deals.dealapp.Activity.SearchActivity;
 import com.deals.dealapp.Activity.ThirdListStage;
 import com.deals.dealapp.R;
 import com.deals.dealapp.adapter.HomeAdapter;
@@ -26,6 +27,8 @@ public class SecondListStage extends Fragment implements Secondcategory_Adapter.
     TextView categorgyname;
     private RecyclerView recyclerView;
     private ArrayList<Secondcategory_itemlist> arrayList;
+    TextView searchtext;
+
 
     public SecondListStage() {
     }
@@ -48,9 +51,19 @@ public class SecondListStage extends Fragment implements Secondcategory_Adapter.
     }
 
     private void initView(View view) {
-
+        searchtext=view.findViewById(R.id.searchtext);
         categorgyname=view.findViewById(R.id.categorgyname);
         recyclerView=view.findViewById(R.id.recycler_secondcategory);
+        searchtext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(getActivity(), SearchActivity.class);
+                startActivity(in);
+            }
+        });
+
+
+
         try {
 
             Bundle mBundle = new Bundle();
@@ -76,8 +89,8 @@ public class SecondListStage extends Fragment implements Secondcategory_Adapter.
 
 
         arrayList = new ArrayList<>();
-        arrayList.add(new Secondcategory_itemlist("MAX","#E0E0E0",   R.drawable.apparel));
-        arrayList.add(new Secondcategory_itemlist("H&M",  "#E0E0E0",R.drawable.apparel));
+        arrayList.add(new Secondcategory_itemlist("MAX","#E0E0E0",   R.drawable.groceries));
+        arrayList.add(new Secondcategory_itemlist("H&M",  "#E0E0E0",R.drawable.logo2));
         arrayList.add(new Secondcategory_itemlist("GAP",  "#E0E0E0",R.drawable.apparel));
 
         arrayList.add(new Secondcategory_itemlist("A|X",  "#E0E0E0",R.drawable.apparel));

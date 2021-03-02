@@ -15,7 +15,8 @@ import com.deals.dealapp.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class subscriptionActivity extends AppCompatActivity {
-    LinearLayout ll_AllnewPlans,back;
+    LinearLayout back;
+    TextView ll_AllnewPlans;
 
 
     @Override
