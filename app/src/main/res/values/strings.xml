@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Dealapp</string>
     <string name="app_name2">Prive</string>
-
+    <string name="imageurl">http://api.ourprive.com/
+</string>
     <string name="welcome">Welcome to</string>
     <string name="continu">Continue </string>
     <string name="email">Enter  Mobile Number/Email </string>

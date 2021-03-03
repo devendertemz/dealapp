@@ -70,12 +70,16 @@ public class SecondListStage extends Fragment implements Secondcategory_Adapter.
             mBundle = getArguments();
 
             String value = mBundle.getString("item");
-            if (value.trim().equals("Apparel"))
+            String id = mBundle.getString("id");
+
+            if (value.trim().equals("Apparels"))
             {
                 setApparelRecyclerdata();
 
             }
-            Toast.makeText(getContext(), value + "", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), value , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), id + "", Toast.LENGTH_SHORT).show();
+
             categorgyname.setText(value);
         } catch (Exception e) {
 
