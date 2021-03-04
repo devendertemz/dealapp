@@ -83,7 +83,7 @@
                             android:id="@+id/txtSearch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/searchbg"
+                            android:background="@color/white"
                             android:drawableStart="@drawable/ic_loupe"
                             android:drawableLeft="@drawable/ic_loupe"
                             android:drawablePadding="6dp"
