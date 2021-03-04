@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        util.blackiteamstatusbar(this, R.color.light_background);
+      //  util.blackiteamstatusbar(this, R.color.light_background);
         initComponent();
 
         HomeFragment appNewsHome1Fragment = new HomeFragment();

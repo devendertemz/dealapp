@@ -146,12 +146,20 @@ public class StoreFragment extends Fragment implements CategoryListClickListner 
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                t.printStackTrace();
+                loadingDialogs.dismissDialog();
+
+            }
+
+
+          /*  @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 loadingDialogs.dismissDialog();
 
                 Toast.makeText(getActivity(), call.toString() + "", Toast.LENGTH_SHORT).show();
 
 
-            }
+            }*/
 
         });
 

@@ -62,17 +62,18 @@
                             android:id="@+id/searchtext"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/searchbg"
+                            android:drawablePadding="6dp"
                             android:drawableStart="@drawable/ic_loupe"
                             android:drawableLeft="@drawable/ic_loupe"
-                            android:drawablePadding="6dp"
+
                             android:elevation="5dp"
                             android:hint="@string/Search"
                             android:lines="1"
                             android:padding="10dp"
                             android:textColor="@color/black"
                             android:textColorHint="@color/gray"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            />
 
 
                     </androidx.cardview.widget.CardView>
