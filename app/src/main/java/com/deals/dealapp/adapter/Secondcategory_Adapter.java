@@ -12,9 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.deals.dealapp.ModelResponse.Secondcategory_itemlist;
 import com.deals.dealapp.R;
-import com.deals.dealapp.model.Item;
-import com.deals.dealapp.model.Secondcategory_itemlist;
 
 import java.util.ArrayList;
 
@@ -50,9 +49,9 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
     public void setData(Secondcategory_itemlist item) {
         this.item = item;
-        textView.setText(item.text);
+      /*  textView.setText(item.text);
         imageView.setImageResource(item.drawable);
-        relativeLayout.setBackgroundColor(Color.parseColor(item.color));
+        relativeLayout.setBackgroundColor(Color.parseColor(item.color));*/
     }
 
     @Override

@@ -14,7 +14,7 @@
         android:background="#ECECEC"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:padding="@dimen/dimen5dp"
         android:orientation="vertical"
         android:layout_gravity="center">
         <LinearLayout
@@ -32,12 +32,13 @@
 
                 android:layout_gravity="center"
                 android:id="@+id/imageView"
-                android:layout_width="166dp"
+                android:layout_width="180dp"
                 android:layout_height="127dp"
-                android:src="@color/black"
+                android:src="@drawable/logo1"
+
 
                 android:contentDescription="@null"
-                card_view:tint="@android:color/black" />
+                />
 
             <TextView
                 android:fontFamily="@font/robotomedium"

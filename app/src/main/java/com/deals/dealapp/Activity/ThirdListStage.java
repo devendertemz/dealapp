@@ -14,10 +14,8 @@ import android.widget.Toast;
 import com.deals.dealapp.R;
 import com.deals.dealapp.adapter.ProductListAdapter;
 import com.deals.dealapp.adapter.ProductOptionListAdapter;
-import com.deals.dealapp.adapter.Secondcategory_Adapter;
 import com.deals.dealapp.model.ProductList;
 import com.deals.dealapp.model.ProductListOptions;
-import com.deals.dealapp.model.Secondcategory_itemlist;
 
 import java.util.ArrayList;
 

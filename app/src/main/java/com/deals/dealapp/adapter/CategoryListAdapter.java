@@ -11,9 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.deals.dealapp.Interface.CategoryListClickListner;
-import com.deals.dealapp.R;
-import com.deals.dealapp.model.CategoryListModel;
 
+import com.deals.dealapp.R;
+
+import com.deals.dealapp.model.CategoryListModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
