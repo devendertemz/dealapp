@@ -14,7 +14,6 @@ public class CategoryListModel {
 
 
 
-
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -27,6 +26,9 @@ public class CategoryListModel {
     @SerializedName("image")
     @Expose
     private String image;
+    @SerializedName("icon")
+    @Expose
+    private String icon;
     @SerializedName("status")
     @Expose
     private String status;
@@ -69,6 +71,14 @@ public class CategoryListModel {
         this.image = image;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -100,6 +110,7 @@ public class CategoryListModel {
                 ", categoryname='" + categoryname + '\'' +
                 ", categorydesc=" + categorydesc +
                 ", image='" + image + '\'' +
+                ", icon='" + icon + '\'' +
                 ", status='" + status + '\'' +
                 ", createdAt='" + createdAt + '\'' +
                 ", updatedAt='" + updatedAt + '\'' +

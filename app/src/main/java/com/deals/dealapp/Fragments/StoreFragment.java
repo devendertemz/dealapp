@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.deals.dealapp.Activity.SearchActivity;
 import com.deals.dealapp.ModelResponse.CategoryListModel;
@@ -79,27 +80,6 @@ public class StoreFragment extends Fragment implements CategoryListAdapterr.Clic
     }
 
 
-   /* @Override
-    public void onCategoryListClickListener(int position) {
-
-        //   categoryListModelArrayList.get(position).getId();
-        //  categoryListModelArrayList.get(position).getCategoryname();
-      *//*  Toast.makeText(getContext(), categoryListModelArrayList.get(position).getId() + "", Toast.LENGTH_SHORT).show();
-        Toast.makeText(getContext(), categoryListModelArrayList.get(position).getCategoryname() + "", Toast.LENGTH_SHORT).show();
-*//*
-
-        SecondListStage secondListStage = new SecondListStage ();
-        Bundle args = new Bundle();
-
-        args.putString( "item",categoryListModelArrayList.get(position).getCategoryname());
-        args.putString( "id",categoryListModelArrayList.get(position).getId());
-
-        secondListStage.setArguments(args);
-        getFragmentManager().beginTransaction().add(R.id.contentPanel, secondListStage).commit();
-
-
-    }*/
-
 
     public void GetCategoryList() {
         loadingDialogs.startLoadingDialogs();
@@ -123,6 +103,7 @@ public class StoreFragment extends Fragment implements CategoryListAdapterr.Clic
             @Override
             public void onFailure(Call<List<CategoryListModel>> call, Throwable t) {
                 Log.e("failure",t.getLocalizedMessage());
+                Toast.makeText(getActivity(), t.getLocalizedMessage()+"", Toast.LENGTH_SHORT).show();
                 loadingDialogs.dismissDialog();
             }
         });

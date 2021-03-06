@@ -11,9 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:background="#848484"
         android:orientation="vertical"
         android:layout_gravity="center">
         <LinearLayout
+
             android:id="@+id/cirlceview"
             android:gravity="center"
             android:orientation="vertical"
@@ -33,7 +35,7 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="35dp"
+            android:layout_width="@dimen/dimen50dp"
             android:layout_height="10dp"
             android:layout_below="@+id/cirlceview"
             android:layout_alignParentEnd="true"
