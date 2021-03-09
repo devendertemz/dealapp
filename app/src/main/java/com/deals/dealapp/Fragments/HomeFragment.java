@@ -12,12 +12,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -26,34 +29,54 @@ import com.deals.dealapp.Activity.Edit_profile;
 import com.deals.dealapp.Activity.NotificationsActivity;
 import com.deals.dealapp.Activity.SearchActivity;
 import com.deals.dealapp.ModelResponse.CategoryListModel;
+import com.deals.dealapp.ModelResponse.HomeSliderList;
 import com.deals.dealapp.R;
 import com.deals.dealapp.adapter.CategoryHomeAdapter;
-import com.deals.dealapp.adapter.CategoryListAdapterr;
-import com.deals.dealapp.adapter.HomeAdapter;
+import com.deals.dealapp.adapter.GridViewHomeCustomAdapter;
+import com.deals.dealapp.adapter.HomeSliderAdapter;
+import com.deals.dealapp.adapter.Jewallery_Adapterr;
+import com.deals.dealapp.adapter.SlidingImageAdapter;
+import com.deals.dealapp.adapter.UpgradeHome_Adapterr;
 import com.deals.dealapp.databasee.Rtrofit.ApiClient;
 import com.deals.dealapp.dialogs.LoadingDialogs;
+import com.deals.dealapp.model.GridHomeModel;
 import com.deals.dealapp.model.Item;
+import com.deals.dealapp.model.JewalleryModel;
 import com.deals.dealapp.util;
+import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment implements CategoryHomeAdapter.ClickedItem{
+public class HomeFragment extends Fragment implements CategoryHomeAdapter.ClickedItem {
 
     LinearLayout Search_layout;
     CardView searchbar;
 
-    private RecyclerView recyclerView;
-    private ArrayList<Item> arrayList;
+    private RecyclerView recyclerView, jewellery_adapter_layout,UpgradehomeServicesList_RV;
+    private ArrayList<HomeSliderList> arrayList;
+    private ArrayList<GridHomeModel> gridHomeModelArrayList;
+    private ArrayList<JewalleryModel> jewellery_HomeModelArrayList;
+    private ArrayList<JewalleryModel> homeupgradeModelArrayList;
+
     CircleImageView profile_image;
     ImageView notification;
     LoadingDialogs loadingDialogs;
     CategoryHomeAdapter categoryHomeAdapter;
+
+    private static ViewPager mpage;
+    CirclePageIndicator indicator;
+    private static int currentPage = 0;
+    private static int No_page = 0;
+    GridView topShoppingOffersGridView;
+
     public HomeFragment() {
 
     }
@@ -84,13 +107,24 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
 
         util.blackiteamstatusbar(getActivity(), R.color.gray);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        jewellery_adapter_layout = (RecyclerView) view.findViewById(R.id.jewellery_adapter_layout);
+        UpgradehomeServicesList_RV = (RecyclerView) view.findViewById(R.id.UpgradehomeServicesList);
+
+
         profile_image = view.findViewById(R.id.profile_image);
         notification = view.findViewById(R.id.notification);
         categoryHomeAdapter = new CategoryHomeAdapter(this::ClickedUser);
         GridLayoutManager manager = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(manager);
-        searchbar = view.findViewById(R.id.searchbar);
+        GridLayoutManager manager2 = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
+        jewellery_adapter_layout.setLayoutManager(manager2);
+        GridLayoutManager manager3 = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
 
+        UpgradehomeServicesList_RV.setLayoutManager(manager3);
+        searchbar = view.findViewById(R.id.searchbar);
+        mpage = view.findViewById(R.id.imageSlider);
+        indicator = (CirclePageIndicator) view.findViewById(R.id.indicator);
+        topShoppingOffersGridView = view.findViewById(R.id.topShoppingOffersGridView);
 
         searchbar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,8 +152,12 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
 
             }
         });
-       // setRecyclerdata();
+        // setRecyclerdata();
         GetCategoryList();
+        setRecyclerdata();
+        topShoppingOffersGridView();
+        setjewellery_adapter_layout();
+        setHomeupgradee_adapter_layout();
       /*  Search_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,112 +173,157 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
 
     }
 
-  /*  public void setRecyclerdata() {
+    public void setRecyclerdata() {
         arrayList = new ArrayList<>();
 
 
-        arrayList.add(new Item("Apparel", R.drawable.apparel, "#848484"));
-        arrayList.add(new Item("Car Wash", R.drawable.car_wash, "#848484"));
-        arrayList.add(new Item("Beauty Parlour", R.drawable.beautyparlour, "#848484"));
-        arrayList.add(new Item("Groceries", R.drawable.groceries, "#848484"));
-        arrayList.add(new Item("Hotels", R.drawable.hotels, "#848484"));
-        arrayList.add(new Item("Restaurants", R.drawable.hotels, "#848484"));
+        arrayList.add(new HomeSliderList("Groceries", "Up to 90% OFF", "    On Groceries Online", R.drawable.p2));
+        arrayList.add(new HomeSliderList("Clothing", " Up to 80% OFF", "On Latest Fashion Clothing", R.drawable.p1));
 
-        HomeAdapter adapter = new HomeAdapter(getContext(), arrayList, this);
-        recyclerView.setAdapter(adapter);
-        GridLayoutManager manager = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(manager);
+        SlidingImageAdapter adapter = new SlidingImageAdapter(arrayList, getContext());
+        mpage.setAdapter(adapter);
+        indicator.setViewPager(mpage);
 
-    }*/
-
-   /* @Override
-    public void onItemClick(Item item) {
-        SecondListStage secondListStage = new SecondListStage();
-        Bundle args = new Bundle();
-
-
-        if (item.text.trim().equals("Apparel")) {
-
-
-            args.putString("item", item.text);
-
-          *//*
-            SearchFragment searchFragment = new SearchFragment();
-            FragmentManager m = getFragmentManager();
-            FragmentTransaction fragmentTransaction = m.beginTransaction();
-            fragmentTransaction.replace(R.id.contentPanel, searchFragment);
-            fragmentTransaction.commit();*//*
-
-        } else if (item.text.trim().equals("Car Wash")) {
-            args.putString("item", item.text);
-
-
-        } else if (item.text.trim().equals("Beauty Parlour")) {
-            args.putString("item", item.text);
-        } else if (item.text.trim().equals("Groceries")) {
-            args.putString("item", item.text);
-
-
-        } else if (item.text.trim().equals("Hotels")) {
-
-            args.putString("item", item.text);
-
-        } else if (item.text.trim().equals("Restaurants")) {
-            args.putString("item", item.text);
-
-
-        }
-        secondListStage.setArguments(args);
-        getFragmentManager().beginTransaction().add(R.id.contentPanel, secondListStage).commit();
-
-
-        //Toast.makeText(getContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
-    }
+    /*mpage.setAdapter(new HomeSliderAdapter(getContext(), arrayList));
+    indicator.setViewPager(mpage);
 */
-   public void GetCategoryList() {
-       loadingDialogs.startLoadingDialogs();
 
-       Call<List<CategoryListModel>> userlist = ApiClient.getUserService().getcategories();
+        final float density = getResources().getDisplayMetrics().density;
+        //Set circle indicator radius
+        indicator.setRadius(5 * density);
+        No_page = arrayList.size();
+        // Auto start of viewpager
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == No_page) {
+                    currentPage = 0;
+                }
+                mpage.setCurrentItem(currentPage++, true);
+            }
+        };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, 3000, 3000);
 
-       userlist.enqueue(new Callback<List<CategoryListModel>>() {
-           @Override
-           public void onResponse(Call<List<CategoryListModel>> call, Response<List<CategoryListModel>> response) {
-               loadingDialogs.dismissDialog();
-               if (response.isSuccessful()) {
-                   List<CategoryListModel> userResponses = response.body();
-                   categoryHomeAdapter.setData(userResponses);
-                   recyclerView.setAdapter(categoryHomeAdapter);
+        // Pager listener over indicator
+        indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                currentPage = position;
+
+            }
+
+            @Override
+            public void onPageScrolled(int pos, float arg1, int arg2) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int pos) {
+
+            }
+        });
+
+    }
+
+    public void setjewellery_adapter_layout() {
+        jewellery_HomeModelArrayList = new ArrayList<>();
+
+        jewellery_HomeModelArrayList.add(new JewalleryModel("Eyewear", R.drawable.p3));
+        jewellery_HomeModelArrayList.add(new JewalleryModel("Back bags", R.drawable.p4));
+        jewellery_HomeModelArrayList.add(new JewalleryModel("Watches", R.drawable.p5));
+        jewellery_HomeModelArrayList.add(new JewalleryModel("Jewellery", R.drawable.p6));
+
+        Jewallery_Adapterr adapter = new Jewallery_Adapterr(jewellery_HomeModelArrayList, getContext());
+        jewellery_adapter_layout.setAdapter(adapter);
 
 
-               }
+    }
+    public void setHomeupgradee_adapter_layout() {
+        homeupgradeModelArrayList = new ArrayList<>();
 
-           }
+        homeupgradeModelArrayList.add(new JewalleryModel("Eyewear", R.drawable.p3));
+        homeupgradeModelArrayList.add(new JewalleryModel("Back bags", R.drawable.p4));
+        homeupgradeModelArrayList.add(new JewalleryModel("Watches", R.drawable.p5));
+        homeupgradeModelArrayList.add(new JewalleryModel("Jewellery", R.drawable.p6));
 
-           @Override
-           public void onFailure(Call<List<CategoryListModel>> call, Throwable t) {
-               Log.e("failure", t.getLocalizedMessage());
-               Toast.makeText(getActivity(), t.getLocalizedMessage() + "", Toast.LENGTH_SHORT).show();
-               loadingDialogs.dismissDialog();
-           }
-       });
+        UpgradeHome_Adapterr adapter = new UpgradeHome_Adapterr(homeupgradeModelArrayList, getContext());
+        UpgradehomeServicesList_RV.setAdapter(adapter);
 
-   }
+
+    }
+
+    public void topShoppingOffersGridView() {
+        gridHomeModelArrayList = new ArrayList<>();
+        gridHomeModelArrayList.add(new GridHomeModel("Eyewear", R.drawable.p3));
+        gridHomeModelArrayList.add(new GridHomeModel("Back bags", R.drawable.p4));
+        gridHomeModelArrayList.add(new GridHomeModel("Watches", R.drawable.p5));
+        gridHomeModelArrayList.add(new GridHomeModel("Jewellery", R.drawable.p6));
+        gridHomeModelArrayList.add(new GridHomeModel("Jewellery", R.drawable.p6));
+        gridHomeModelArrayList.add(new GridHomeModel("Jewellery", R.drawable.p6));
+        gridHomeModelArrayList.add(new GridHomeModel("Jewellery", R.drawable.p6));
+        gridHomeModelArrayList.add(new GridHomeModel("Jewellery", R.drawable.p6));
+
+        GridViewHomeCustomAdapter adapter = new GridViewHomeCustomAdapter(getContext(), gridHomeModelArrayList);
+        topShoppingOffersGridView.setAdapter(adapter);
+
+
+
+    /*mpage.setAdapter(new HomeSliderAdapter(getContext(), arrayList));
+    indicator.setViewPager(mpage);
+*/
+
+    }
+
+    public void GetCategoryList() {
+        loadingDialogs.startLoadingDialogs();
+
+        Call<List<CategoryListModel>> userlist = ApiClient.getUserService().getcategories();
+
+        userlist.enqueue(new Callback<List<CategoryListModel>>() {
+            @Override
+            public void onResponse(Call<List<CategoryListModel>> call, Response<List<CategoryListModel>> response) {
+                loadingDialogs.dismissDialog();
+                if (response.isSuccessful()) {
+                    List<CategoryListModel> userResponses = response.body();
+                    categoryHomeAdapter.setData(userResponses);
+                    recyclerView.setAdapter(categoryHomeAdapter);
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<CategoryListModel>> call, Throwable t) {
+                Log.e("failure", t.getLocalizedMessage());
+                Toast.makeText(getActivity(), t.getLocalizedMessage() + "", Toast.LENGTH_SHORT).show();
+                loadingDialogs.dismissDialog();
+            }
+        });
+
+    }
+
     @Override
     public void ClickedUser(CategoryListModel userResponse) {
 
-        SecondListStage secondListStage = new SecondListStage ();
+        SecondListStage secondListStage = new SecondListStage();
         Bundle args = new Bundle();
 
-        args.putString( "item",userResponse.getCategoryname());
-        args.putInt( "id",userResponse.getId());
+        args.putString("item", userResponse.getCategoryname());
+        args.putInt("id", userResponse.getId());
         //args.putString("data", String.valueOf(userResponse));
 
         secondListStage.setArguments(args);
         getFragmentManager().beginTransaction().add(R.id.contentPanel, secondListStage).commit();
 
     }
-
-
 
 
 }

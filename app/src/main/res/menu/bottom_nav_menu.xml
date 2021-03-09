@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/navigation_home"
@@ -24,6 +25,9 @@
     <item
         android:id="@+id/navigation_bag"
         android:icon="@drawable/bag"
-        android:title="Bag" />
+        android:title="Bag"
+
+        app:actionLayout="@layout/cart_action_item"
+        />
 
 </menu>

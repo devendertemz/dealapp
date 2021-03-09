@@ -19,48 +19,48 @@ import java.util.ArrayList;
 
 public class Secondcategory_Adapter extends RecyclerView.Adapter<Secondcategory_Adapter.ViewHolder> {
 
-private ArrayList<Secondcategory_itemlist> mValues;
+    private ArrayList<Secondcategory_itemlist> mValues;
 
-private Context mContext;
-protected ItemListener mListener;
+    private Context mContext;
+    protected ItemListener mListener;
 
-public Secondcategory_Adapter(Context context, ArrayList<Secondcategory_itemlist> values, ItemListener itemListener) {
+    public Secondcategory_Adapter(Context context, ArrayList<Secondcategory_itemlist> values, ItemListener itemListener) {
         mValues = values;
         mContext = context;
-        mListener=itemListener;
-        }
-
-public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-    private ImageView imageView;
-    private RelativeLayout relativeLayout;
-
-    private TextView textView;
-
-    private Secondcategory_itemlist item;
-
-    public ViewHolder(View v) {
-        super(v);
-        v.setOnClickListener(this);
-        textView = (TextView) v.findViewById(R.id.textView);
-        imageView = (ImageView) v.findViewById(R.id.imageView);
-        relativeLayout = (RelativeLayout) v.findViewById(R.id.relativeLayout);
+        mListener = itemListener;
     }
 
-    public void setData(Secondcategory_itemlist item) {
-        this.item = item;
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        private ImageView imageView;
+        private RelativeLayout relativeLayout;
+
+        private TextView textView;
+
+        private Secondcategory_itemlist item;
+
+        public ViewHolder(View v) {
+            super(v);
+            v.setOnClickListener(this);
+            textView = (TextView) v.findViewById(R.id.textView);
+            imageView = (ImageView) v.findViewById(R.id.imageView);
+            relativeLayout = (RelativeLayout) v.findViewById(R.id.relativeLayout);
+        }
+
+        public void setData(Secondcategory_itemlist item) {
+            this.item = item;
       /*  textView.setText(item.text);
         imageView.setImageResource(item.drawable);
         relativeLayout.setBackgroundColor(Color.parseColor(item.color));*/
-    }
+        }
 
-    @Override
-    public void onClick(View view) {
-        if (mListener != null) {
-            mListener.onItemClick(item);
+        @Override
+        public void onClick(View view) {
+            if (mListener != null) {
+                mListener.onItemClick(item);
+            }
         }
     }
-}
 
     @Override
     public Secondcategory_Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -78,7 +78,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         return mValues.size();
     }
 
-public interface ItemListener {
-    void onItemClick(Secondcategory_itemlist item);
-}
+    public interface ItemListener {
+        void onItemClick(Secondcategory_itemlist item);
+    }
 }

@@ -34,6 +34,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/offer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -43,17 +44,19 @@
                 android:textSize="@dimen/dimen20dp"
                 android:textStyle="bold"/>
             <TextView
+                android:id="@+id/online"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:textColor="@color/darkGrey"
                 android:text="On Groceries Online"
-                android:textSize="@dimen/dimen18sp"
+                android:textSize="@dimen/dimen15dp"
                 android:textStyle="bold"/>
         </LinearLayout>
 
         <ImageView
-            android:src="@drawable/logo1"
+            android:id="@+id/image"
+            android:src="@drawable/p1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

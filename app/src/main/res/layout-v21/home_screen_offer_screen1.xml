@@ -68,27 +68,28 @@
             android:textSize="15dp" />
     </LinearLayout>
 
-
     <GridView
 
+
         android:id="@+id/topShoppingOffersGridView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#f2f3f4"
         android:horizontalSpacing="2dp"
-        android:isScrollContainer="false"
-
+        android:scrollbars="horizontal"
         tools:listitem="@layout/gridview_layout_adapter"
 
-        android:numColumns="3"
+        android:numColumns="4"
         android:stretchMode="columnWidth"
         android:verticalSpacing="2dp" />
 
+
+<!--
     <ProgressBar
         android:id="@+id/topOfferProgressBar"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center" />-->
 
 
 </LinearLayout>

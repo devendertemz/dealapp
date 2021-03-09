@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -29,7 +30,7 @@
             android:textStyle="normal" />
 
         <View
-            android:layout_width="1dp"
+            android:layout_width="3dp"
 
             android:layout_height="@dimen/dimen30dp"
             android:layout_margin="5dp"
@@ -57,10 +58,14 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/horizontalServicesList"
+            android:id="@+id/jewellery_adapter_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"></androidx.recyclerview.widget.RecyclerView>
+
+            android:orientation="horizontal"
+            tools:itemCount="3"
+            tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/jewellery_adapter_layout" />
 
     </LinearLayout>
 
