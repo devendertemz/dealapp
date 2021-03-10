@@ -2,6 +2,8 @@ package com.deals.dealapp.databasee.Rtrofit;
 
 import com.deals.dealapp.ModelResponse.CategoryListModel;
 import com.deals.dealapp.ModelResponse.Secondcategory_itemlist;
+import com.deals.dealapp.model.JewalleryModel;
+import com.deals.dealapp.model.UpgradeHomeModel;
 
 import java.util.List;
 
@@ -21,6 +23,11 @@ public interface UserService {
     Call<List<Secondcategory_itemlist>> getSubCategories(
             @Path("cat_id") String cat_id
     );
+    @GET("getcategories")
+    Call<List<JewalleryModel>> getjewellery();
 
+
+    @GET("getcategories")
+    Call<List<UpgradeHomeModel>>  UpgradeHome();
 
 }

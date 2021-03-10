@@ -2,6 +2,7 @@ package com.deals.dealapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,7 @@ public class ProdcutDeatails extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private void initView() {
 
         name=findViewById(R.id.d_Name);
@@ -73,8 +75,8 @@ public class ProdcutDeatails extends AppCompatActivity {
             if (getIntent()!=null)
             {
                 name.setText(getIntent().getExtras().getString("P_Name"));
-                finalPrice.setText(getIntent().getExtras().getString("P_Finalprice"));
-                discount.setText(getIntent().getExtras().getString("P_OfferPrice"));
+                finalPrice.setText("Rs. "+getIntent().getExtras().getString("P_Finalprice"));
+                discount.setText(getIntent().getExtras().getString("P_OfferPrice")+"% off ");
                 taxdetails.setText(getIntent().getExtras().getString("P_Taxdeatils"));
 
                 // d_image.setImageBitmap(getIntent().getExtras().getString("P_Taxdeatils"));

@@ -110,8 +110,7 @@
                 android:background="@color/lightGrey" />
 
 
-            <androidx.cardview.widget.CardView
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/cardView"
                 android:layout_width="match_parent"
@@ -156,50 +155,72 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/llimage"
-                        android:layout_margin="5dp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="@dimen/dimen5dp">
 
 
-                        <TextView
-                            android:id="@+id/d_Name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:text="Ombre-Dyed Top with Typography "
-                            android:textColor="@color/darkGrey"
-                            android:textSize="17dp"
-                            android:textStyle="bold" />
+                    <TextView
+                        android:fontFamily="@font/robotomedium"
+                        android:id="@+id/d_Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:text="Ombre-Dyed Top with Typography "
+                        android:textColor="@color/darkGrey"
+                        android:textSize="@dimen/dimen18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/llimage"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dimen5dp">
+
 
                         <TextView
                             android:id="@+id/d_price"
+                            android:padding="@dimen/dimen5dp"
 
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
                             android:text="Rs. 96 "
                             android:textColor="@color/black"
-                            android:textSize="15dp"
+                            android:textSize="18dp"
                             android:textStyle="normal" />
 
                         <TextView
-                            android:id="@+id/d_Offer"
+                            android:padding="@dimen/dimen5dp"
 
+                            android:fontFamily="@font/robotomedium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:text="Rs. 299 (68% off) "
-                            android:textColor="@color/offertext"
+                            android:text="Rs. 299 "
+                            android:textColor="@color/gray"
                             android:textSize="15dp"
-                            android:textStyle="bold" />
+                           />
 
+                        <TextView
+                            android:padding="@dimen/dimen5dp"
+                            android:id="@+id/d_Offer"
+                            android:fontFamily="@font/robotomedium"
 
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="68% off "
+                            android:textColor="@color/greenn"
+                            android:textSize="18sp"
+                             />
+
+                    </LinearLayout>
                         <TextView
                             android:id="@+id/d_tax_details"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
                             android:text="Price inclusive of all taxes"
                             android:textColor="@color/darkGrey"
                             android:textSize="@dimen/dimen12dp"
@@ -226,27 +247,27 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="*Blended"
+                    android:textColor="@color/black"
                     android:textStyle="normal" />
 
                 <TextView
-                    android:textColor="@color/black"
-
                     android:layout_width="wrap_content"
+
                     android:layout_height="wrap_content"
                     android:text="*Machine wash"
+                    android:textColor="@color/black"
                     android:textStyle="normal" />
 
 
                 <TextView
-                    android:textColor="@color/black"
-
                     android:layout_width="wrap_content"
+
                     android:layout_height="wrap_content"
                     android:text="*Product Code: 441107418001"
+                    android:textColor="@color/black"
                     android:textStyle="normal" />
 
 
@@ -284,22 +305,22 @@
 
 
                         <ImageView
-                            android:visibility="gone"
                             android:id="@+id/heartblack"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_marginLeft="@dimen/dimen5dp"
                             android:background="@drawable/heartbgblack"
-                            android:backgroundTint="@color/black" />
+                            android:backgroundTint="@color/black"
+                            android:visibility="gone" />
 
-                            <ImageView
-                                android:id="@+id/withoutblak"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginLeft="@dimen/dimen5dp"
-                                android:background="@drawable/wishlist"
-                                android:backgroundTint="@color/black" />
-                        </LinearLayout>
+                        <ImageView
+                            android:id="@+id/withoutblak"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="@dimen/dimen5dp"
+                            android:background="@drawable/wishlist"
+                            android:backgroundTint="@color/black" />
+                    </LinearLayout>
 
                 </LinearLayout>
 

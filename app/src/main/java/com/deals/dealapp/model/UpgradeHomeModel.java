@@ -3,7 +3,7 @@ package com.deals.dealapp.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class JewalleryModel {
+public class UpgradeHomeModel {
 
 
     @SerializedName("id")

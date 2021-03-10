@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,7 +28,9 @@ import android.widget.Toast;
 
 import com.deals.dealapp.Activity.Edit_profile;
 import com.deals.dealapp.Activity.NotificationsActivity;
+import com.deals.dealapp.Activity.ProdcutDeatails;
 import com.deals.dealapp.Activity.SearchActivity;
+import com.deals.dealapp.Activity.ThirdListStage;
 import com.deals.dealapp.ModelResponse.CategoryListModel;
 import com.deals.dealapp.ModelResponse.HomeSliderList;
 import com.deals.dealapp.R;
@@ -42,6 +45,7 @@ import com.deals.dealapp.dialogs.LoadingDialogs;
 import com.deals.dealapp.model.GridHomeModel;
 import com.deals.dealapp.model.Item;
 import com.deals.dealapp.model.JewalleryModel;
+import com.deals.dealapp.model.UpgradeHomeModel;
 import com.deals.dealapp.util;
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -60,17 +64,17 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
     LinearLayout Search_layout;
     CardView searchbar;
 
-    private RecyclerView recyclerView, jewellery_adapter_layout,UpgradehomeServicesList_RV;
+    private RecyclerView recyclerView, jewellery_adapter_layout, UpgradehomeServicesList_RV;
     private ArrayList<HomeSliderList> arrayList;
     private ArrayList<GridHomeModel> gridHomeModelArrayList;
-    private ArrayList<JewalleryModel> jewellery_HomeModelArrayList;
-    private ArrayList<JewalleryModel> homeupgradeModelArrayList;
 
     CircleImageView profile_image;
     ImageView notification;
     LoadingDialogs loadingDialogs;
     CategoryHomeAdapter categoryHomeAdapter;
+    UpgradeHome_Adapterr upgradeHome_adapterr;
 
+    Jewallery_Adapterr jewallery_adapterr;
     private static ViewPager mpage;
     CirclePageIndicator indicator;
     private static int currentPage = 0;
@@ -114,6 +118,8 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
         profile_image = view.findViewById(R.id.profile_image);
         notification = view.findViewById(R.id.notification);
         categoryHomeAdapter = new CategoryHomeAdapter(this::ClickedUser);
+        upgradeHome_adapterr = new UpgradeHome_Adapterr(this::ClickedUser);
+        jewallery_adapterr = new Jewallery_Adapterr(this::ClickedUser);
         GridLayoutManager manager = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(manager);
         GridLayoutManager manager2 = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
@@ -157,7 +163,7 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
         setRecyclerdata();
         topShoppingOffersGridView();
         setjewellery_adapter_layout();
-        setHomeupgradee_adapter_layout();
+       setHomeupgradee_adapter_layout();
       /*  Search_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,6 +175,18 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
                 fragmentTransaction.commit();
             }
         });*/
+
+
+    }
+
+    private void ClickedUser(UpgradeHomeModel upgradeHomeModel) {
+        Toast.makeText(getActivity(), upgradeHomeModel.getCategoryname()+"", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void ClickedUser(JewalleryModel jewalleryModel) {
+        Toast.makeText(getActivity(), jewalleryModel.getCategoryname()+"", Toast.LENGTH_SHORT).show();
+
 
 
     }
@@ -233,33 +251,66 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
     }
 
     public void setjewellery_adapter_layout() {
-        jewellery_HomeModelArrayList = new ArrayList<>();
+        /// loadingDialogs.startLoadingDialogs();
 
-        jewellery_HomeModelArrayList.add(new JewalleryModel("Eyewear", R.drawable.p3));
-        jewellery_HomeModelArrayList.add(new JewalleryModel("Back bags", R.drawable.p4));
-        jewellery_HomeModelArrayList.add(new JewalleryModel("Watches", R.drawable.p5));
-        jewellery_HomeModelArrayList.add(new JewalleryModel("Jewellery", R.drawable.p6));
+        Call<List<JewalleryModel>> userlist = ApiClient.getUserService().getjewellery();
 
-        Jewallery_Adapterr adapter = new Jewallery_Adapterr(jewellery_HomeModelArrayList, getContext());
-        jewellery_adapter_layout.setAdapter(adapter);
+        userlist.enqueue(new Callback<List<JewalleryModel>>() {
+            @Override
+            public void onResponse(Call<List<JewalleryModel>> call, Response<List<JewalleryModel>> response) {
+                loadingDialogs.dismissDialog();
+                if (response.isSuccessful()) {
+                    List<JewalleryModel> userResponses = response.body();
+                    jewallery_adapterr.setData(userResponses);
+                    jewellery_adapter_layout.setAdapter(jewallery_adapterr);
 
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<JewalleryModel>> call, Throwable t) {
+                Log.e("failure", t.getLocalizedMessage());
+                Toast.makeText(getActivity(), t.getLocalizedMessage() + "", Toast.LENGTH_SHORT).show();
+                loadingDialogs.dismissDialog();
+            }
+        });
 
     }
+
+
     public void setHomeupgradee_adapter_layout() {
-        homeupgradeModelArrayList = new ArrayList<>();
 
-        homeupgradeModelArrayList.add(new JewalleryModel("Eyewear", R.drawable.p3));
-        homeupgradeModelArrayList.add(new JewalleryModel("Back bags", R.drawable.p4));
-        homeupgradeModelArrayList.add(new JewalleryModel("Watches", R.drawable.p5));
-        homeupgradeModelArrayList.add(new JewalleryModel("Jewellery", R.drawable.p6));
+        Call<List<UpgradeHomeModel>> userlist = ApiClient.getUserService().UpgradeHome();
 
-        UpgradeHome_Adapterr adapter = new UpgradeHome_Adapterr(homeupgradeModelArrayList, getContext());
-        UpgradehomeServicesList_RV.setAdapter(adapter);
+        userlist.enqueue(new Callback<List<UpgradeHomeModel>>() {
+            @Override
+            public void onResponse(Call<List<UpgradeHomeModel>> call, Response<List<UpgradeHomeModel>> response) {
+                if (response.isSuccessful()) {
+                    List<UpgradeHomeModel> userResponses = response.body();
+                    upgradeHome_adapterr.setData(userResponses);
+                    UpgradehomeServicesList_RV .setAdapter(upgradeHome_adapterr);
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<UpgradeHomeModel>> call, Throwable t) {
+                Log.e("failure", t.getLocalizedMessage());
+                Toast.makeText(getActivity(), t.getLocalizedMessage() + "", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
     }
 
     public void topShoppingOffersGridView() {
+
+
         gridHomeModelArrayList = new ArrayList<>();
         gridHomeModelArrayList.add(new GridHomeModel("Eyewear", R.drawable.p3));
         gridHomeModelArrayList.add(new GridHomeModel("Back bags", R.drawable.p4));
@@ -272,7 +323,22 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
 
         GridViewHomeCustomAdapter adapter = new GridViewHomeCustomAdapter(getContext(), gridHomeModelArrayList);
         topShoppingOffersGridView.setAdapter(adapter);
+        topShoppingOffersGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Toast.makeText(getActivity(), gridHomeModelArrayList.get(position).getName() + "" + position, Toast.LENGTH_SHORT).show();
 
+
+                Intent in = new Intent(getContext(), ProdcutDeatails.class);
+                in.putExtra("P_Name", gridHomeModelArrayList.get(position).getName());
+                in.putExtra("P_Finalprice", "5675");
+                in.putExtra("P_OfferPrice", "23");
+                in.putExtra("P_Taxdeatils", " Price inclusive of all taxes");
+
+                startActivity(in);
+
+            }
+        });
 
 
     /*mpage.setAdapter(new HomeSliderAdapter(getContext(), arrayList));
