@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.deals.dealapp.Activity.ProdcutDeatails;
 import com.deals.dealapp.Activity.SearchActivity;
 
 import com.deals.dealapp.Activity.ThirdListStage;
@@ -202,7 +203,17 @@ public class SecondListStage extends Fragment  implements Secondcategory_Adapter
     @Override
     public void ClickedUser(Secondcategory_itemlist userResponse) {
 
-        Toast.makeText(getContext(), userResponse.getSubcatename()+"", Toast.LENGTH_SHORT).show();
+        Intent in=new Intent(getActivity(), ProdcutDeatails.class);
+      /*  in.putExtra("P_Name",item.P_Name);
+        in.putExtra("P_Finalprice",item.P_Finalprice);
+        in.putExtra("P_OfferPrice",item.P_OfferPrice);
+        in.putExtra("P_Taxdeatils",item.P_Taxdeatils);
+
+        in.putExtra("P_Iamge",item.P_Iamge);*/
+        in.putExtra("id",userResponse.getId());
+        startActivity(in);
+
+      //  Toast.makeText(getContext(), userResponse.getId()+"", Toast.LENGTH_SHORT).show();
 
 
         //startActivity(new Intent(getContext(),ThirdListStage.class).putExtra("data", (Parcelable) userResponse));

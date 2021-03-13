@@ -157,55 +157,53 @@
                         android:layout_below="@+id/llimage"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="@dimen/dimen5dp">
+                        >
 
 
                     <TextView
                         android:fontFamily="@font/robotomedium"
                         android:id="@+id/d_Name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
+                        android:gravity="center"
                         android:text="Ombre-Dyed Top with Typography "
                         android:textColor="@color/darkGrey"
                         android:textSize="@dimen/dimen18sp"
-                        android:textStyle="bold" />
+                     />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/llimage"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:padding="@dimen/dimen5dp">
+                       >
 
 
                         <TextView
                             android:id="@+id/d_price"
-                            android:padding="@dimen/dimen5dp"
+                            android:padding="2dp"
 
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
                             android:text="Rs. 96 "
                             android:textColor="@color/black"
                             android:textSize="18dp"
                             android:textStyle="normal" />
 
                         <TextView
-                            android:padding="@dimen/dimen5dp"
+                            android:id="@+id/discountprice"
+                            android:padding="2dp"
 
                             android:fontFamily="@font/robotomedium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
                             android:text="Rs. 299 "
                             android:textColor="@color/gray"
-                            android:textSize="15dp"
+                            android:textSize="15sp"
                            />
 
                         <TextView
-                            android:padding="@dimen/dimen5dp"
+                            android:padding="2dp"
                             android:id="@+id/d_Offer"
                             android:fontFamily="@font/robotomedium"
 
@@ -247,28 +245,13 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/product_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="*Blended"
+                    android:text="*product_desc"
                     android:textColor="@color/black"
                     android:textStyle="normal" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-                    android:text="*Machine wash"
-                    android:textColor="@color/black"
-                    android:textStyle="normal" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-                    android:text="*Product Code: 441107418001"
-                    android:textColor="@color/black"
-                    android:textStyle="normal" />
 
 
             </LinearLayout>
