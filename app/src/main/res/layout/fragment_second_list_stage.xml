@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginBottom="40dp"
+    android:layout_marginBottom="60dp"
 
     android:background="@color/white"
     tools:context="Fragments.SecondListStage">
@@ -184,7 +184,11 @@
                       android:textColor="@color/white"
                       android:textSize="18sp" />
 -->
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                    android:id="@+id/swipeToRefresh"
 
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_secondcategory"
                     android:layout_width="match_parent"
@@ -198,7 +202,7 @@
                     tools:listitem="@layout/secondlist_rowitem">
 
                 </androidx.recyclerview.widget.RecyclerView>
-
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
             </LinearLayout>
         </LinearLayout>
 

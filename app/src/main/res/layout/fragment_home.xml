@@ -8,10 +8,15 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     tools:context="Fragments.HomeFragment">
 
+
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeToRefresh"
 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <!--   <View
            android:id="@+id/view"
            android:layout_width="match_parent"
@@ -200,10 +205,11 @@
     android:orientation="vertical">
     <include layout="@layout/upgrade_home" />
 </LinearLayout>
-</LinearLayout>
 
+    </LinearLayout>
 
     </ScrollView>
 
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>

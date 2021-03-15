@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Parcelable;
 import android.util.Log;
@@ -48,6 +49,8 @@ public class SecondListStage extends Fragment  implements Secondcategory_Adapter
     LoadingDialogs loadingDialogs;
     int id;
     Secondcategory_Adapterr secondcategory_adapterr;
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
     public SecondListStage() {
     }
 
@@ -74,6 +77,9 @@ public class SecondListStage extends Fragment  implements Secondcategory_Adapter
         searchtext=view.findViewById(R.id.searchtext);
         categorgyname=view.findViewById(R.id.categorgyname);
         recyclerView=view.findViewById(R.id.recycler_secondcategory);
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeToRefresh);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimaryDark);
         GridLayoutManager manager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
         secondcategory_adapterr = new Secondcategory_Adapterr(this::ClickedUser);
@@ -100,12 +106,18 @@ public class SecondListStage extends Fragment  implements Secondcategory_Adapter
 
 
             categorgyname.setText(value);
-            GetCategoryList();
+            GetSubCategoryList();
         } catch (Exception e) {
 
 
         }
-
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                GetSubCategoryList();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }/*
 
     public void setApparelRecyclerdata()
@@ -173,7 +185,7 @@ public class SecondListStage extends Fragment  implements Secondcategory_Adapter
 
     }*/
 
-    public void GetCategoryList() {
+    public void GetSubCategoryList() {
         loadingDialogs.startLoadingDialogs();
 
         Call<List<com.deals.dealapp.ModelResponse.Secondcategory_itemlist>> userlist = ApiClient.getUserService().getSubCategories(String.valueOf(id));

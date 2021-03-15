@@ -154,8 +154,13 @@
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 -->
+                   <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                       android:id="@+id/swipeToRefresh"
 
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent">
                     <androidx.recyclerview.widget.RecyclerView
+
                         android:padding="@dimen/dimen5dp"
                         android:layout_margin="@dimen/dimen5dp"
                         android:id="@+id/recyclerView"
@@ -168,7 +173,7 @@
                         android:orientation="vertical">
 
                     </androidx.recyclerview.widget.RecyclerView>
-
+                   </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
                 </LinearLayout>
             </LinearLayout>
 

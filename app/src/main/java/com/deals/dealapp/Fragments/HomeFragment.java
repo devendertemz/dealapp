@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Handler;
@@ -80,7 +81,7 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
     private static int currentPage = 0;
     private static int No_page = 0;
     GridView topShoppingOffersGridView;
-
+    SwipeRefreshLayout mSwipeRefreshLayout;
     public HomeFragment() {
 
     }
@@ -132,6 +133,9 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
         indicator = (CirclePageIndicator) view.findViewById(R.id.indicator);
         topShoppingOffersGridView = view.findViewById(R.id.topShoppingOffersGridView);
 
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeToRefresh);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimaryDark);
         searchbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,7 +167,19 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
         setRecyclerdata();
         topShoppingOffersGridView();
         setjewellery_adapter_layout();
-       setHomeupgradee_adapter_layout();
+        setHomeupgradee_adapter_layout();
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                GetCategoryList();
+                setRecyclerdata();
+                topShoppingOffersGridView();
+                setjewellery_adapter_layout();
+                setHomeupgradee_adapter_layout();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
       /*  Search_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
