@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
+import androidx.core.text.HtmlCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -34,6 +35,8 @@ import com.deals.dealapp.Activity.SearchActivity;
 import com.deals.dealapp.Activity.ThirdListStage;
 import com.deals.dealapp.ModelResponse.CategoryListModel;
 import com.deals.dealapp.ModelResponse.HomeSliderList;
+import com.deals.dealapp.ModelResponse.HomepageSlider;
+import com.deals.dealapp.ModelResponse.ProductDeatilsResponse;
 import com.deals.dealapp.R;
 import com.deals.dealapp.adapter.CategoryHomeAdapter;
 import com.deals.dealapp.adapter.GridViewHomeCustomAdapter;
@@ -48,6 +51,7 @@ import com.deals.dealapp.model.Item;
 import com.deals.dealapp.model.JewalleryModel;
 import com.deals.dealapp.model.UpgradeHomeModel;
 import com.deals.dealapp.util;
+import com.squareup.picasso.Picasso;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
@@ -66,7 +70,7 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
     CardView searchbar;
 
     private RecyclerView recyclerView, jewellery_adapter_layout, UpgradehomeServicesList_RV;
-    private ArrayList<HomeSliderList> arrayList;
+    private ArrayList<HomepageSlider> arrayList;
     private ArrayList<GridHomeModel> gridHomeModelArrayList;
 
     CircleImageView profile_image;
@@ -208,7 +212,102 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
     }
 
     public void setRecyclerdata() {
+
         arrayList = new ArrayList<>();
+
+        Call<List<HomepageSlider>> userlist = ApiClient.getUserService().getHomepageslider();
+
+        userlist.enqueue(new Callback<List<HomepageSlider>>() {
+            @Override
+            public void onResponse(Call<List<HomepageSlider>> call, Response<List<HomepageSlider>> response) {
+
+                Toast.makeText(getContext(), response.code()+"", Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful()) {
+                    List<HomepageSlider> userResponses = response.body();
+                    for (int i=0;i<userResponses.size();i++)
+                    {
+                        arrayList.add(userResponses.get(i));
+
+
+                        Toast.makeText(getContext(), userResponses.get(i).getHeading()+"", Toast.LENGTH_SHORT).show();
+
+
+                       /* name.setText(  userResponses.get(i).getProductName());
+                        finalPrice.setText("Rs."+userResponses.get(i).getActualAmount());
+                        discountprice.setText("Rs."+userResponses.get(i).getPrice());
+                        discount.setText(userResponses.get(i).getDiscount()+"% OFF");
+                        product_desc.setText(HtmlCompat.fromHtml(userResponses.get(i).getProductDesc(), 0));
+
+                        String url = "http://api.ourprive.com/" + userResponses.get(i).getImages();
+
+                        Picasso.get().load(url).into(d_image);
+
+                        Toast.makeText(ProdcutDeatails.this, userResponses.get(i).getCategoryname(), Toast.LENGTH_SHORT).show();
+*/
+                    }
+                    SlidingImageAdapter adapter = new SlidingImageAdapter(arrayList, getContext());
+                    mpage.setAdapter(adapter);
+                    indicator.setViewPager(mpage);
+
+                    final float density = getResources().getDisplayMetrics().density;
+                    //Set circle indicator radius
+                    indicator.setRadius(5 * density);
+                    No_page = arrayList.size();
+                    // Auto start of viewpager
+                    final Handler handler = new Handler();
+                    final Runnable Update = new Runnable() {
+                        public void run() {
+                            if (currentPage == No_page) {
+                                currentPage = 0;
+                            }
+                            mpage.setCurrentItem(currentPage++, true);
+                        }
+                    };
+                    Timer swipeTimer = new Timer();
+                    swipeTimer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            handler.post(Update);
+                        }
+                    }, 3000, 3000);
+
+                    // Pager listener over indicator
+                    indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+                        @Override
+                        public void onPageSelected(int position) {
+                            currentPage = position;
+
+                        }
+
+                        @Override
+                        public void onPageScrolled(int pos, float arg1, int arg2) {
+
+                        }
+
+                        @Override
+                        public void onPageScrollStateChanged(int pos) {
+
+                        }
+                    });
+                 //   Toast.makeText(ProdcutDeatails.this, "right way", Toast.LENGTH_SHORT).show();
+
+
+                  /*  secondcategory_adapterr.setData(userResponses);
+                    recyclerView.setAdapter(secondcategory_adapterr);*/
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<HomepageSlider>> call, Throwable t) {
+                Log.e("failure", t.getLocalizedMessage());
+                Toast.makeText(getActivity(), t.getLocalizedMessage() + "", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        /*arrayList = new ArrayList<>();
 
 
         arrayList.add(new HomeSliderList("Groceries", "Up to 90% OFF", "    On Groceries Online", R.drawable.p2));
@@ -217,52 +316,11 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
         SlidingImageAdapter adapter = new SlidingImageAdapter(arrayList, getContext());
         mpage.setAdapter(adapter);
         indicator.setViewPager(mpage);
-
+*/
     /*mpage.setAdapter(new HomeSliderAdapter(getContext(), arrayList));
     indicator.setViewPager(mpage);
 */
 
-        final float density = getResources().getDisplayMetrics().density;
-        //Set circle indicator radius
-        indicator.setRadius(5 * density);
-        No_page = arrayList.size();
-        // Auto start of viewpager
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == No_page) {
-                    currentPage = 0;
-                }
-                mpage.setCurrentItem(currentPage++, true);
-            }
-        };
-        Timer swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 3000, 3000);
-
-        // Pager listener over indicator
-        indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                currentPage = position;
-
-            }
-
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int pos) {
-
-            }
-        });
 
     }
 

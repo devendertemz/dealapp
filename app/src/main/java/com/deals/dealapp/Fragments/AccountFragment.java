@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.deals.dealapp.Activity.Edit_profile;
 import com.deals.dealapp.Activity.Help_Center_Activity;
 import com.deals.dealapp.Activity.LoginAcitivity;
+import com.deals.dealapp.Activity.Nearby_Stroe;
 import com.deals.dealapp.Activity.NotificationsActivity;
 import com.deals.dealapp.Activity.subscriptionActivity;
 import com.deals.dealapp.R;
@@ -34,7 +35,7 @@ import java.util.concurrent.Executor;
 
 public class AccountFragment extends Fragment {
 
-    LinearLayout ll_Orders, ll_Notifications, ll_profile, ll_help_center, ll_Subscription,buttonLogin;
+    LinearLayout ll_Orders, ll_Notifications, ll_profile, ll_help_center, ll_Subscription,buttonLogin,ll_Store;
     GoogleSignInClient mGoogleSignInClient;
 
     public AccountFragment() {
@@ -78,7 +79,17 @@ public class AccountFragment extends Fragment {
         ll_help_center = view.findViewById(R.id.ll_help_center);
         ll_Subscription = view.findViewById(R.id.Subscription);
         buttonLogin = view.findViewById(R.id.buttonLogin);
+        ll_Store = view.findViewById(R.id.Store);
 
+
+        ll_Store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent in=new Intent(getActivity(), Nearby_Stroe.class);
+                startActivity(in);
+            }
+        });
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

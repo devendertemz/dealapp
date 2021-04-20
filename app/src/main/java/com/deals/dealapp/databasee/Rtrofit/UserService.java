@@ -1,6 +1,7 @@
 package com.deals.dealapp.databasee.Rtrofit;
 
 import com.deals.dealapp.ModelResponse.CategoryListModel;
+import com.deals.dealapp.ModelResponse.HomepageSlider;
 import com.deals.dealapp.ModelResponse.ProductDeatilsResponse;
 import com.deals.dealapp.ModelResponse.Secondcategory_itemlist;
 import com.deals.dealapp.model.JewalleryModel;
@@ -25,6 +26,8 @@ public interface UserService {
             @Path("cat_id") String cat_id
     );
 
+    @GET("getsliders")
+    Call<List<HomepageSlider>> getHomepageslider();
 
     //getProductDetails
     @GET("getproductbyid/{subcategoryid}")

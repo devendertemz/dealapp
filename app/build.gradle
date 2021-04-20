@@ -63,15 +63,16 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
 
 //retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+ implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
 
-    implementation 'com.google.code.gson:gson:2.8.6'
+  implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
 
-//    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+  implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
 
 
     implementation 'com.squareup.picasso:picasso:2.71828'
@@ -79,6 +80,14 @@ dependencies {
     /*implementation 'com.nineoldandroids:library:2.4.0'
     implementation 'com.daimajia.slider:library:1.1.5@aar'*/
     implementation 'fr.avianey.com.viewpagerindicator:library:2.4.1.1@aar'
+
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    implementation'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'//for places
+    implementation 'com.karumi:dexter:6.2.1'
+
+
 
 
 }

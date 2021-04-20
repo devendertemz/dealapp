@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.deals.dealapp.ModelResponse.HomeSliderList;
+import com.deals.dealapp.ModelResponse.HomepageSlider;
 import com.deals.dealapp.R;
 import com.squareup.picasso.Picasso;
 
@@ -21,11 +22,11 @@ import java.util.ArrayList;
 
 
 public class SlidingImageAdapter extends PagerAdapter {
-    private ArrayList<HomeSliderList> Images;
+    private ArrayList<HomepageSlider> Images;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public SlidingImageAdapter(ArrayList<HomeSliderList> images, Context context) {
+    public SlidingImageAdapter(ArrayList<HomepageSlider> images, Context context) {
         this.Images = images;
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
@@ -58,12 +59,14 @@ public class SlidingImageAdapter extends PagerAdapter {
         TextView offer = (TextView) view.findViewById(R.id.offer);
         TextView online = (TextView) view.findViewById(R.id.online);
 
-        Names.setText(Images.get(position).getName());
+        Names.setText(Images.get(position).getHeading());
         ImageView image=view.findViewById(R.id.image);
 
-        offer.setText(Images.get(position).getOffer());
-        online.setText(Images.get(position).getProdcut());
-        image.setImageResource(Images.get(position).getImage());
+        offer.setText(Images.get(position).getHeading2());
+        online.setText(Images.get(position).getDescription());
+        //image.setImageResource(Images.get(position).getImage());
+        String url = "http://api.ourprive.com/"+Images.get(position).getImage();
+        Picasso.get().load(url).into(image);
 
         //Picasso.get().load(Images.get(position).getImageUrl()).into(imageView);
 

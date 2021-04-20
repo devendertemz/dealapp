@@ -1,9 +1,9 @@
 package com.deals.dealapp.ModelResponse;
 
 public class HomeSliderList {
-    public String Name,Offer,prodcut;
-    public int Image;
-    public HomeSliderList(String name, String offer, String prodcut, int image) {
+    public String Name,Offer,prodcut,Image;
+
+    public HomeSliderList(String name, String offer, String prodcut, String image) {
         Name = name;
         Offer = offer;
         this.prodcut = prodcut;
@@ -35,11 +35,11 @@ public class HomeSliderList {
         Offer = offer;
     }
 
-    public int getImage() {
+    public String getImage() {
         return Image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         Image = image;
     }
 }

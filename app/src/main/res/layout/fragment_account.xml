@@ -378,6 +378,56 @@
 
             <View style="@style/MenuItemUnderline" />
 
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen10dp"
+
+                android:id="@+id/Store"
+                style="@style/MenuItemParent"
+                android:background="@drawable/round_grey2_corners">
+
+
+                <ImageView
+                    style="@style/MenuItemImage"
+                    app:srcCompat="@drawable/ic_order"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dimen10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:minHeight="@dimen/dimen10dp"
+                        android:text="Near by store"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Check Near by store"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen10dp" />
+
+
+                </LinearLayout>
+
+
+                <ImageView
+                    style="@style/MenuItemArrow"
+                    android:layout_marginLeft="115dp"
+                    app:srcCompat="@drawable/ic_right_arrow"
+                    tools:ignore="VectorDrawableCompat" />
+            </LinearLayout>
+            <View style="@style/MenuItemUnderline" />
+
             <LinearLayout
                 android:id="@+id/buttonLogin"
 
