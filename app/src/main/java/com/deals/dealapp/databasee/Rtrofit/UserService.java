@@ -1,6 +1,7 @@
 package com.deals.dealapp.databasee.Rtrofit;
 
 import com.deals.dealapp.ModelResponse.CategoryListModel;
+import com.deals.dealapp.ModelResponse.Get_trending_categories_Response;
 import com.deals.dealapp.ModelResponse.HomepageSlider;
 import com.deals.dealapp.ModelResponse.ProductDeatilsResponse;
 import com.deals.dealapp.ModelResponse.Secondcategory_itemlist;
@@ -41,4 +42,7 @@ public interface UserService {
 
     @GET("getcategories")
     Call<List<UpgradeHomeModel>> UpgradeHome();
+
+    @GET("get_trending_categories")
+    Call<List<Get_trending_categories_Response>> Get_trending_categories();
 }

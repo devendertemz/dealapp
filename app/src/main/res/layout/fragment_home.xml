@@ -176,15 +176,15 @@
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:background="@color/gray" />
-        <HorizontalScrollView
+      <!--  <HorizontalScrollView
             android:id="@+id/horizontalScrollView1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:fillViewport="true"
-            android:scrollbars="horizontal" >
+            android:scrollbars="horizontal" >-->
 
-    <include layout="@layout/home_screen_offer_screen1" />
-        </HorizontalScrollView>
+    <include layout="@layout/get_trending_categories" />
+
     <View
 
         android:layout_width="match_parent"

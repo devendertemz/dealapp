@@ -14,7 +14,8 @@ import com.deals.dealapp.model.GridHomeModel;
 
 import java.util.ArrayList;
 
-public class GridViewHomeCustomAdapter extends BaseAdapter {
+public class GridViewHomeCustomAdapter{
+    /* extends BaseAdapter {
     Context context;
     private ArrayList<GridHomeModel> arrayList;
 
@@ -54,5 +55,5 @@ public class GridViewHomeCustomAdapter extends BaseAdapter {
 // set logo images
         return view;
 
-    }
+    }*/
 }

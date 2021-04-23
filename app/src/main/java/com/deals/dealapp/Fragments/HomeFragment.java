@@ -34,11 +34,13 @@ import com.deals.dealapp.Activity.ProdcutDeatails;
 import com.deals.dealapp.Activity.SearchActivity;
 import com.deals.dealapp.Activity.ThirdListStage;
 import com.deals.dealapp.ModelResponse.CategoryListModel;
+import com.deals.dealapp.ModelResponse.Get_trending_categories_Response;
 import com.deals.dealapp.ModelResponse.HomeSliderList;
 import com.deals.dealapp.ModelResponse.HomepageSlider;
 import com.deals.dealapp.ModelResponse.ProductDeatilsResponse;
 import com.deals.dealapp.R;
 import com.deals.dealapp.adapter.CategoryHomeAdapter;
+import com.deals.dealapp.adapter.Get_trending_categories_Adapter;
 import com.deals.dealapp.adapter.GridViewHomeCustomAdapter;
 import com.deals.dealapp.adapter.HomeSliderAdapter;
 import com.deals.dealapp.adapter.Jewallery_Adapterr;
@@ -71,8 +73,8 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
 
     private RecyclerView recyclerView, jewellery_adapter_layout, UpgradehomeServicesList_RV;
     private ArrayList<HomepageSlider> arrayList;
-    private ArrayList<GridHomeModel> gridHomeModelArrayList;
-
+    private ArrayList<Get_trending_categories_Response> get_trending_categories_responsesArray;
+    Get_trending_categories_Response get_trending_categories_responsemodel;
     CircleImageView profile_image;
     ImageView notification;
     LoadingDialogs loadingDialogs;
@@ -80,11 +82,13 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
     UpgradeHome_Adapterr upgradeHome_adapterr;
 
     Jewallery_Adapterr jewallery_adapterr;
+    Get_trending_categories_Adapter get_trending_categories_adapter;
+
     private static ViewPager mpage;
     CirclePageIndicator indicator;
     private static int currentPage = 0;
     private static int No_page = 0;
-    GridView topShoppingOffersGridView;
+    RecyclerView topShoppingOffersGridView;
     SwipeRefreshLayout mSwipeRefreshLayout;
     public HomeFragment() {
 
@@ -125,6 +129,14 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
         categoryHomeAdapter = new CategoryHomeAdapter(this::ClickedUser);
         upgradeHome_adapterr = new UpgradeHome_Adapterr(this::ClickedUser);
         jewallery_adapterr = new Jewallery_Adapterr(this::ClickedUser);
+        get_trending_categories_adapter= new Get_trending_categories_Adapter(this::ClickedUser);
+        topShoppingOffersGridView = view.findViewById(R.id.RV_upto_offecr);
+
+
+
+        GridLayoutManager managertopShoppingOffersGridView = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
+        topShoppingOffersGridView.setLayoutManager(managertopShoppingOffersGridView);
+
         GridLayoutManager manager = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(manager);
         GridLayoutManager manager2 = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
@@ -135,7 +147,6 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
         searchbar = view.findViewById(R.id.searchbar);
         mpage = view.findViewById(R.id.imageSlider);
         indicator = (CirclePageIndicator) view.findViewById(R.id.indicator);
-        topShoppingOffersGridView = view.findViewById(R.id.topShoppingOffersGridView);
 
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeToRefresh);
@@ -196,6 +207,10 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
             }
         });*/
 
+
+    }
+
+    private void ClickedUser(Get_trending_categories_Response get_trending_categories_response) {
 
     }
 
@@ -385,7 +400,7 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
     public void topShoppingOffersGridView() {
 
 
-        gridHomeModelArrayList = new ArrayList<>();
+       /* gridHomeModelArrayList = new ArrayList<>();
         gridHomeModelArrayList.add(new GridHomeModel("Eyewear", R.drawable.p3));
         gridHomeModelArrayList.add(new GridHomeModel("Back bags", R.drawable.p4));
         gridHomeModelArrayList.add(new GridHomeModel("Watches", R.drawable.p5));
@@ -412,7 +427,48 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
                 startActivity(in);
 
             }
+        });*/
+
+        get_trending_categories_responsesArray=new ArrayList<>();
+        Call<List<Get_trending_categories_Response>> userlist = ApiClient.getUserService().Get_trending_categories();
+
+        userlist.enqueue(new Callback<List<Get_trending_categories_Response>>() {
+            @Override
+            public void onResponse(Call<List<Get_trending_categories_Response>> call, Response<List<Get_trending_categories_Response>> response) {
+              //  Toast.makeText(getActivity(), +response.code()+ "", Toast.LENGTH_SHORT).show();
+
+                loadingDialogs.dismissDialog();
+                if (response.isSuccessful()) {
+                    get_trending_categories_responsemodel=new Get_trending_categories_Response();
+                    List<Get_trending_categories_Response> userResponses = response.body();
+                   // Toast.makeText(getActivity(), userResponses.toString()+"", Toast.LENGTH_SHORT).show();
+                    for (int i=0;i<userResponses.size();i++)
+                    {
+                    get_trending_categories_responsemodel.setImage(userResponses.get(i).getImage());
+
+                        get_trending_categories_responsemodel.setImage(userResponses.get(i).getCategoryname());
+                        get_trending_categories_responsesArray.add(get_trending_categories_responsemodel);
+
+
+                    }
+
+
+                    get_trending_categories_adapter.setData(userResponses);
+                    topShoppingOffersGridView.setAdapter(get_trending_categories_adapter);
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Get_trending_categories_Response>> call, Throwable t) {
+                Log.e("failure", t.getLocalizedMessage());
+                Toast.makeText(getActivity(), t.getLocalizedMessage() + "", Toast.LENGTH_SHORT).show();
+                loadingDialogs.dismissDialog();
+            }
         });
+
 
 
     /*mpage.setAdapter(new HomeSliderAdapter(getContext(), arrayList));
