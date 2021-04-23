@@ -425,11 +425,14 @@ public class MainActivity extends AppCompatActivity  {
            startActivity(a);
        }
        else {
-           HomeFragment appNewsHome1Fragment = new HomeFragment();
+         /*  HomeFragment appNewsHome1Fragment = new HomeFragment();
            FragmentManager manager = getSupportFragmentManager();
            FragmentTransaction transaction = manager.beginTransaction();
            transaction.replace(R.id.contentPanel, appNewsHome1Fragment);
            transaction.commit();
+*/
+
+
        }
         //super.onBackPressed();
 

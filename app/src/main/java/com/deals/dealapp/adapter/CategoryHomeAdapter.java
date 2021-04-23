@@ -51,7 +51,7 @@ public class CategoryHomeAdapter extends RecyclerView.Adapter<CategoryHomeAdapte
         String url = "http://api.ourprive.com/" + userResponse.getIcon();
 
         Picasso.get().load(url).into(holder.imageView);
-        Log.e("image", url);
+       // Log.e("image", url);
 
         holder.textView.setText(userResponse.getCategoryname());
 

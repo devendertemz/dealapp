@@ -87,7 +87,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-places:17.0.0'//for places
     implementation 'com.karumi:dexter:6.2.1'
 
-
+        //for loding
+   // implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 
 
 }

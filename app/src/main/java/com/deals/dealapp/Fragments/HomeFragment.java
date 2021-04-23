@@ -90,6 +90,8 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
     private static int No_page = 0;
     RecyclerView topShoppingOffersGridView;
     SwipeRefreshLayout mSwipeRefreshLayout;
+    SlidingImageAdapter adapter;
+
     public HomeFragment() {
 
     }
@@ -129,9 +131,8 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
         categoryHomeAdapter = new CategoryHomeAdapter(this::ClickedUser);
         upgradeHome_adapterr = new UpgradeHome_Adapterr(this::ClickedUser);
         jewallery_adapterr = new Jewallery_Adapterr(this::ClickedUser);
-        get_trending_categories_adapter= new Get_trending_categories_Adapter(this::ClickedUser);
+        get_trending_categories_adapter = new Get_trending_categories_Adapter(this::ClickedUser);
         topShoppingOffersGridView = view.findViewById(R.id.RV_upto_offecr);
-
 
 
         GridLayoutManager managertopShoppingOffersGridView = new GridLayoutManager(getContext(), 1, GridLayoutManager.HORIZONTAL, false);
@@ -215,13 +216,12 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
     }
 
     private void ClickedUser(UpgradeHomeModel upgradeHomeModel) {
-        Toast.makeText(getActivity(), upgradeHomeModel.getCategoryname()+"", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), upgradeHomeModel.getCategoryname() + "", Toast.LENGTH_SHORT).show();
 
     }
 
     private void ClickedUser(JewalleryModel jewalleryModel) {
-        Toast.makeText(getActivity(), jewalleryModel.getCategoryname()+"", Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(getActivity(), jewalleryModel.getCategoryname() + "", Toast.LENGTH_SHORT).show();
 
 
     }
@@ -236,15 +236,14 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
             @Override
             public void onResponse(Call<List<HomepageSlider>> call, Response<List<HomepageSlider>> response) {
 
-                Toast.makeText(getContext(), response.code()+"", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getContext(), response.code()+"", Toast.LENGTH_SHORT).show();
                 if (response.isSuccessful()) {
                     List<HomepageSlider> userResponses = response.body();
-                    for (int i=0;i<userResponses.size();i++)
-                    {
+                    for (int i = 0; i < userResponses.size(); i++) {
                         arrayList.add(userResponses.get(i));
 
 
-                        Toast.makeText(getContext(), userResponses.get(i).getHeading()+"", Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(getContext(), userResponses.get(i).getHeading()+"", Toast.LENGTH_SHORT).show();
 
 
                        /* name.setText(  userResponses.get(i).getProductName());
@@ -260,9 +259,13 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
                         Toast.makeText(ProdcutDeatails.this, userResponses.get(i).getCategoryname(), Toast.LENGTH_SHORT).show();
 */
                     }
-                    SlidingImageAdapter adapter = new SlidingImageAdapter(arrayList, getContext());
-                    mpage.setAdapter(adapter);
-                    indicator.setViewPager(mpage);
+                    if (getActivity() != null) {
+
+                        adapter = new SlidingImageAdapter(arrayList, getContext());
+                        mpage.setAdapter(adapter);
+                        indicator.setViewPager(mpage);
+
+
 
                     final float density = getResources().getDisplayMetrics().density;
                     //Set circle indicator radius
@@ -305,14 +308,14 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
 
                         }
                     });
-                 //   Toast.makeText(ProdcutDeatails.this, "right way", Toast.LENGTH_SHORT).show();
+                    //   Toast.makeText(ProdcutDeatails.this, "right way", Toast.LENGTH_SHORT).show();
 
 
                   /*  secondcategory_adapterr.setData(userResponses);
                     recyclerView.setAdapter(secondcategory_adapterr);*/
 
                 }
-
+                }
             }
 
             @Override
@@ -379,7 +382,7 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
                 if (response.isSuccessful()) {
                     List<UpgradeHomeModel> userResponses = response.body();
                     upgradeHome_adapterr.setData(userResponses);
-                    UpgradehomeServicesList_RV .setAdapter(upgradeHome_adapterr);
+                    UpgradehomeServicesList_RV.setAdapter(upgradeHome_adapterr);
 
 
                 }
@@ -392,7 +395,6 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
                 Toast.makeText(getActivity(), t.getLocalizedMessage() + "", Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
     }
@@ -429,22 +431,21 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
             }
         });*/
 
-        get_trending_categories_responsesArray=new ArrayList<>();
+        get_trending_categories_responsesArray = new ArrayList<>();
         Call<List<Get_trending_categories_Response>> userlist = ApiClient.getUserService().Get_trending_categories();
 
         userlist.enqueue(new Callback<List<Get_trending_categories_Response>>() {
             @Override
             public void onResponse(Call<List<Get_trending_categories_Response>> call, Response<List<Get_trending_categories_Response>> response) {
-              //  Toast.makeText(getActivity(), +response.code()+ "", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(getActivity(), +response.code()+ "", Toast.LENGTH_SHORT).show();
 
                 loadingDialogs.dismissDialog();
                 if (response.isSuccessful()) {
-                    get_trending_categories_responsemodel=new Get_trending_categories_Response();
+                    get_trending_categories_responsemodel = new Get_trending_categories_Response();
                     List<Get_trending_categories_Response> userResponses = response.body();
-                   // Toast.makeText(getActivity(), userResponses.toString()+"", Toast.LENGTH_SHORT).show();
-                    for (int i=0;i<userResponses.size();i++)
-                    {
-                    get_trending_categories_responsemodel.setImage(userResponses.get(i).getImage());
+                    // Toast.makeText(getActivity(), userResponses.toString()+"", Toast.LENGTH_SHORT).show();
+                    for (int i = 0; i < userResponses.size(); i++) {
+                        get_trending_categories_responsemodel.setImage(userResponses.get(i).getImage());
 
                         get_trending_categories_responsemodel.setImage(userResponses.get(i).getCategoryname());
                         get_trending_categories_responsesArray.add(get_trending_categories_responsemodel);
