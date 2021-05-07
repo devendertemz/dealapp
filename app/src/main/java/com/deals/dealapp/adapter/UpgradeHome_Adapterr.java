@@ -51,7 +51,7 @@ public class UpgradeHome_Adapterr extends RecyclerView.Adapter<UpgradeHome_Adapt
         Picasso.get().load(url).into(holder.jewellery_offer_image);
         Log.e("image", url);
 
-        holder.jewellery_offer_title.setText(userResponse.getCategoryname());
+        holder.jewellery_offer_title.setText(userResponse.getCategoryName());
 
         holder.Upgradehomeclick.setOnClickListener(new View.OnClickListener() {
             @Override

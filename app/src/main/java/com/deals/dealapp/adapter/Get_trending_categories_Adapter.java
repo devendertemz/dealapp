@@ -54,7 +54,7 @@ public class Get_trending_categories_Adapter  extends RecyclerView.Adapter<Get_t
         Picasso.get().load(url).into(holder.imageView);
         Log.e("image", url);
 
-        holder.textView.setText(userResponse.getCategoryname());
+        holder.textView.setText(userResponse.getCategoryName());
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override

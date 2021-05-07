@@ -2,19 +2,26 @@ package com.deals.dealapp.databasee.Rtrofit;
 
 import com.deals.dealapp.ModelResponse.CategoryListModel;
 import com.deals.dealapp.ModelResponse.Get_trending_categories_Response;
+import com.deals.dealapp.ModelResponse.Getproducts_bybrandResp;
 import com.deals.dealapp.ModelResponse.HomepageSlider;
 import com.deals.dealapp.ModelResponse.ProductDeatilsResponse;
 import com.deals.dealapp.ModelResponse.Secondcategory_itemlist;
 import com.deals.dealapp.model.JewalleryModel;
+import com.deals.dealapp.model.JewalleryModelResponse;
 import com.deals.dealapp.model.UpgradeHomeModel;
 
 import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface UserService {
     //getcategories
@@ -36,13 +43,40 @@ public interface UserService {
             @Path("subcategoryid") String subcategory_id
     );
 
-    @GET("getcategories")
-    Call<List<JewalleryModel>> getjewellery();
+    @GET("get_home_single_trending_categories")
+    Call<List<JewalleryModelResponse>> getjewellery();
 
 
-    @GET("getcategories")
+    @GET("get_home_single_trending_categories")
+    Call<ResponseBody> getjewelleryy();
+
+
+    @GET("get_upgrade_your_home_categories")
     Call<List<UpgradeHomeModel>> UpgradeHome();
+
 
     @GET("get_trending_categories")
     Call<List<Get_trending_categories_Response>> Get_trending_categories();
+/*
+     @FormUrlEncoded
+    @POST("getproducts_bybrand")
+    Call<List<Getproducts_bybrandResp>> getproducts_bybrand(
+            @Field("sub_categories_id") String id
+    );*/
+
+    @FormUrlEncoded
+    @POST("getproducts_bybrand")
+    Call<ResponseBody> getproducts_bybrand(
+            @Field("sub_categories_id") String id
+    );
+
+  /*  @FormUrlEncoded
+    @POST("details_registration.php/")
+    Call<ResponseBody> send_school_deatils(
+
+            @Field("id") String id,
+            @Field("school name") String school_name,
+            @Field("school categories") String school_categories
+    );*/
+
 }

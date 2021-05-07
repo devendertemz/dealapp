@@ -4,27 +4,42 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Get_trending_categories_Response {
+    @Override
+    public String toString() {
+        return "Get_trending_categories_Response{" +
+                "id='" + id + '\'' +
+                ", categoryName='" + categoryName + '\'' +
+                ", categorydesc='" + categorydesc + '\'' +
+                ", image='" + image + '\'' +
+                ", trending='" + trending + '\'' +
+                ", singleTrending='" + singleTrending + '\'' +
+                ", upgradeYourHome='" + upgradeYourHome + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                '}';
+    }
+
     @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("categoryname")
+    @SerializedName("category_name")
     @Expose
-    private String categoryname;
+    private String categoryName;
     @SerializedName("categorydesc")
     @Expose
-    private Object categorydesc;
+    private String categorydesc;
     @SerializedName("image")
     @Expose
     private String image;
-    @SerializedName("icon")
-    @Expose
-    private String icon;
     @SerializedName("trending")
     @Expose
     private String trending;
-    @SerializedName("status")
+    @SerializedName("single_trending")
     @Expose
-    private String status;
+    private String singleTrending;
+    @SerializedName("upgrade_your_home")
+    @Expose
+    private String upgradeYourHome;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -40,19 +55,19 @@ public class Get_trending_categories_Response {
         this.id = id;
     }
 
-    public String getCategoryname() {
-        return categoryname;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategoryname(String categoryname) {
-        this.categoryname = categoryname;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public Object getCategorydesc() {
+    public String getCategorydesc() {
         return categorydesc;
     }
 
-    public void setCategorydesc(Object categorydesc) {
+    public void setCategorydesc(String categorydesc) {
         this.categorydesc = categorydesc;
     }
 
@@ -64,14 +79,6 @@ public class Get_trending_categories_Response {
         this.image = image;
     }
 
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
     public String getTrending() {
         return trending;
     }
@@ -80,12 +87,20 @@ public class Get_trending_categories_Response {
         this.trending = trending;
     }
 
-    public String getStatus() {
-        return status;
+    public String getSingleTrending() {
+        return singleTrending;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setSingleTrending(String singleTrending) {
+        this.singleTrending = singleTrending;
+    }
+
+    public String getUpgradeYourHome() {
+        return upgradeYourHome;
+    }
+
+    public void setUpgradeYourHome(String upgradeYourHome) {
+        this.upgradeYourHome = upgradeYourHome;
     }
 
     public String getCreatedAt() {
@@ -104,18 +119,4 @@ public class Get_trending_categories_Response {
         this.updatedAt = updatedAt;
     }
 
-    @Override
-    public String toString() {
-        return "Get_trending_categories_Response{" +
-                "id='" + id + '\'' +
-                ", categoryname='" + categoryname + '\'' +
-                ", categorydesc=" + categorydesc +
-                ", image='" + image + '\'' +
-                ", icon='" + icon + '\'' +
-                ", trending='" + trending + '\'' +
-                ", status='" + status + '\'' +
-                ", createdAt='" + createdAt + '\'' +
-                ", updatedAt='" + updatedAt + '\'' +
-                '}';
-    }
 }

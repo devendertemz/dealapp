@@ -66,6 +66,7 @@ public class CategoryHomeAdapter extends RecyclerView.Adapter<CategoryHomeAdapte
     }
 
     public interface ClickedItem {
+
         public void ClickedUser(CategoryListModel userResponse);
     }
 

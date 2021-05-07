@@ -9,6 +9,7 @@
 
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_gravity="center"
@@ -20,14 +21,13 @@
         >
 
         <TextView
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:fontFamily="@font/robotomedium"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:text="Up to 60% off"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="@dimen/dimen18sp" />
 
         <View
             android:layout_width="1dp"
@@ -37,16 +37,15 @@
             android:background="@color/black" />
 
         <TextView
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:fontFamily="@font/robotomedium"
 
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:text="Fashion accessories"
             android:textColor="@color/black"
-            android:textSize="15dp" />
-
+            android:textSize="@dimen/dimen18sp" />
+<!--
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
@@ -65,7 +64,7 @@
             android:paddingBottom="10dp"
             android:text="Top Shopping Offers"
             android:textColor="@color/black"
-            android:textSize="15dp" />
+            android:textSize="15dp" />-->
     </LinearLayout>
 
     <!--  <GridView
@@ -90,12 +89,9 @@
         android:layout_height="wrap_content"
 
         android:background="#f2f3f4"
-        android:horizontalSpacing="2dp"
-        android:scrollbars="horizontal"
         tools:listitem="@layout/gridview_layout_adapter"
 
         android:orientation="horizontal"
-        tools:itemCount="4"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         />
 

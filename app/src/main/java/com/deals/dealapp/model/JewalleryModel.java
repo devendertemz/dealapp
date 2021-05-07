@@ -1,57 +1,49 @@
 package com.deals.dealapp.model;
 
+import com.google.android.material.slider.Slider;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class JewalleryModel {
 
+    private String id;
 
-    @SerializedName("id")
-    @Expose
-    private Integer id;
-    @SerializedName("categoryname")
-    @Expose
-    private String categoryname;
-    @SerializedName("categorydesc")
-    @Expose
-    private Object categorydesc;
-    @SerializedName("image")
-    @Expose
+    private String categoryName;
+    private String categorydesc;
     private String image;
-    @SerializedName("icon")
-    @Expose
-    private String icon;
-    @SerializedName("status")
-    @Expose
-    private String status;
-    @SerializedName("created_at")
-    @Expose
-    private String createdAt;
-    @SerializedName("updated_at")
-    @Expose
-    private String updatedAt;
+    private String trending;
 
-    public Integer getId() {
+    public JewalleryModel(String id, String categoryName, String categorydesc, String image, String trending) {
+        this.id = id;
+        this.categoryName = categoryName;
+        this.categorydesc = categorydesc;
+        this.image = image;
+        this.trending = trending;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getCategoryname() {
-        return categoryname;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategoryname(String categoryname) {
-        this.categoryname = categoryname;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public Object getCategorydesc() {
+    public String getCategorydesc() {
         return categorydesc;
     }
 
-    public void setCategorydesc(Object categorydesc) {
+    public void setCategorydesc(String categorydesc) {
         this.categorydesc = categorydesc;
     }
 
@@ -63,50 +55,11 @@ public class JewalleryModel {
         this.image = image;
     }
 
-    public String getIcon() {
-        return icon;
+    public String getTrending() {
+        return trending;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public void setTrending(String trending) {
+        this.trending = trending;
     }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    @Override
-    public String toString() {
-        return "CategoryListModel{" +
-                "id=" + id +
-                ", categoryname='" + categoryname + '\'' +
-                ", categorydesc=" + categorydesc +
-                ", image='" + image + '\'' +
-                ", icon='" + icon + '\'' +
-                ", status='" + status + '\'' +
-                ", createdAt='" + createdAt + '\'' +
-                ", updatedAt='" + updatedAt + '\'' +
-                '}';
-    }
-
 }

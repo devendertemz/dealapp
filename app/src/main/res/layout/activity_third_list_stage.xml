@@ -10,8 +10,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/ll1"
@@ -30,13 +30,14 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_marginLeft="@dimen/dimen5dp"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:layout_marginLeft="@dimen/dimen5dp"
                     android:background="@drawable/ic_left_arrow"
                     android:backgroundTint="@color/black" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -49,15 +50,16 @@
 
 
                 <ImageView
-                    android:layout_marginLeft="@dimen/dimen5dp"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:layout_marginLeft="@dimen/dimen5dp"
                     android:background="@drawable/ic_loupe"
 
                     android:backgroundTint="@color/black" />
 
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -68,13 +70,14 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_marginLeft="@dimen/dimen5dp"
                     android:layout_width="@dimen/dimen30dp"
                     android:layout_height="@dimen/dimen30dp"
+                    android:layout_marginLeft="@dimen/dimen5dp"
                     android:background="@drawable/wishlist"
                     android:backgroundTint="@color/black" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -85,29 +88,29 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_marginLeft="@dimen/dimen5dp"
                     android:layout_width="@dimen/dimen30dp"
                     android:layout_height="@dimen/dimen30dp"
+                    android:layout_marginLeft="@dimen/dimen5dp"
                     android:background="@drawable/bag"
                     android:backgroundTint="@color/black" />
 
             </LinearLayout>
 
 
-
-
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/lightGrey" />
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
-
-
-
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
 
                 <View
@@ -117,127 +120,127 @@
                     android:background="@color/lightGrey" />
 
 
+                <LinearLayout
+                    android:id="@+id/ll2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:padding="@dimen/dimen5dp"
+                        android:id="@+id/categorgyname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="2dp"
+                        android:textAllCaps="true"
+                        android:fontFamily="@font/opensans_bold"
+                        android:text="MAX FASHION"
+                        android:textColor="@color/darkGrey"
+                        android:textSize="18sp"
+                        tools:ignore="HardcodedText" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:background="@color/lightGrey" />
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
 
+                    <RelativeLayout
+                        android:layout_marginLeft="@dimen/dimen50dp"
 
-    <LinearLayout
-        android:id="@+id/ll2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen8dp"
-        android:orientation="vertical"
-        >
+                        android:id="@+id/RecyclerViewlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-        <TextView
+                        <androidx.recyclerview.widget.RecyclerView
 
-            android:id="@+id/categorgyname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="MAX FASHION"
-            android:textSize="22sp"
-            android:layout_margin="2dp"
-            android:textColor="@color/darkGrey"
-            android:fontFamily="@font/opensans_bold"
-            tools:ignore="HardcodedText" />
-        <View
-            android:layout_width="@dimen/dimen100dp"
-            android:layout_height="5dp"
-            android:background="@color/lightGrey" />
-    </LinearLayout>
-        <LinearLayout
+                            android:id="@+id/recycler_productfilter"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            tools:listitem="@layout/optiondata_thirdlistadapter"
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+                            tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                            android:orientation="horizontal"
+                          >
+
+                        </androidx.recyclerview.widget.RecyclerView>
+                    </RelativeLayout>
+
+<!--
+                    <LinearLayout
+                        android:id="@+id/filterlayout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="@dimen/dimen5dp"
+                        android:layout_marginTop="@dimen/dimen8dp"
+                        android:layout_marginRight="@dimen/dimen5dp"
+                        android:background="@drawable/round_grey_corners"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="2dp"
+                            android:layout_marginStart="@dimen/dimen10dp"
+                            android:layout_marginLeft="@dimen/dimen10dp"
+                            android:layout_weight="1"
+                            android:background="@color/bottomnavigation"
+                            android:gravity="center"
+
+                            android:text="Relevance"
+                            android:textColor="@color/darkGrey"
+                            android:textSize="22sp" />
+
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/ll1"
+                            android:layout_margin="@dimen/dimen5dp"
+                            android:background="@color/lightGrey"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="2dp"
+                            android:layout_marginStart="@dimen/dimen10dp"
+                            android:layout_marginLeft="@dimen/dimen10dp"
+                            android:layout_weight="1"
+                            android:background="@color/bottomnavigation"
+                            android:gravity="center"
+
+                            android:text="Filter"
+                            android:textColor="@color/darkGrey"
+                            android:textSize="22sp"
+                            tools:ignore="HardcodedText" />
+
+                    </LinearLayout>
+-->
 
 
-    <RelativeLayout
-        android:id="@+id/RecyclerViewlayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-     >
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/productRecyerlerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_productfilter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:orientation="horizontal">
+                        </androidx.recyclerview.widget.RecyclerView>
 
-        </androidx.recyclerview.widget.RecyclerView>
-    </RelativeLayout>
-    <LinearLayout
-        android:id="@+id/filterlayout"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/round_grey_corners"
-        android:layout_marginTop="@dimen/dimen8dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/dimen5dp"
-        android:layout_marginRight="@dimen/dimen5dp"
-        android:weightSum="2"
-       >
-
-        <TextView
-            android:background="@color/bottomnavigation"
-            android:layout_marginLeft="@dimen/dimen10dp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:text="Relevance"
-            android:textSize="22sp"
-
-            android:layout_margin="2dp"
-            android:textColor="@color/darkGrey"
-            android:layout_marginStart="@dimen/dimen10dp" />
-
-        <View
-            android:layout_below="@+id/ll1"
-            android:layout_width="5dp"
-            android:gravity="center"
-            android:layout_margin="@dimen/dimen5dp"
-            android:layout_height="match_parent"
-            android:background="@color/lightGrey" />
-
-        <TextView
-            android:background="@color/bottomnavigation"
-            android:layout_marginLeft="@dimen/dimen10dp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:text="Filter"
-            android:textSize="22sp"
-
-            android:layout_margin="2dp"
-            android:textColor="@color/darkGrey"
-            android:layout_marginStart="@dimen/dimen10dp"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen10dp"
-        android:layout_margin="15dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/productRecyerlerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="horizontal"
-           >
-
-        </androidx.recyclerview.widget.RecyclerView>
-    </RelativeLayout>
-
-        </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
         </ScrollView>

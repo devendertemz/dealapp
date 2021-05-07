@@ -50,28 +50,7 @@ public class ProdcutDeatails extends AppCompatActivity {
 
 
         loadingDialogs = new LoadingDialogs(this);
-        try {
 
-            if (getIntent()!=null)
-            {
-
-              int  id=getIntent().getExtras().getInt("id");
-                GetCategoryList(id);
-                /*
-                finalPrice.setText("Rs. "+getIntent().getExtras().getString("P_Finalprice"));
-                discount.setText(getIntent().getExtras().getString("P_OfferPrice")+"% off ");
-                taxdetails.setText(getIntent().getExtras().getString("P_Taxdeatils"));
-*/
-                // d_image.setImageBitmap(getIntent().getExtras().getString("P_Taxdeatils"));
-
-
-
-            }
-
-        }catch (Exception e)
-        {
-
-        }
 
         name = findViewById(R.id.d_Name);
         finalPrice = findViewById(R.id.d_price);
@@ -112,7 +91,32 @@ public class ProdcutDeatails extends AppCompatActivity {
             }
         });
 
+        try {
 
+            if (getIntent()!=null)
+            {
+                Bundle bundle = getIntent().getExtras();
+
+
+                bundle.getString("id");
+
+                name.setText( bundle.getString("product_name"));
+                finalPrice.setText("Rs."+bundle.getString("actual_amount"));
+                discountprice.setText("Rs."+bundle.getString("price"));
+                discount.setText(bundle.getString("discount")+"% OFF");
+                product_desc.setText(HtmlCompat.fromHtml(bundle.getString("product_desc"), 0));
+
+                String url = "http://api.ourprive.com/" + bundle.getString("images");
+
+                Picasso.get().load(url).into(d_image);
+
+
+            }
+
+        }catch (Exception e)
+        {
+
+        }
     }
 
     public void GetCategoryList(int id) {

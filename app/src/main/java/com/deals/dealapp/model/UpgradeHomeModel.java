@@ -6,24 +6,28 @@ import com.google.gson.annotations.SerializedName;
 public class UpgradeHomeModel {
 
 
+
     @SerializedName("id")
     @Expose
-    private Integer id;
-    @SerializedName("categoryname")
+    private String id;
+    @SerializedName("category_name")
     @Expose
-    private String categoryname;
+    private String categoryName;
     @SerializedName("categorydesc")
     @Expose
-    private Object categorydesc;
+    private String categorydesc;
     @SerializedName("image")
     @Expose
     private String image;
-    @SerializedName("icon")
+    @SerializedName("trending")
     @Expose
-    private String icon;
-    @SerializedName("status")
+    private String trending;
+    @SerializedName("single_trending")
     @Expose
-    private String status;
+    private String singleTrending;
+    @SerializedName("upgrade_your_home")
+    @Expose
+    private String upgradeYourHome;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -31,27 +35,27 @@ public class UpgradeHomeModel {
     @Expose
     private String updatedAt;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getCategoryname() {
-        return categoryname;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategoryname(String categoryname) {
-        this.categoryname = categoryname;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public Object getCategorydesc() {
+    public String getCategorydesc() {
         return categorydesc;
     }
 
-    public void setCategorydesc(Object categorydesc) {
+    public void setCategorydesc(String categorydesc) {
         this.categorydesc = categorydesc;
     }
 
@@ -63,20 +67,28 @@ public class UpgradeHomeModel {
         this.image = image;
     }
 
-    public String getIcon() {
-        return icon;
+    public String getTrending() {
+        return trending;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public void setTrending(String trending) {
+        this.trending = trending;
     }
 
-    public String getStatus() {
-        return status;
+    public String getSingleTrending() {
+        return singleTrending;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setSingleTrending(String singleTrending) {
+        this.singleTrending = singleTrending;
+    }
+
+    public String getUpgradeYourHome() {
+        return upgradeYourHome;
+    }
+
+    public void setUpgradeYourHome(String upgradeYourHome) {
+        this.upgradeYourHome = upgradeYourHome;
     }
 
     public String getCreatedAt() {
@@ -97,16 +109,16 @@ public class UpgradeHomeModel {
 
     @Override
     public String toString() {
-        return "CategoryListModel{" +
-                "id=" + id +
-                ", categoryname='" + categoryname + '\'' +
-                ", categorydesc=" + categorydesc +
+        return "UpgradeHomeModel{" +
+                "id='" + id + '\'' +
+                ", categoryName='" + categoryName + '\'' +
+                ", categorydesc='" + categorydesc + '\'' +
                 ", image='" + image + '\'' +
-                ", icon='" + icon + '\'' +
-                ", status='" + status + '\'' +
+                ", trending='" + trending + '\'' +
+                ", singleTrending='" + singleTrending + '\'' +
+                ", upgradeYourHome='" + upgradeYourHome + '\'' +
                 ", createdAt='" + createdAt + '\'' +
                 ", updatedAt='" + updatedAt + '\'' +
                 '}';
     }
-
 }

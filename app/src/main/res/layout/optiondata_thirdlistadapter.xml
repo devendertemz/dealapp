@@ -3,29 +3,30 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView"
-    android:layout_marginLeft="@dimen/dimen35sp"
+    android:layout_marginLeft="@dimen/dimen18sp"
 
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/round_grey_corners"
+    android:background="@drawable/blackborder"
 
     card_view:cardCornerRadius="@dimen/dimen5dp">
 
 
     <LinearLayout
-        android:background="@drawable/round_grey_corners"
+        android:background="@drawable/blackborder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
     <TextView
-        android:layout_margin="@dimen/dimen8dp"
+
+        android:layout_margin="3sp"
         android:id="@+id/Listname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/dimen5dp"
         android:textColor="@color/darkGrey"
         android:text="MEn"
-        android:textSize="19dp"
+        android:textSize="@dimen/dimen16sp"
         android:textAllCaps="true"
         android:textStyle="bold"/>
 

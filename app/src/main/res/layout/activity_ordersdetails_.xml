@@ -113,7 +113,7 @@
                             android:layout_margin="5dp"
                             android:contentDescription="@null"
                             android:scaleType="centerInside"
-                            android:src="@drawable/p2" />
+                            android:src="@drawable/p1" />
 
                     </LinearLayout>
 

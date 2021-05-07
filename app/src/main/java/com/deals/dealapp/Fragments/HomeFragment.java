@@ -26,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.deals.dealapp.Activity.Edit_profile;
@@ -51,17 +52,24 @@ import com.deals.dealapp.dialogs.LoadingDialogs;
 import com.deals.dealapp.model.GridHomeModel;
 import com.deals.dealapp.model.Item;
 import com.deals.dealapp.model.JewalleryModel;
+import com.deals.dealapp.model.JewalleryModelResponse;
 import com.deals.dealapp.model.UpgradeHomeModel;
 import com.deals.dealapp.util;
 import com.squareup.picasso.Picasso;
 import com.viewpagerindicator.CirclePageIndicator;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -83,6 +91,9 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
 
     Jewallery_Adapterr jewallery_adapterr;
     Get_trending_categories_Adapter get_trending_categories_adapter;
+    List<JewalleryModel> jewalleryModelList;
+    JewalleryModel jewalleryModel;
+
 
     private static ViewPager mpage;
     CirclePageIndicator indicator;
@@ -91,6 +102,8 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
     RecyclerView topShoppingOffersGridView;
     SwipeRefreshLayout mSwipeRefreshLayout;
     SlidingImageAdapter adapter;
+    TextView heading, price;
+
 
     public HomeFragment() {
 
@@ -124,7 +137,8 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         jewellery_adapter_layout = (RecyclerView) view.findViewById(R.id.jewellery_adapter_layout);
         UpgradehomeServicesList_RV = (RecyclerView) view.findViewById(R.id.UpgradehomeServicesList);
-
+        heading = view.findViewById(R.id.heading);
+        price = view.findViewById(R.id.price);
 
         profile_image = view.findViewById(R.id.profile_image);
         notification = view.findViewById(R.id.notification);
@@ -216,12 +230,11 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
     }
 
     private void ClickedUser(UpgradeHomeModel upgradeHomeModel) {
-        Toast.makeText(getActivity(), upgradeHomeModel.getCategoryname() + "", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), upgradeHomeModel.getCategoryName() + "", Toast.LENGTH_SHORT).show();
 
     }
 
     private void ClickedUser(JewalleryModel jewalleryModel) {
-        Toast.makeText(getActivity(), jewalleryModel.getCategoryname() + "", Toast.LENGTH_SHORT).show();
 
 
     }
@@ -266,55 +279,54 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
                         indicator.setViewPager(mpage);
 
 
-
-                    final float density = getResources().getDisplayMetrics().density;
-                    //Set circle indicator radius
-                    indicator.setRadius(5 * density);
-                    No_page = arrayList.size();
-                    // Auto start of viewpager
-                    final Handler handler = new Handler();
-                    final Runnable Update = new Runnable() {
-                        public void run() {
-                            if (currentPage == No_page) {
-                                currentPage = 0;
+                        final float density = getResources().getDisplayMetrics().density;
+                        //Set circle indicator radius
+                        indicator.setRadius(5 * density);
+                        No_page = arrayList.size();
+                        // Auto start of viewpager
+                        final Handler handler = new Handler();
+                        final Runnable Update = new Runnable() {
+                            public void run() {
+                                if (currentPage == No_page) {
+                                    currentPage = 0;
+                                }
+                                mpage.setCurrentItem(currentPage++, true);
                             }
-                            mpage.setCurrentItem(currentPage++, true);
-                        }
-                    };
-                    Timer swipeTimer = new Timer();
-                    swipeTimer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            handler.post(Update);
-                        }
-                    }, 3000, 3000);
+                        };
+                        Timer swipeTimer = new Timer();
+                        swipeTimer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                handler.post(Update);
+                            }
+                        }, 3000, 3000);
 
-                    // Pager listener over indicator
-                    indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                        // Pager listener over indicator
+                        indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-                        @Override
-                        public void onPageSelected(int position) {
-                            currentPage = position;
+                            @Override
+                            public void onPageSelected(int position) {
+                                currentPage = position;
 
-                        }
+                            }
 
-                        @Override
-                        public void onPageScrolled(int pos, float arg1, int arg2) {
+                            @Override
+                            public void onPageScrolled(int pos, float arg1, int arg2) {
 
-                        }
+                            }
 
-                        @Override
-                        public void onPageScrollStateChanged(int pos) {
+                            @Override
+                            public void onPageScrollStateChanged(int pos) {
 
-                        }
-                    });
-                    //   Toast.makeText(ProdcutDeatails.this, "right way", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        //   Toast.makeText(ProdcutDeatails.this, "right way", Toast.LENGTH_SHORT).show();
 
 
                   /*  secondcategory_adapterr.setData(userResponses);
                     recyclerView.setAdapter(secondcategory_adapterr);*/
 
-                }
+                    }
                 }
             }
 
@@ -343,31 +355,86 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
     }
 
     public void setjewellery_adapter_layout() {
+
         /// loadingDialogs.startLoadingDialogs();
+/*
+        Call<List<JewalleryModelResponse>> userlist = ApiClient.getUserService().getjewellery();
 
-        Call<List<JewalleryModel>> userlist = ApiClient.getUserService().getjewellery();
+        userlist.enqueue(new Callback<List<JewalleryModelResponse>>() {
 
-        userlist.enqueue(new Callback<List<JewalleryModel>>() {
             @Override
-            public void onResponse(Call<List<JewalleryModel>> call, Response<List<JewalleryModel>> response) {
+            public void onResponse(Call<List<JewalleryModelResponse>> call, Response<List<JewalleryModelResponse>> response) {
+          Toast.makeText(getActivity(), +response.code()+ "setjewellery_adapter_layout", Toast.LENGTH_SHORT).show();
+
                 loadingDialogs.dismissDialog();
-                if (response.isSuccessful()) {
-                    List<JewalleryModel> userResponses = response.body();
-                    jewallery_adapterr.setData(userResponses);
-                    jewellery_adapter_layout.setAdapter(jewallery_adapterr);
-
-
-                }
 
             }
 
             @Override
-            public void onFailure(Call<List<JewalleryModel>> call, Throwable t) {
+            public void onFailure(Call<List<JewalleryModelResponse>> call, Throwable t) {
                 Log.e("failure", t.getLocalizedMessage());
-                Toast.makeText(getActivity(), t.getLocalizedMessage() + "", Toast.LENGTH_SHORT).show();
+             Toast.makeText(getActivity(), t.getLocalizedMessage() + "onFailure", Toast.LENGTH_SHORT).show();
                 loadingDialogs.dismissDialog();
+            }
+        });*/
+        jewalleryModelList = new ArrayList<>();
+
+        Call<ResponseBody> userlist = ApiClient.getUserService().getjewelleryy();
+        userlist.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                String s = null;
+                if (response.isSuccessful() && response.code() == 200 && response.body() != null) {
+
+                    try {
+                        s = response.body().string();
+                       // Toast.makeText(getActivity(), s + "", Toast.LENGTH_SHORT).show();
+                        JSONObject jsonObject = new JSONObject(s);
+                        price.setText(jsonObject.getString("heading"));
+                        heading.setText(jsonObject.getString("cate_desc"));
+                        JSONArray jsonArray = jsonObject.getJSONArray("slider");
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+
+                            jewalleryModel = new JewalleryModel(jsonObject1.getString("id"),
+                                    jsonObject1.getString("category_name"),
+                                    jsonObject1.getString("categorydesc"),
+                                    jsonObject1.getString("image"),
+                                    jsonObject1.getString("trending")
+                            );
+                            jewalleryModelList.add(jewalleryModel);
+
+                        }
+                        jewallery_adapterr.setData(jewalleryModelList);
+                        jewellery_adapter_layout.setAdapter(jewallery_adapterr);
+
+                    } catch (JSONException | IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                } else {
+                    try {
+                        String errorRes = response.errorBody().string();
+                        JSONObject jsonObject = new JSONObject(errorRes);
+                        String err_msg = jsonObject.getString("error");
+                        int status = jsonObject.getInt("status");
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(getActivity(), t.getLocalizedMessage() + "onFailure", Toast.LENGTH_SHORT).show();
+                Log.e("failure", t.getLocalizedMessage());
+
             }
         });
+
 
     }
 
@@ -434,10 +501,11 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
         get_trending_categories_responsesArray = new ArrayList<>();
         Call<List<Get_trending_categories_Response>> userlist = ApiClient.getUserService().Get_trending_categories();
 
+
         userlist.enqueue(new Callback<List<Get_trending_categories_Response>>() {
             @Override
             public void onResponse(Call<List<Get_trending_categories_Response>> call, Response<List<Get_trending_categories_Response>> response) {
-                //  Toast.makeText(getActivity(), +response.code()+ "", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), +response.code()+ "", Toast.LENGTH_SHORT).show();
 
                 loadingDialogs.dismissDialog();
                 if (response.isSuccessful()) {
@@ -447,7 +515,7 @@ public class HomeFragment extends Fragment implements CategoryHomeAdapter.Clicke
                     for (int i = 0; i < userResponses.size(); i++) {
                         get_trending_categories_responsemodel.setImage(userResponses.get(i).getImage());
 
-                        get_trending_categories_responsemodel.setImage(userResponses.get(i).getCategoryname());
+                        get_trending_categories_responsemodel.setImage(userResponses.get(i).getCategoryName());
                         get_trending_categories_responsesArray.add(get_trending_categories_responsemodel);
 
 

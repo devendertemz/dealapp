@@ -53,10 +53,12 @@ public class Jewallery_Adapterr extends RecyclerView.Adapter<Jewallery_Adapterr.
         // Log.e("image",userResponse.getImage());
         String url = "http://api.ourprive.com/" + userResponse.getImage();
 
+
         Picasso.get().load(url).into(holder.jewellery_offer_image);
         Log.e("image", url);
 
-        holder.jewellery_offer_title.setText(userResponse.getCategoryname());
+        holder.jewellery_offer_title.setText(userResponse.getCategoryName());
+
 
         holder.jewellery_adapter_layoutclick.setOnClickListener(new View.OnClickListener() {
             @Override

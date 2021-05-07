@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:layout_gravity="center"
     android:id="@+id/Upgradehomeclick"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_margin="@dimen/dimen5dp"
+    android:layout_width="wrap_content"
+    android:layout_margin="2sp"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <LinearLayout
+        android:layout_margin="2sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/dimen10dp"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/dimen10dp">
@@ -25,6 +26,7 @@
             android:src="@drawable/logo1" />
 
         <TextView
+            android:layout_marginTop="@dimen/dimen5dp"
             android:id="@+id/jewellery_offer_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +38,7 @@
             android:padding="2dp"
             android:text="Eyewear"
             android:textColor="@color/black"
-            android:textSize="@dimen/dimen16sp" />
+            android:textSize="@dimen/dimen15dp" />
 
     </LinearLayout>
 
