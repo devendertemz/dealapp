@@ -1,5 +1,7 @@
 package com.deals.dealapp.databasee.Rtrofit;
 
+import com.deals.dealapp.ModelResponse.AddtoCart_Resp;
+import com.deals.dealapp.ModelResponse.AddtoWishlist_Resp;
 import com.deals.dealapp.ModelResponse.CategoryListModel;
 import com.deals.dealapp.ModelResponse.Get_trending_categories_Response;
 import com.deals.dealapp.ModelResponse.Getproducts_bybrandResp;
@@ -70,6 +72,27 @@ public interface UserService {
             @Field("sub_categories_id") String id
     );
 
+    @FormUrlEncoded
+    @POST("product/add_to_cart")
+    Call<AddtoCart_Resp> add_to_cart(
+            @Field("product_id") String product_id,
+            @Field("quantity") String quantity,
+            @Field("user_id") String user_id
+
+    );
+    @FormUrlEncoded
+    @POST("product/add_to_wishlist")
+    Call<AddtoWishlist_Resp> AddtoWishlist_Resp(
+            @Field("product_id") String product_id,
+            @Field("user_id") String user_id
+
+    );
+
+
+
+
+   // Call<CelebrityResp> getCelebrity(@Query("page") int page, @Query("limit") int limit, @Body EventFilterBody filter);
+//
   /*  @FormUrlEncoded
     @POST("details_registration.php/")
     Call<ResponseBody> send_school_deatils(

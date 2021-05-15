@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.deals.dealapp.MainActivity;
+import com.deals.dealapp.ModelResponse.AddtoCart_Resp;
+import com.deals.dealapp.ModelResponse.AddtoWishlist_Resp;
+import com.deals.dealapp.ModelResponse.Get_trending_categories_Response;
 import com.deals.dealapp.ModelResponse.ProductDeatilsResponse;
 import com.deals.dealapp.ModelResponse.Secondcategory_itemlist;
 import com.deals.dealapp.R;
@@ -20,6 +26,7 @@ import com.deals.dealapp.databasee.Rtrofit.ApiClient;
 import com.deals.dealapp.dialogs.LoadingDialogs;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -28,11 +35,12 @@ import retrofit2.Response;
 
 public class ProdcutDeatails extends AppCompatActivity {
 
-    TextView name, finalPrice, discount, taxdetails,discountprice,product_desc;
-    ImageView heartblack, withoutblak, d_image;
+    TextView name, finalPrice, discount, taxdetails, discountprice, product_desc;
+    ImageView withoutblak, d_image;
     LinearLayout back, wishlist_ll;
     Button addtocart_btn;
     LoadingDialogs loadingDialogs;
+    String id;
 
 
     @Override
@@ -47,29 +55,52 @@ public class ProdcutDeatails extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void initView() {
-
-
         loadingDialogs = new LoadingDialogs(this);
-
-
         name = findViewById(R.id.d_Name);
         finalPrice = findViewById(R.id.d_price);
         discount = findViewById(R.id.d_Offer);
         taxdetails = findViewById(R.id.d_tax_details);
-        discountprice= findViewById(R.id.discountprice);
-        product_desc= findViewById(R.id.product_desc);
+        discountprice = findViewById(R.id.discountprice);
+        product_desc = findViewById(R.id.product_desc);
         d_image = findViewById(R.id.d_image);
         back = findViewById(R.id.back);
         withoutblak = findViewById(R.id.withoutblak);
         wishlist_ll = findViewById(R.id.wishlist_ll);
-        heartblack = findViewById(R.id.heartblack);
+
         addtocart_btn = findViewById(R.id.addtocart);
+        String user_id = Settings.Secure.getString(this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+
+        try {
+
+            if (getIntent() != null) {
+                Bundle bundle = getIntent().getExtras();
+
+
+                id = bundle.getString("id");
+
+                name.setText(bundle.getString("product_name"));
+                finalPrice.setText("Rs." + bundle.getString("actual_amount"));
+                discountprice.setText("Rs." + bundle.getString("price"));
+                discount.setText(bundle.getString("discount") + "% OFF");
+                product_desc.setText(HtmlCompat.fromHtml(bundle.getString("product_desc"), 0));
+
+                String url = "http://api.ourprive.com/" + bundle.getString("images");
+
+                Picasso.get().load(url).into(d_image);
+
+
+            }
+
+        } catch (Exception e) {
+
+        }
 
         wishlist_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                withoutblak.setVisibility(View.GONE);
-                heartblack.setVisibility(View.VISIBLE);
+
+                AddTOWishlist(user_id, "1", id);
 
             }
         });
@@ -77,8 +108,7 @@ public class ProdcutDeatails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                Toast.makeText(ProdcutDeatails.this, "Add cart", Toast.LENGTH_SHORT).show();
+                AddTOCart(user_id, "1", id);
 
 
             }
@@ -91,79 +121,109 @@ public class ProdcutDeatails extends AppCompatActivity {
             }
         });
 
-        try {
-
-            if (getIntent()!=null)
-            {
-                Bundle bundle = getIntent().getExtras();
-
-
-                bundle.getString("id");
-
-                name.setText( bundle.getString("product_name"));
-                finalPrice.setText("Rs."+bundle.getString("actual_amount"));
-                discountprice.setText("Rs."+bundle.getString("price"));
-                discount.setText(bundle.getString("discount")+"% OFF");
-                product_desc.setText(HtmlCompat.fromHtml(bundle.getString("product_desc"), 0));
-
-                String url = "http://api.ourprive.com/" + bundle.getString("images");
-
-                Picasso.get().load(url).into(d_image);
-
-
-            }
-
-        }catch (Exception e)
-        {
-
-        }
     }
 
-    public void GetCategoryList(int id) {
-        Toast.makeText(this, id+"", Toast.LENGTH_SHORT).show();
 
-        loadingDialogs.startLoadingDialogs();
+    private void AddTOCart(String user_id, String quantity, String product_id) {
+/*
 
-        Call<List<ProductDeatilsResponse>> userlist = ApiClient.getUserService().getProductDetails(String.valueOf(id));
+        Toast.makeText(this, user_id + "", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, product_id + "", Toast.LENGTH_SHORT).show();
+*/
 
-        userlist.enqueue(new Callback<List<ProductDeatilsResponse>>() {
+
+        Call<AddtoCart_Resp> userlist = ApiClient.getUserService().add_to_cart(product_id, quantity, user_id);
+        userlist.enqueue(new Callback<AddtoCart_Resp>() {
             @Override
-            public void onResponse(Call<List<ProductDeatilsResponse>> call, Response<List<ProductDeatilsResponse>> response) {
-                loadingDialogs.dismissDialog();
-                Toast.makeText(ProdcutDeatails.this, response.code()+"", Toast.LENGTH_SHORT).show();
-                if (response.isSuccessful()) {
-                    List<ProductDeatilsResponse> userResponses = response.body();
-                    for (int i=0;i<userResponses.size();i++)
-                    {
-                        name.setText(  userResponses.get(i).getProductName());
-                        finalPrice.setText("Rs."+userResponses.get(i).getActualAmount());
-                        discountprice.setText("Rs."+userResponses.get(i).getPrice());
-                        discount.setText(userResponses.get(i).getDiscount()+"% OFF");
-                        product_desc.setText(HtmlCompat.fromHtml(userResponses.get(i).getProductDesc(), 0));
+            public void onResponse(Call<AddtoCart_Resp> call, Response<AddtoCart_Resp> response) {
+               // Toast.makeText(ProdcutDeatails.this, response.code() + "", Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful() && response.body() != null && response.code() == 200) {
+                    try {
+                        Toast.makeText(ProdcutDeatails.this, response.body().getMessage() + "", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(ProdcutDeatails.this, MainActivity.class));
 
-                        String url = "http://api.ourprive.com/" + userResponses.get(i).getImages();
-
-                        Picasso.get().load(url).into(d_image);
-
-                        Toast.makeText(ProdcutDeatails.this, userResponses.get(i).getCategoryname(), Toast.LENGTH_SHORT).show();
-
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
                     }
-                    Toast.makeText(ProdcutDeatails.this, "right way", Toast.LENGTH_SHORT).show();
-
-
-                  /*  secondcategory_adapterr.setData(userResponses);
-                    recyclerView.setAdapter(secondcategory_adapterr);*/
-
                 }
+            }
+
+            @Override
+            public void onFailure(Call<AddtoCart_Resp> call, Throwable t) {
+                Log.e("failure", t.getLocalizedMessage());
+
+            }
+        });
+    /*
+
+        userlist.enqueue(new Callback<List<AddtoCart_Resp>>() {
+            @Override
+            public void onResponse(Call<List<AddtoCart_Resp>> call, Response<List<AddtoCart_Resp>> response) {
+                Toast.makeText(ProdcutDeatails.this, response.code()+"", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), +response.code()+ "", Toast.LENGTH_SHORT).show();
+
 
             }
 
             @Override
-            public void onFailure(Call<List<ProductDeatilsResponse>> call, Throwable t) {
+            public void onFailure(Call<List<AddtoCart_Resp>> call, Throwable t) {
                 Log.e("failure", t.getLocalizedMessage());
-                loadingDialogs.dismissDialog();
             }
         });
 
+*/
     }
+    private void AddTOWishlist(String user_id, String quantity, String product_id) {
+/*
+
+        Toast.makeText(this, user_id + "", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, product_id + "", Toast.LENGTH_SHORT).show();
+*/
+
+
+        Call<AddtoWishlist_Resp> userlist = ApiClient.getUserService().AddtoWishlist_Resp(product_id, user_id);
+        userlist.enqueue(new Callback<AddtoWishlist_Resp>() {
+            @Override
+            public void onResponse(Call<AddtoWishlist_Resp> call, Response<AddtoWishlist_Resp> response) {
+                // Toast.makeText(ProdcutDeatails.this, response.code() + "", Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful() && response.body() != null && response.code() == 200) {
+                    try {
+                        withoutblak.setImageResource(R.drawable.heartbgblack);
+
+                        Toast.makeText(ProdcutDeatails.this, response.body().getMessage() + "", Toast.LENGTH_SHORT).show();
+                     startActivity(new Intent(ProdcutDeatails.this, MainActivity.class));
+                        wishlist_ll.setEnabled(false);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AddtoWishlist_Resp> call, Throwable t) {
+                Log.e("failure", t.getLocalizedMessage());
+
+            }
+        });
+    /*
+
+        userlist.enqueue(new Callback<List<AddtoCart_Resp>>() {
+            @Override
+            public void onResponse(Call<List<AddtoCart_Resp>> call, Response<List<AddtoCart_Resp>> response) {
+                Toast.makeText(ProdcutDeatails.this, response.code()+"", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), +response.code()+ "", Toast.LENGTH_SHORT).show();
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<AddtoCart_Resp>> call, Throwable t) {
+                Log.e("failure", t.getLocalizedMessage());
+            }
+        });
+
+*/
+    }
+
+
 }
